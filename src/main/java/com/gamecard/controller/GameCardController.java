@@ -20,6 +20,8 @@ public class GameCardController {
 	
 	@Autowired
 	protected GameCardDaoImpl cardDaoImpl;
+	@Autowired
+	 protected GameCardApkDaoImpl apkDaoImpl;
 	
 	@RequestMapping(value="/gamecard",method=RequestMethod.GET,headers="Accept=application/json",params="packagename")
 	public PlaystoreDto gameCardList(@RequestParam ("packagename")String packagename)
@@ -30,10 +32,15 @@ public class GameCardController {
 
 		ArrayList<PlaystoreDto> list =new ArrayList<PlaystoreDto>();
 		list=cardDaoImpl.getPlayStoreData(packagename);
+		
 		System.out.println("gamecardlist list:"+list);
-		System.out.println("gamecardlist list1:"+list.indexOf(dto.getVersion()));
-		//GameCardApkDaoImpl impl=new GameCardApkDaoImpl();
-		//impl.createApkSiteDetails(list.get(3),packagename);
+		String version=list.get(0).getVersion();
+		System.out.println("hiiii"+version);
+		System.out.println();
+		
+		
+		GameCardApkDaoImpl impl=new GameCardApkDaoImpl();
+		impl.createApkSiteDetails(list,packagename);
 		
 		
 		for(PlaystoreDto cardDto :list)

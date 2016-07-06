@@ -95,40 +95,51 @@ public class GameCardDaoImpl implements GameCardDao {
 			dto.setGamedate(info.select("[itemprop=datePublished]").text());
 			dto.setPackagename(pack);
 
-			/*-------inserting into the data base------*/
-			/*
-			 * Session session = sessionFactory.openSession(); Query query =
-			 * session.createQuery("from PlaystoreDto where packagename=? ");
-			 * query.setParameter(0, dto.getPackagename()); List list =
-			 * query.list(); if (list.size() == 0) { Transaction trn =
-			 * session.beginTransaction(); session.save(dto); trn.commit();
-			 * session.close(); playStoreDetails.add(dto);
-			 * 
-			 * }
-			 */
-			// else {
-			int id = dto.getId();
-			System.out.println("id no:" + id);
-			// showing game name
-			System.out.println("Title of Game: " + dto.getGametittle());
-			// showing genre of game
-			System.out.println("Genre:" + dto.getGeneric());
-			// showing software version
-			System.out.println("CVersion: " + dto.getVersion());
-			// showing file size
-			System.out.println("File Size: " + dto.getSize());
-			// showing publish date
-			System.out.println("Update date: " + dto.getGamedate());
-			// showing package name
-			System.out.println("Package Name:" + pack);
+			String title = dto.getGametittle();
+			String generic = dto.getGeneric();
+			String version = dto.getVersion();
+			String size = dto.getSize();
+			String date = dto.getGamedate();
+			String packagegame = dto.getPackagename();
 
-			if (dto.getGametittle().equals("") || dto.getGeneric().equals("") || dto.getVersion().equals("")
-					|| dto.getSize().equals("") || dto.getGamedate().equals("") || pack.equals("")) {
-				System.out.println("All data is not fetched");
-			} else {
+			/*-------inserting into the data base------*/
+
+			/*Session session = sessionFactory.openSession();
+			Query query = session.createQuery("from PlaystoreDto where packagename=? ");
+			query.setParameter(0, dto.getPackagename());
+			List list = query.list();
+			if (list.size() == 0) {
+				Transaction trn = session.beginTransaction();
+				session.save(dto);
+				trn.commit();
+				session.close();
 				playStoreDetails.add(dto);
+
 			}
-			// }
+*/
+//			else {
+				int id = dto.getId();
+				System.out.println("id no:" + id);
+				// showing game name
+				System.out.println("Title of Game: " + dto.getGametittle());
+				// showing genre of game
+				System.out.println("Genre:" + dto.getGeneric());
+				// showing software version
+				System.out.println("CVersion: " + dto.getVersion());
+				// showing file size
+				System.out.println("File Size: " + dto.getSize());
+				// showing publish date
+				System.out.println("Update date: " + dto.getGamedate());
+				// showing package name
+				System.out.println("Package Name:" + pack);
+
+				if (dto.getGametittle().equals("") || dto.getGeneric().equals("") || dto.getVersion().equals("")
+						|| dto.getSize().equals("") || dto.getGamedate().equals("") || pack.equals("")) {
+					System.out.println("All data is not fetched");
+				} else {
+					playStoreDetails.add(dto);
+				}
+			//}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

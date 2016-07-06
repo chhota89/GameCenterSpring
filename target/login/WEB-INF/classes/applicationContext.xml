@@ -46,7 +46,7 @@
 			<property name="annotatedClasses">
 			<list>
 				  <value>com.gamecard.dto.GameCardDto</value> 
-				  
+				  <value>com.gamecard.dto.PlaystoreDto</value> 
 			</list>
 			</property>
 

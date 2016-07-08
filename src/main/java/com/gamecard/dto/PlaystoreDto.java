@@ -15,16 +15,17 @@ public class PlaystoreDto {
 	@Column
 	private String gametittle;
 	@Column
-	private String generic;
+	private String category;
 	@Column
 	private String version;
 	@Column
 	private String Size;
 	@Column
 	private String gamedate;
-	
 	@Column
 	private String packagename;
+	@Column
+	private String  description; 
 	
 	
 	public int getId() {
@@ -39,11 +40,11 @@ public class PlaystoreDto {
 	public void setGametittle(String gametittle) {
 		this.gametittle = gametittle;
 	}
-	public String getGeneric() {
-		return generic;
+	public String getCategory() {
+		return category;
 	}
-	public void setGeneric(String generic) {
-		this.generic = generic;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	public String getVersion() {
 		return version;
@@ -70,6 +71,11 @@ public class PlaystoreDto {
 		this.packagename = packagename;
 	}
 	
-	
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 }

@@ -25,8 +25,9 @@ public class PlaystoreDto {
 	@Column
 	private String packagename;
 	@Column
-	private String  description; 
-	
+	private String description; 
+	@Column
+	private String isgame;
 	
 	public int getId() {
 		return id;
@@ -76,6 +77,12 @@ public class PlaystoreDto {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getIsgame() {
+		return isgame;
+	}
+	public void setIsgame(String isgame) {
+		this.isgame = isgame;
 	}
 
 }

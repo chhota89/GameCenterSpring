@@ -23,26 +23,49 @@ public class GameCardController {
 	protected GameCardApkDaoImpl apkDaoImpl;
 
 	@RequestMapping(value = "/gamecard", method = RequestMethod.GET, headers = "Accept=application/json", params = "packagename")
-	public ArrayList<PlaystoreDto> gameCardList(@RequestParam("packagename") String packagename) {
+	public PlaystoreDto gameCardList(@RequestParam("packagename") String packagename) {
 		System.out.println("packagename" + packagename);
-
+		PlaystoreDto dto = new PlaystoreDto();
 		ArrayList<PlaystoreDto> list = new ArrayList<PlaystoreDto>();
-		
-		list = cardDaoImpl.getPlayStoreData(packagename);
+		/*-----Calling the find package method to find the package name in the db----*/
+		list = cardDaoImpl.findPackage(packagename);
 
-		System.out.println("gamecardlist list:" + list);
-		System.out.println();
-		if (list.size() > 0) {
-			boolean found = apkDaoImpl.createApkSiteDetails(list, packagename);
+		if (list != null && list.size() > 0) {
+			dto.setId(list.get(0).getId());
+			dto.setGametittle(list.get(0).getGametittle());
+			dto.setGamedate(list.get(0).getGamedate());
+			dto.setCategory(list.get(0).getCategory());
+			dto.setPackagename(list.get(0).getPackagename());
+			dto.setSize(list.get(0).getSize());
+			dto.setVersion(list.get(0).getVersion());
+			dto.setDescription(list.get(0).getDescription());
+			dto.setIsgame(list.get(0).getIsgame());
+			return dto;
+		} else {
+			list = cardDaoImpl.getPlayStoreData(packagename);
 
-			if (found == true) {
-				cardDaoImpl.insertnewpackage(list, packagename);
-			}
+			dto.setId(list.get(0).getId());
+			dto.setGametittle(list.get(0).getGametittle());
+			dto.setGamedate(list.get(0).getGamedate());
+			dto.setCategory(list.get(0).getCategory());
+			dto.setPackagename(list.get(0).getPackagename());
+			dto.setSize(list.get(0).getSize());
+			dto.setVersion(list.get(0).getVersion());
+			dto.setDescription(list.get(0).getDescription());
+			dto.setIsgame(list.get(0).getIsgame());
+			
+			//System.out.println("gamecardlist list:" + list);
+			
+			if (list.size() > 0) {
+				boolean found = apkDaoImpl.createApkSiteDetails(list, packagename);
 
-			return list;
-		} else
-			return null;
-		
+				if (found == true) {
+					cardDaoImpl.insertnewpackage(list, packagename);
+				}
+				return dto;
+			} else
+				return null;
+		}
 	}
 
 }

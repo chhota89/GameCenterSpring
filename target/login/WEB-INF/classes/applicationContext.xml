@@ -59,6 +59,6 @@
       
     <bean id="abc" class="com.gamecard.controller.GameCardController"/> 
     <bean id="gamecard" class="com.gamecard.daoimpl.GameCardDaoImpl"/>
-    
+     <bean id="gamecardapk" class="com.gamecard.daoimpl.GameCardApkDaoImpl"/> 
 	
 </beans>

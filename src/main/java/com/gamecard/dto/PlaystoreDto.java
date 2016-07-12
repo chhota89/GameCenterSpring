@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.swing.text.StyledEditorKit.BoldAction;
+
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 @Entity
 @Table(name="gameplaystore")
@@ -27,7 +30,7 @@ public class PlaystoreDto {
 	@Column
 	private String description; 
 	@Column
-	private String isgame;
+	private boolean isgame;
 	
 	public int getId() {
 		return id;
@@ -78,10 +81,10 @@ public class PlaystoreDto {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getIsgame() {
+	public boolean getIsgame() {
 		return isgame;
 	}
-	public void setIsgame(String isgame) {
+	public void setIsgame(Boolean isgame) {
 		this.isgame = isgame;
 	}
 

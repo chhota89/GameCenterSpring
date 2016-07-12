@@ -11,6 +11,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.json.simple.JSONObject;
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -25,16 +26,30 @@ public class GameCardDaoImpl implements GameCardDao {
 	@Resource(name = "sessionFactory")
 	SessionFactory sessionFactory;
 
-	public String result = "no";
+	/*------cheking package name into database-----*/
+	public ArrayList<PlaystoreDto> findPackage(String packagename) {
+
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("from PlaystoreDto where packagename=?");
+		query.setParameter(0, packagename);
+		ArrayList<PlaystoreDto> list = (ArrayList<PlaystoreDto>) query.list();
+		if (list != null && list.size() > 0) {
+			return list;
+		}
+
+		return null;
+	}
 
 	/*------creating the jsoup file operation----*/
 	public ArrayList<PlaystoreDto> getPlayStoreData(String packagename) {
-
+		boolean result = false;
 		ArrayList<PlaystoreDto> playStoreDetails = new ArrayList<PlaystoreDto>();
 		try {
+
 			// fetch the document over HTTP
 			PlaystoreDto dto = new PlaystoreDto();
 			String url = "https://play.google.com/store/apps/details?id=" + packagename;
+
 			Document doc = Jsoup.connect(url).userAgent("Chrome/51.0.2704.106 ").timeout(10000).get();
 
 			// getting game class element
@@ -46,15 +61,34 @@ public class GameCardDaoImpl implements GameCardDao {
 			String categoury = g.select("[itemprop=genre]").text();
 			System.out.println("categoury is :" + categoury);
 
-			if (categoury.equalsIgnoreCase("Action") || categoury.equalsIgnoreCase("Adventure")
-					|| categoury.equalsIgnoreCase("Arcade") || categoury.equalsIgnoreCase("Board")
-					|| categoury.equalsIgnoreCase("Card") || categoury.equalsIgnoreCase("Casino")
-					|| categoury.equalsIgnoreCase("Casual") || categoury.equalsIgnoreCase("Educational")
-					|| categoury.equalsIgnoreCase("Music") || categoury.equalsIgnoreCase("Puzzle")
-					|| categoury.equalsIgnoreCase("Role Playing") || categoury.equalsIgnoreCase("Simulation")
-					|| categoury.equalsIgnoreCase("Sport") || categoury.equalsIgnoreCase("Strategy")) {
+			if (/* categoury.contains(" ")&& */categoury.contains("&")) {
+				dto.setGametittle(null);
+				dto.setCategory(null);
+				dto.setDescription(null);
+				dto.setGamedate(null);
+				dto.setIsgame(result);
+				dto.setPackagename(packagename);
+				dto.setSize(null);
+				dto.setVersion(null);
+				playStoreDetails.add(dto);
+				return playStoreDetails;
+			} else if (categoury.contains(" ")) {
+				String[] fcat = categoury.split(" ");
 
-				result = "yes";
+				System.out.println("space is there" + fcat[0]);
+				categoury = fcat[0];
+			}
+
+			if (categoury.equalsIgnoreCase("Action") || categoury.equalsIgnoreCase("Adventure")
+					|| categoury.equalsIgnoreCase("Racing") || categoury.equalsIgnoreCase("Arcade")
+					|| categoury.equalsIgnoreCase("Board") || categoury.equalsIgnoreCase("Card")
+					|| categoury.equalsIgnoreCase("Casino") || categoury.equalsIgnoreCase("Casual")
+					|| categoury.equalsIgnoreCase("Educational") || categoury.equalsIgnoreCase("Music")
+					|| categoury.equalsIgnoreCase("Puzzle") || categoury.equalsIgnoreCase("Role Playing")
+					|| categoury.equalsIgnoreCase("Simulation") || categoury.equalsIgnoreCase("Sport")
+					|| categoury.equalsIgnoreCase("Strategy")) {
+
+				result = true;
 				System.out.println(result);
 
 				dto.setGametittle(t.select("[class=id-app-title]").text());
@@ -69,6 +103,7 @@ public class GameCardDaoImpl implements GameCardDao {
 			}
 
 			else {
+				System.out.println("it is not a game " + result);
 
 				dto.setGametittle(null);
 				dto.setCategory(null);
@@ -83,9 +118,9 @@ public class GameCardDaoImpl implements GameCardDao {
 
 			}
 
-			if (dto.getGametittle().equals("") || dto.getCategory().equals("") || dto.getVersion().equals("")
-					|| dto.getSize().equals("") || dto.getGamedate().equals("") || dto.getPackagename().equals("")
-					|| dto.getDescription().equals("")) {
+			if (dto.getGametittle().equals("") && dto.getCategory().equals("") && dto.getVersion().equals("")
+					&& dto.getSize().equals("") && dto.getGamedate().equals("") && dto.getPackagename().equals("")
+					&& dto.getDescription().equals("")) {
 				System.out.println("All data is not fetched");
 			} else {
 				playStoreDetails.add(dto);
@@ -105,7 +140,20 @@ public class GameCardDaoImpl implements GameCardDao {
 			System.out.println("Package Name:" + packagename);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			ArrayList<PlaystoreDto> playStoreDetails1 = new ArrayList<PlaystoreDto>();
+			PlaystoreDto dto = new PlaystoreDto();
+			// System.out.println("HI U HAVE ENTER THE WORG URL.......");
+			dto.setGametittle(null);
+			dto.setCategory(null);
+			dto.setDescription(null);
+			dto.setGamedate(null);
+			dto.setIsgame(result);
+			dto.setPackagename(packagename);
+			dto.setSize(null);
+			dto.setVersion(null);
+			playStoreDetails1.add(dto);
+			return playStoreDetails1;
+
 		}
 		return playStoreDetails;
 	}
@@ -126,7 +174,7 @@ public class GameCardDaoImpl implements GameCardDao {
 		dto.setSize(list1.get(0).getSize());
 		dto.setVersion(list1.get(0).getVersion());
 		dto.setDescription(list1.get(0).getDescription());
-		dto.setIsgame(result);
+		dto.setIsgame(list1.get(0).getIsgame());
 
 		Session session = sessionFactory.openSession();
 		System.out.println("session stablish " + session);

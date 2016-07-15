@@ -47,6 +47,7 @@
 			<list>
 				  <value>com.gamecard.dto.GameCardDto</value> 
 				  <value>com.gamecard.dto.PlaystoreDto</value> 
+				  <value>com.gamecard.dto.GamePackageListReq</value> 
 			</list>
 			</property>
 

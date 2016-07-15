@@ -2,6 +2,7 @@ com/gamecard/dto/PlaystoreDto.class
 com/gamecard/daoimpl/GameCardDaoImpl.class
 com/gamecard/controller/GameCardController.class
 com/gamecard/daoimpl/GameCardApkDaoImpl.class
+com/gamecard/dto/GamePackageListReq.class
 com/gamecard/dao/GameCardApkDao.class
-com/gamecard/dto/GameCardDto.class
 com/gamecard/dao/GameCardDao.class
+com/gamecard/dto/GameCardDto.class

@@ -1,7 +1,8 @@
 /home/bridgelabz3/SpringMVC/GameCard/src/main/java/com/gamecard/controller/GameCardController.java
-/home/bridgelabz3/SpringMVC/GameCard/src/main/java/com/gamecard/dto/PlaystoreDto.java
 /home/bridgelabz3/SpringMVC/GameCard/src/main/java/com/gamecard/dao/GameCardDao.java
+/home/bridgelabz3/SpringMVC/GameCard/src/main/java/com/gamecard/dto/PlaystoreDto.java
 /home/bridgelabz3/SpringMVC/GameCard/src/main/java/com/gamecard/daoimpl/GameCardDaoImpl.java
+/home/bridgelabz3/SpringMVC/GameCard/src/main/java/com/gamecard/dto/GamePackageListReq.java
 /home/bridgelabz3/SpringMVC/GameCard/src/main/java/com/gamecard/daoimpl/GameCardApkDaoImpl.java
-/home/bridgelabz3/SpringMVC/GameCard/src/main/java/com/gamecard/dto/GameCardDto.java
 /home/bridgelabz3/SpringMVC/GameCard/src/main/java/com/gamecard/dao/GameCardApkDao.java
+/home/bridgelabz3/SpringMVC/GameCard/src/main/java/com/gamecard/dto/GameCardDto.java

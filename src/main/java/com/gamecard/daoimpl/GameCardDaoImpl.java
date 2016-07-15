@@ -61,8 +61,8 @@ public class GameCardDaoImpl implements GameCardDao {
 			String categoury = g.select("[itemprop=genre]").text();
 			System.out.println("categoury is :" + categoury);
 
-			if (/* categoury.contains(" ")&& */categoury.contains("&")) {
-				dto.setGametittle(null);
+			if (categoury.contains("&")) {
+				dto.setGametittle(t.select("[class=id-app-title]").text());
 				dto.setCategory(null);
 				dto.setDescription(null);
 				dto.setGamedate(null);
@@ -70,6 +70,8 @@ public class GameCardDaoImpl implements GameCardDao {
 				dto.setPackagename(packagename);
 				dto.setSize(null);
 				dto.setVersion(null);
+				sessionFactory.openSession().save(dto);
+				System.out.println("non jgame with special char");
 				playStoreDetails.add(dto);
 				return playStoreDetails;
 			} else if (categoury.contains(" ")) {
@@ -113,6 +115,8 @@ public class GameCardDaoImpl implements GameCardDao {
 				dto.setPackagename(packagename);
 				dto.setSize(null);
 				dto.setVersion(null);
+				sessionFactory.openSession().save(dto);
+				System.out.println("non game data has been save");
 				playStoreDetails.add(dto);
 				return playStoreDetails;
 

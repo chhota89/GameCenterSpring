@@ -3,6 +3,7 @@ package com.gamecard.controller;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.gamecard.daoimpl.GameCardApkDaoImpl;
 import com.gamecard.daoimpl.GameCardDaoImpl;
+import com.gamecard.daoimpl.MqttDaoImpl;
 import com.gamecard.dto.GamePackageListReq;
 import com.gamecard.dto.PlaystoreDto;
 import com.google.gson.Gson;
@@ -33,41 +35,29 @@ public class GameCardController {
 	protected GameCardDaoImpl cardDaoImpl;
 	@Autowired
 	protected GameCardApkDaoImpl apkDaoImpl;
-/*-------------Single Package Operation-------------*/
+	@Autowired
+	protected MqttDaoImpl mqttDaoImpl;
+	
+	
+	
+	
+	
+	PlaystoreDto dto = new PlaystoreDto();
+	ArrayList<PlaystoreDto> list = new ArrayList<PlaystoreDto>();
+	/*-------------Single Package Operation-------------*/
 	@RequestMapping(value = "/gamecard", method = RequestMethod.GET, headers = "Accept=application/json", params = "packagename")
 	public PlaystoreDto gameCardList(@RequestParam("packagename") String packagename) {
 
 		System.out.println("packagename" + packagename);
-		PlaystoreDto dto = new PlaystoreDto();
-		ArrayList<PlaystoreDto> list = new ArrayList<PlaystoreDto>();
+		
 		/*-----Calling the find package method to find the package name in the db----*/
 		list = cardDaoImpl.findPackage(packagename);
 
-		if (list != null && list.size() > 0) {
-			dto.setId(list.get(0).getId());
-			dto.setGametittle(list.get(0).getGametittle());
-			dto.setGamedate(list.get(0).getGamedate());
-			dto.setCategory(list.get(0).getCategory());
-			dto.setPackagename(list.get(0).getPackagename());
-			dto.setSize(list.get(0).getSize());
-			dto.setVersion(list.get(0).getVersion());
-			dto.setDescription(list.get(0).getDescription());
-			dto.setIsgame(list.get(0).getIsgame());
+		if (list != null && list.size() > 0) {	
+			setgetvalue(list);
 			return dto;
 		} else {
 			list = cardDaoImpl.getPlayStoreData(packagename);
-
-			dto.setId(list.get(0).getId());
-			dto.setGametittle(list.get(0).getGametittle());
-			dto.setGamedate(list.get(0).getGamedate());
-			dto.setCategory(list.get(0).getCategory());
-			dto.setPackagename(list.get(0).getPackagename());
-			dto.setSize(list.get(0).getSize());
-			dto.setVersion(list.get(0).getVersion());
-			dto.setDescription(list.get(0).getDescription());
-			dto.setIsgame(list.get(0).getIsgame());
-
-			// System.out.println("gamecardlist list:" + list);
 
 			if (list.size() > 0) {
 				boolean found = apkDaoImpl.createApkSiteDetails(list, packagename);
@@ -80,6 +70,7 @@ public class GameCardController {
 				return null;
 		}
 	}
+
 	/*-------------Multiple Package Operation-------------*/
 	@RequestMapping(value = "/package", headers = "Accept=application/json")
 	@ResponseBody
@@ -97,35 +88,15 @@ public class GameCardController {
 				list = cardDaoImpl.findPackage(b);
 				System.out.println("List generated:" + list);
 				if (list != null && list.size() > 0) {
-					PlaystoreDto dto = new PlaystoreDto();
-					dto.setId(list.get(0).getId());
-					dto.setGametittle(list.get(0).getGametittle());
-					dto.setGamedate(list.get(0).getGamedate());
-					dto.setCategory(list.get(0).getCategory());
-					dto.setPackagename(list.get(0).getPackagename());
-					dto.setSize(list.get(0).getSize());
-					dto.setVersion(list.get(0).getVersion());
-					dto.setDescription(list.get(0).getDescription());
-					dto.setIsgame(list.get(0).getIsgame());
+					setgetvalue( list);
 					list1.add(dto);
 				}
 
 				else {
 					System.out.println("else is call");
 					list = cardDaoImpl.getPlayStoreData(b);
-					PlaystoreDto dto = new PlaystoreDto();
-					dto.setId(list.get(0).getId());
-					dto.setGametittle(list.get(0).getGametittle());
-					dto.setGamedate(list.get(0).getGamedate());
-					dto.setCategory(list.get(0).getCategory());
-					dto.setPackagename(list.get(0).getPackagename());
-					dto.setSize(list.get(0).getSize());
-					dto.setVersion(list.get(0).getVersion());
-					dto.setDescription(list.get(0).getDescription());
-					dto.setIsgame(list.get(0).getIsgame());
-					//list1.add(dto);
-					
-					
+				
+					setgetvalue( list);
 					if (list.size() > 0) {
 						boolean found = apkDaoImpl.createApkSiteDetails(list, b);
 
@@ -155,4 +126,31 @@ public class GameCardController {
 
 	}
 
+	@RequestMapping(value="/index",method = RequestMethod.GET,params="topic")
+    public String requestMatch(@RequestParam("topic")String topic)
+    {
+		mqttDaoImpl.isSubcribe(topic);
+		
+		return "successfully subcribe";
+    }
+	
+	
+	
+	
+	
+	
+	public void setgetvalue(List list)
+	{
+		//PlaystoreDto dto = new PlaystoreDto();
+		dto.setId(((PlaystoreDto) list.get(0)).getId());
+		dto.setGametittle(((PlaystoreDto) list.get(0)).getGametittle());
+		dto.setGamedate(((PlaystoreDto) list.get(0)).getGamedate());
+		dto.setCategory(((PlaystoreDto) list.get(0)).getCategory());
+		dto.setPackagename(((PlaystoreDto) list.get(0)).getPackagename());
+		dto.setSize(((PlaystoreDto) list.get(0)).getSize());
+		dto.setVersion(((PlaystoreDto) list.get(0)).getVersion());
+		dto.setDescription(((PlaystoreDto) list.get(0)).getDescription());
+		dto.setIsgame(((PlaystoreDto) list.get(0)).getIsgame());
+	
+	}
 }

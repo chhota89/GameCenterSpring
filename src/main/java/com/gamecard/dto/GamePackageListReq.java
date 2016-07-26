@@ -13,9 +13,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "packageList" })
+@JsonPropertyOrder({"topic",
+ "packageList" })
 public class GamePackageListReq {
 
+	@JsonProperty("topic")
+	private String topic;
+	
 	@JsonProperty("packageList")
 	private List<String> packageList = new ArrayList<String>();
 	@JsonIgnore
@@ -25,6 +29,21 @@ public class GamePackageListReq {
 	 * 
 	 * @return The packageList
 	 */
+
+	@JsonProperty("topic")
+	public String getTopic() {
+	return topic;
+	}
+
+	/**
+	* 
+	* @param id
+	* The id
+	*/
+	@JsonProperty("id")
+	public void setTopic(String topic) {
+	this.topic = topic;
+	}
 	@JsonProperty("packageList")
 	public List<String> getPackageList() {
 		return packageList;

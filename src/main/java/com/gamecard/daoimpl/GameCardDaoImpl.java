@@ -35,8 +35,9 @@ public class GameCardDaoImpl implements GameCardDao {
 		ArrayList<PlaystoreDto> list = (ArrayList<PlaystoreDto>) query.list();
 		if (list != null && list.size() > 0) {
 			return list;
-		}
 
+		}
+		session.close();
 		return null;
 	}
 

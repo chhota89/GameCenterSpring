@@ -58,7 +58,17 @@ public class GameCardController<E> {
 		list = cardDaoImpl.findPackage(packagename);
 
 		if (list != null && list.size() > 0) {
-			setgetvalue(list);
+			PlaystoreDto dto = new PlaystoreDto();
+			dto.setId(((PlaystoreDto) list.get(0)).getId());
+			dto.setGametittle(((PlaystoreDto) list.get(0)).getGametittle());
+			dto.setGamedate(((PlaystoreDto) list.get(0)).getGamedate());
+			dto.setCategory(((PlaystoreDto) list.get(0)).getCategory());
+			dto.setPackagename(((PlaystoreDto) list.get(0)).getPackagename());
+			dto.setSize(((PlaystoreDto) list.get(0)).getSize());
+			dto.setVersion(((PlaystoreDto) list.get(0)).getVersion());
+			dto.setDescription(((PlaystoreDto) list.get(0)).getDescription());
+			dto.setIsgame(((PlaystoreDto) list.get(0)).getIsgame());
+
 			return dto;
 		} else {
 			list = cardDaoImpl.getPlayStoreData(packagename);
@@ -78,7 +88,7 @@ public class GameCardController<E> {
 	/*-------------Multiple Package Operation-------------*/
 	@RequestMapping(value = "/package", headers = "Accept=application/json")
 	@ResponseBody
-	public ArrayList<E> reqpost(@RequestBody String a, HttpServletRequest req) {
+	public E reqpost(@RequestBody String a, HttpServletRequest req) {
 
 		ArrayList<PlaystoreDto> list = new ArrayList<PlaystoreDto>();
 		ArrayList<PlaystoreDto> list1 = new ArrayList<PlaystoreDto>();
@@ -86,85 +96,48 @@ public class GameCardController<E> {
 
 		try {
 			GamePackageListReq reqlist = mapper.readValue(a, GamePackageListReq.class);
-			// System.out.println(reqlist.getPackageList());
+			System.out.println(reqlist.getPackageList().toString());
 
 			System.out.println("topic is:" + reqlist.getTopic());
-			/*boolean result = mqttDaoImpl.isSubcribe(reqlist.getTopic());
+			/*-----Mqtt Call----*/
+			boolean result = mqttDaoImpl.isSubcribe(reqlist.getTopic());
 			if (result == true) {
 				String msg = "topic is inserted";
 				ArrayList<MqttDto> arraymqttDto = new ArrayList<MqttDto>();
 				MqttDto mqttDto = new MqttDto();
 				mqttDto.setStatus(result);
 				mqttDto.setMsg(msg);
-				System.out.println("msg of mqtt is:"+mqttDto.getMsg()+"status is:"+mqttDto.getStatus());
+				System.out.println("msg of mqtt is:" + mqttDto.getMsg() + "status is:" + mqttDto.getStatus());
 				arraymqttDto.add(mqttDto);
-				------radis pub sub-----
-				radisDaoImpl.isredis(reqlist.getTopic(),reqlist.getPackageList());
-				return (ArrayList<E>) arraymqttDto;
-			}*/
-
-			
-			for (String b : reqlist.getPackageList()) {//finding the package name into data base and return the value
-				System.out.println(b);
-				list = cardDaoImpl.findPackage(b);
-				System.out.println("List generated:" + list);
-				if (list != null && list.size() > 0) {
-					PlaystoreDto dto = new PlaystoreDto();
-					dto.setId(((PlaystoreDto) list.get(0)).getId());
-					dto.setGametittle(((PlaystoreDto) list.get(0)).getGametittle());
-					dto.setGamedate(((PlaystoreDto) list.get(0)).getGamedate());
-					dto.setCategory(((PlaystoreDto) list.get(0)).getCategory());
-					dto.setPackagename(((PlaystoreDto) list.get(0)).getPackagename());
-					dto.setSize(((PlaystoreDto) list.get(0)).getSize());
-					dto.setVersion(((PlaystoreDto) list.get(0)).getVersion());
-					dto.setDescription(((PlaystoreDto) list.get(0)).getDescription());
-					dto.setIsgame(((PlaystoreDto) list.get(0)).getIsgame());
-					// setgetvalue( list);
-					list1.add(dto);
-					radisDaoImpl.isredis(reqlist.getTopic(),list1);
-					//return (ArrayList<E>) list1;
-				}
+				/*------radis pub sub-----*/
+				radisDaoImpl.isredis(reqlist.getTopic(), a);
+				return (E) arraymqttDto.get(0);
 			}
-			return (ArrayList<E>) list1;
-		}/*
 
-				else {
-					System.out.println("else is call");
-					list = cardDaoImpl.getPlayStoreData(b);
+			//radisDaoImpl.isredis(reqlist.getTopic(), a);
 
-					setgetvalue(list);
-					if (list.size() > 0) {
-						boolean found = apkDaoImpl.createApkSiteDetails(list, b);
+		}
 
-						if (found == true) {
-							cardDaoImpl.insertnewpackage(list, b);
-						}
-						list1.add(dto);
-					}
-				}
-			}
-			return (ArrayList<E>) list1;
-
-		}*/ catch (Exception e) {
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 		System.out.println("null return");
-
 		return null;
 
 	}
 
-	public void setgetvalue(List list) {
-		// PlaystoreDto dto = new PlaystoreDto();
-		dto.setId(((PlaystoreDto) list.get(0)).getId());
-		dto.setGametittle(((PlaystoreDto) list.get(0)).getGametittle());
-		dto.setGamedate(((PlaystoreDto) list.get(0)).getGamedate());
-		dto.setCategory(((PlaystoreDto) list.get(0)).getCategory());
-		dto.setPackagename(((PlaystoreDto) list.get(0)).getPackagename());
-		dto.setSize(((PlaystoreDto) list.get(0)).getSize());
-		dto.setVersion(((PlaystoreDto) list.get(0)).getVersion());
-		dto.setDescription(((PlaystoreDto) list.get(0)).getDescription());
-		dto.setIsgame(((PlaystoreDto) list.get(0)).getIsgame());
-
-	}
+	/*
+	 * public void setgetvalue(List list) { // PlaystoreDto dto = new
+	 * PlaystoreDto(); dto.setId(((PlaystoreDto) list.get(0)).getId());
+	 * dto.setGametittle(((PlaystoreDto) list.get(0)).getGametittle());
+	 * dto.setGamedate(((PlaystoreDto) list.get(0)).getGamedate());
+	 * dto.setCategory(((PlaystoreDto) list.get(0)).getCategory());
+	 * dto.setPackagename(((PlaystoreDto) list.get(0)).getPackagename());
+	 * dto.setSize(((PlaystoreDto) list.get(0)).getSize());
+	 * dto.setVersion(((PlaystoreDto) list.get(0)).getVersion());
+	 * dto.setDescription(((PlaystoreDto) list.get(0)).getDescription());
+	 * dto.setIsgame(((PlaystoreDto) list.get(0)).getIsgame());
+	 * 
+	 * }
+	 */
 }

@@ -55,6 +55,10 @@ public class GameCardApkDaoImpl implements GameCardApkDao {
 				apkSiteDetails.add(title);
 				apkSiteDetails.add(version);
 				apkSiteDetails.add(downLink);
+				System.out.println("title of apk :"+title);
+				System.out.println("version of apk :"+version);
+				System.out.println("version of playstore :"+dto.get(0).getVersion());
+				System.out.println("downlink of apk :"+downLink);
 			}
 			
 			

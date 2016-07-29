@@ -17,7 +17,7 @@ import redis.clients.jedis.JedisPubSub;
 @Repository
 public class RadisDaoImpl  implements RadisDao   {
 
-	public String isredis(final String topic,ArrayList<PlaystoreDto> list1) {
+	public String isredis(final String topic,String list) {
 		
 		@SuppressWarnings("resource")
 		JedisPool jedispool = new JedisPool("localhost");
@@ -41,7 +41,7 @@ public class RadisDaoImpl  implements RadisDao   {
         }).start();
  
         Jedis publisherJedis = jedispool.getResource();
-        new Publisher(list1,topic).start();
+        new Publisher(list,topic).start();
        // subscriber.unsubscribe();
         jedispool.returnResource(subscriberJedis);
         jedispool.returnResource(publisherJedis);

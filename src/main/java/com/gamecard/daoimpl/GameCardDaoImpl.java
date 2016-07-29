@@ -9,12 +9,15 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 import org.json.simple.JSONObject;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.stereotype.Repository;
 
 import com.gamecard.dao.GameCardDao;
@@ -23,21 +26,29 @@ import com.gamecard.dto.PlaystoreDto;
 
 @Repository
 public class GameCardDaoImpl implements GameCardDao {
-	@Resource(name = "sessionFactory")
-	SessionFactory sessionFactory;
+	Session session = new AnnotationConfiguration().configure("app.cfg.xml").buildSessionFactory().openSession();
 
 	/*------cheking package name into database-----*/
 	public ArrayList<PlaystoreDto> findPackage(String packagename) {
+		System.out.println("packagename is:" + packagename);
+		ArrayList<PlaystoreDto> list;
+		try {
 
-		Session session = sessionFactory.openSession();
-		Query query = session.createQuery("from PlaystoreDto where packagename=?");
-		query.setParameter(0, packagename);
-		ArrayList<PlaystoreDto> list = (ArrayList<PlaystoreDto>) query.list();
-		if (list != null && list.size() > 0) {
-			return list;
+			System.out.println("session is :" + session);
+			Query query = session.createQuery("from PlaystoreDto where packagename=?");
+			query.setParameter(0, packagename);
+			System.out.println("query is :" + query);
+			list = (ArrayList<PlaystoreDto>) query.list();
+			if (list != null && list.size() > 0) {
+				System.out.println("returning the find package list:" + list);
+				//session.close();
+				return list;
 
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		session.close();
+		//session.close();
 		return null;
 	}
 
@@ -54,7 +65,9 @@ public class GameCardDaoImpl implements GameCardDao {
 			Document doc = Jsoup.connect(url).userAgent("Chrome/51.0.2704.106 ").timeout(10000).get();
 
 			// getting game class element
-			Elements t = doc.getElementsByClass("document-title");
+			String t = doc.getElementsByClass("document-title").text();
+			System.out.println("title is ---->" + t);
+
 			Elements g = doc.getElementsByClass("document-subtitle");
 			Elements info = doc.getElementsByClass("meta-info");
 			Elements desc = doc.getElementsByClass("show-more-content");
@@ -62,26 +75,14 @@ public class GameCardDaoImpl implements GameCardDao {
 			String categoury = g.select("[itemprop=genre]").text();
 			System.out.println("categoury is :" + categoury);
 
-			if (categoury.contains("&")) {
-				dto.setGametittle(t.select("[class=id-app-title]").text());
-				dto.setCategory(null);
-				dto.setDescription(null);
-				dto.setGamedate(null);
-				dto.setIsgame(result);
-				dto.setPackagename(packagename);
-				dto.setSize(null);
-				dto.setVersion(null);
-				sessionFactory.openSession().save(dto);
-				System.out.println("non jgame with special char");
-				playStoreDetails.add(dto);
-				return playStoreDetails;
-			} else if (categoury.contains(" ")) {
-				String[] fcat = categoury.split(" ");
+			if (categoury.contains("&") || categoury.contains(" ")) {
+				String[] fcat = categoury.split("&");
+				System.out.println("& operater  is there" + fcat[0]);
 
-				System.out.println("space is there" + fcat[0]);
-				categoury = fcat[0];
+				String[] fcat1 = categoury.split(" ");
+				System.out.println("space is there" + fcat1[0]);
+				categoury = fcat1[0];
 			}
-
 			if (categoury.equalsIgnoreCase("Action") || categoury.equalsIgnoreCase("Adventure")
 					|| categoury.equalsIgnoreCase("Racing") || categoury.equalsIgnoreCase("Arcade")
 					|| categoury.equalsIgnoreCase("Board") || categoury.equalsIgnoreCase("Card")
@@ -94,7 +95,7 @@ public class GameCardDaoImpl implements GameCardDao {
 				result = true;
 				System.out.println(result);
 
-				dto.setGametittle(t.select("[class=id-app-title]").text());
+				dto.setGametittle(t);
 				dto.setCategory(g.select("[itemprop=genre]").text());
 				dto.setVersion(info.select("[itemprop=softwareVersion]").text());
 				dto.setSize(info.select("[itemprop=fileSize]").text());
@@ -108,7 +109,7 @@ public class GameCardDaoImpl implements GameCardDao {
 			else {
 				System.out.println("it is not a game " + result);
 
-				dto.setGametittle(null);
+				dto.setGametittle(t);
 				dto.setCategory(null);
 				dto.setDescription(null);
 				dto.setGamedate(null);
@@ -116,7 +117,9 @@ public class GameCardDaoImpl implements GameCardDao {
 				dto.setPackagename(packagename);
 				dto.setSize(null);
 				dto.setVersion(null);
-				sessionFactory.openSession().save(dto);
+				Transaction trn = session.beginTransaction();
+				session.save(dto);
+				trn.commit();
 				System.out.println("non game data has been save");
 				playStoreDetails.add(dto);
 				return playStoreDetails;
@@ -166,7 +169,6 @@ public class GameCardDaoImpl implements GameCardDao {
 	/*--------checking into the database and storing if not present--------*/
 	public ArrayList<PlaystoreDto> insertnewpackage(ArrayList<PlaystoreDto> list1, String packagename) {
 		System.out.println("ready to check for data base");
-
 		ArrayList<PlaystoreDto> play = new ArrayList<PlaystoreDto>();
 
 		PlaystoreDto dto = new PlaystoreDto();
@@ -181,22 +183,14 @@ public class GameCardDaoImpl implements GameCardDao {
 		dto.setDescription(list1.get(0).getDescription());
 		dto.setIsgame(list1.get(0).getIsgame());
 
-		Session session = sessionFactory.openSession();
-		System.out.println("session stablish " + session);
-		Query query = session.createQuery("from PlaystoreDto where packagename=? ");
-		query.setParameter(0, packagename);
-		List list = query.list();
-
-		if (list.size() == 0) {
-			Transaction trn = session.beginTransaction();
-			session.save(dto);
-			trn.commit();
-			session.close();
-			play.add(dto);
-			System.out.println("list add to play list:" + play);
-			return play;
-		} else
-			return play;
+		Transaction trn = session.beginTransaction();
+		session.save(dto);
+		trn.commit();
+		session.close();
+		play.add(dto);
+		System.out.println("list add to play list:" + play);
+		return play;
+		
 	}
 
 }

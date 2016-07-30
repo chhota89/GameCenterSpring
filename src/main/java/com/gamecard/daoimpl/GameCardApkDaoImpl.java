@@ -24,7 +24,7 @@ public class GameCardApkDaoImpl implements GameCardApkDao {
 	@Resource(name = "sessionFactory")
 	private SessionFactory sessionFactory;
 
-	public boolean createApkSiteDetails(ArrayList<PlaystoreDto> dto, String packagename) {
+	public boolean createApkSiteDetails(PlaystoreDto dto, String packagename) {
 		
 		boolean found = false;
 		ArrayList<String> apkSiteDetails = new ArrayList<String>();
@@ -57,13 +57,12 @@ public class GameCardApkDaoImpl implements GameCardApkDao {
 				apkSiteDetails.add(downLink);
 				System.out.println("title of apk :"+title);
 				System.out.println("version of apk :"+version);
-				System.out.println("version of playstore :"+dto.get(0).getVersion());
 				System.out.println("downlink of apk :"+downLink);
 			}
 			
 			
 			/*------checking the Google playstore version and  apk.dl version-----*/
-			if (version.equals(dto.get(0).getVersion())) {
+			if (version.equals(dto.getVersion())) {
 				System.out.println("found true");
 				found = true;
 				return found;

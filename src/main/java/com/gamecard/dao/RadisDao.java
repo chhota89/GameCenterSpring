@@ -6,7 +6,7 @@ import java.util.List;
 import com.gamecard.dto.PlaystoreDto;
 
 public interface RadisDao {
-	public String isredis(String topic , String packagelist);
-	
+	public void isredis(String redistopic );
+	public String redisPublisher(String redistopic, String list); 
 	
 }

@@ -29,7 +29,7 @@ public class GameCardDaoImpl implements GameCardDao {
 	Session session = new AnnotationConfiguration().configure("app.cfg.xml").buildSessionFactory().openSession();
 
 	/*------cheking package name into database-----*/
-	public ArrayList<PlaystoreDto> findPackage(String packagename) {
+	public PlaystoreDto findPackage(String packagename) {
 		System.out.println("packagename is:" + packagename);
 		ArrayList<PlaystoreDto> list;
 		try {
@@ -42,7 +42,7 @@ public class GameCardDaoImpl implements GameCardDao {
 			if (list != null && list.size() > 0) {
 				System.out.println("returning the find package list:" + list);
 				//session.close();
-				return list;
+				return list.get(0);
 
 			}
 		} catch (Exception e) {
@@ -53,13 +53,12 @@ public class GameCardDaoImpl implements GameCardDao {
 	}
 
 	/*------creating the jsoup file operation----*/
-	public ArrayList<PlaystoreDto> getPlayStoreData(String packagename) {
+	public PlaystoreDto getPlayStoreData(String packagename) {
 		boolean result = false;
-		ArrayList<PlaystoreDto> playStoreDetails = new ArrayList<PlaystoreDto>();
+		PlaystoreDto dto = new PlaystoreDto();
 		try {
-
 			// fetch the document over HTTP
-			PlaystoreDto dto = new PlaystoreDto();
+			
 			String url = "https://play.google.com/store/apps/details?id=" + packagename;
 
 			Document doc = Jsoup.connect(url).userAgent("Chrome/51.0.2704.106 ").timeout(10000).get();
@@ -121,18 +120,17 @@ public class GameCardDaoImpl implements GameCardDao {
 				session.save(dto);
 				trn.commit();
 				System.out.println("non game data has been save");
-				playStoreDetails.add(dto);
-				return playStoreDetails;
+				return dto;
 
 			}
 
-			if (dto.getGametittle().equals("") && dto.getCategory().equals("") && dto.getVersion().equals("")
+			/*if (dto.getGametittle().equals("") && dto.getCategory().equals("") && dto.getVersion().equals("")
 					&& dto.getSize().equals("") && dto.getGamedate().equals("") && dto.getPackagename().equals("")
 					&& dto.getDescription().equals("")) {
 				System.out.println("All data is not fetched");
 			} else {
 				playStoreDetails.add(dto);
-			}
+			}*/
 
 			// showing game name
 			System.out.println("Title of Game: " + dto.getGametittle());
@@ -148,8 +146,6 @@ public class GameCardDaoImpl implements GameCardDao {
 			System.out.println("Package Name:" + packagename);
 
 		} catch (Exception e) {
-			ArrayList<PlaystoreDto> playStoreDetails1 = new ArrayList<PlaystoreDto>();
-			PlaystoreDto dto = new PlaystoreDto();
 			// System.out.println("HI U HAVE ENTER THE WORG URL.......");
 			dto.setGametittle(null);
 			dto.setCategory(null);
@@ -159,37 +155,34 @@ public class GameCardDaoImpl implements GameCardDao {
 			dto.setPackagename(packagename);
 			dto.setSize(null);
 			dto.setVersion(null);
-			playStoreDetails1.add(dto);
-			return playStoreDetails1;
+			return dto;
 
 		}
-		return playStoreDetails;
+		return dto;
 	}
 
 	/*--------checking into the database and storing if not present--------*/
-	public ArrayList<PlaystoreDto> insertnewpackage(ArrayList<PlaystoreDto> list1, String packagename) {
+	public PlaystoreDto insertnewpackage(PlaystoreDto list1, String packagename) {
 		System.out.println("ready to check for data base");
-		ArrayList<PlaystoreDto> play = new ArrayList<PlaystoreDto>();
-
+		
 		PlaystoreDto dto = new PlaystoreDto();
 
-		dto.setId(list1.get(0).getId());
-		dto.setGametittle(list1.get(0).getGametittle());
-		dto.setGamedate(list1.get(0).getGamedate());
-		dto.setCategory(list1.get(0).getCategory());
-		dto.setPackagename(list1.get(0).getPackagename());
-		dto.setSize(list1.get(0).getSize());
-		dto.setVersion(list1.get(0).getVersion());
-		dto.setDescription(list1.get(0).getDescription());
-		dto.setIsgame(list1.get(0).getIsgame());
+		dto.setId(list1.getId());
+		dto.setGametittle(list1.getGametittle());
+		dto.setGamedate(list1.getGamedate());
+		dto.setCategory(list1.getCategory());
+		dto.setPackagename(list1.getPackagename());
+		dto.setSize(list1.getSize());
+		dto.setVersion(list1.getVersion());
+		dto.setDescription(list1.getDescription());
+		dto.setIsgame(list1.getIsgame());
 
 		Transaction trn = session.beginTransaction();
 		session.save(dto);
 		trn.commit();
 		session.close();
-		play.add(dto);
-		System.out.println("list add to play list:" + play);
-		return play;
+		
+		return dto;
 		
 	}
 

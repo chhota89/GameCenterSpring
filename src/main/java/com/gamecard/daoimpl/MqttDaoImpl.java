@@ -30,7 +30,8 @@ public class MqttDaoImpl implements MqttDao {
 			connOpts.setCleanSession(true);
 			client.connect(connOpts);
 			check=client.isConnected();
-			MqttMessage message = new MqttMessage("hiii".getBytes());
+			MqttMessage message = new MqttMessage("GAME_CENTER".getBytes());
+			message.setRetained(true);
 			message.setQos(qos);
 			client.publish(topic, message);
 			if(check==true)
@@ -58,7 +59,7 @@ public class MqttDaoImpl implements MqttDao {
 		String clientId = "mqttpublish";
 		boolean check = false;
 		// 0(only one time) 1(at least one time) 2(exactly one time)
-		int qos = 2;
+		int qos = 1;
 		MemoryPersistence peristance=new MemoryPersistence();
 		try {
 			MqttClient client = new MqttClient(broker, clientId,peristance);
@@ -67,6 +68,7 @@ public class MqttDaoImpl implements MqttDao {
 			client.connect(connOpts);
 			check=client.isConnected();
 			MqttMessage message = new MqttMessage(json.getBytes());
+			message.setRetained(true);
 			message.setQos(qos);
 			client.publish(topic, message);
 			if(check==true)

@@ -11,7 +11,7 @@ import com.gamecard.dto.PlaystoreDto;
 
 public interface GameCardDao {
 	/*public List<GameCardDto> createApplist(String packagename);*/
-	public ArrayList<PlaystoreDto> getPlayStoreData(String packagename);
-	public ArrayList<PlaystoreDto> insertnewpackage(ArrayList<PlaystoreDto> list,String packagename);
+	public PlaystoreDto getPlayStoreData(String packagename);
+	public PlaystoreDto insertnewpackage(PlaystoreDto list,String packagename);
 	
 }

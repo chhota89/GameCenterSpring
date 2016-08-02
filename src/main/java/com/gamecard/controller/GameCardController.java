@@ -55,7 +55,6 @@ public class GameCardController<E> {
 	/*-------------Multiple Package Operation-------------*/
 	@RequestMapping(value = "/package", headers = "Accept=application/json")
 	@ResponseBody
-	
 	public E reqpost(@RequestBody String a, HttpServletRequest req) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
@@ -64,8 +63,9 @@ public class GameCardController<E> {
 
 			System.out.println("topic is:" + reqlist.getTopic());
 			/*-----Mqtt Call----*/
-			boolean result = mqttDaoImpl.isSubcribe(reqlist.getTopic());
-			if (result == true) {
+			//boolean result = mqttDaoImpl.isSubcribe(reqlist.getTopic());
+			/*if (result == true) {*/
+			  boolean result=radisDaoImpl.redisPublisher("Play_Store",a);
 				String msg = "topic is inserted";
 				ArrayList<MqttDto> arraymqttDto = new ArrayList<MqttDto>();//optional
 				MqttDto mqttDto = new MqttDto();
@@ -74,9 +74,9 @@ public class GameCardController<E> {
 				System.out.println("msg of mqtt is:" + mqttDto.getMsg() + "status is:" + mqttDto.getStatus());
 				arraymqttDto.add(mqttDto);
 				/*------radis pub sub-----*/
-				radisDaoImpl.redisPublisher("Play_Store",a);
+			
 				return (E) arraymqttDto.get(0);
-			}
+			//}
 
 			//radisDaoImpl.isredis(reqlist.getTopic(), a);
 

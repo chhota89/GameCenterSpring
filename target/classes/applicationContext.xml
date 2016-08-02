@@ -17,16 +17,23 @@
 
 	<!-- Base package for checking the annoted classes -->
 	<context:component-scan base-package="com.gamecard.controller"></context:component-scan>
-	
+
 
 	<!-- Configure JDBC Connection -->
-	
+
 
 	<!-- Configure Hibernate 4 Session Facotry -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="configLocation" value="classpath:app.cfg.xml" />
 	</bean>
+
+	<!-- <bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean> -->
+
+
 
 	<bean id="abc" class="com.gamecard.controller.GameCardController" />
 	<bean id="gamecard" class="com.gamecard.daoimpl.GameCardDaoImpl" />

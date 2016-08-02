@@ -41,14 +41,14 @@ public class GameCardDaoImpl implements GameCardDao {
 			list = (ArrayList<PlaystoreDto>) query.list();
 			if (list != null && list.size() > 0) {
 				System.out.println("returning the find package list:" + list);
-				//session.close();
+				// session.close();
 				return list.get(0);
 
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//session.close();
+		// session.close();
 		return null;
 	}
 
@@ -56,9 +56,9 @@ public class GameCardDaoImpl implements GameCardDao {
 	public PlaystoreDto getPlayStoreData(String packagename) {
 		boolean result = false;
 		PlaystoreDto dto = new PlaystoreDto();
+
 		try {
 			// fetch the document over HTTP
-			
 			String url = "https://play.google.com/store/apps/details?id=" + packagename;
 
 			Document doc = Jsoup.connect(url).userAgent("Chrome/51.0.2704.106 ").timeout(10000).get();
@@ -88,15 +88,28 @@ public class GameCardDaoImpl implements GameCardDao {
 					|| categoury.equalsIgnoreCase("Casino") || categoury.equalsIgnoreCase("Casual")
 					|| categoury.equalsIgnoreCase("Educational") || categoury.equalsIgnoreCase("Music")
 					|| categoury.equalsIgnoreCase("Puzzle") || categoury.equalsIgnoreCase("Role Playing")
-					|| categoury.equalsIgnoreCase("Simulation") || categoury.equalsIgnoreCase("Sport")
-					|| categoury.equalsIgnoreCase("Strategy")) {
+					|| categoury.equalsIgnoreCase("Simulation") || categoury.equalsIgnoreCase("Sports")
+					|| categoury.equalsIgnoreCase("Strategy") || categoury.equalsIgnoreCase("Trivia")
+					|| categoury.equalsIgnoreCase("Word")) {
 
 				result = true;
 				System.out.println(result);
 
+				String version = info.select("[itemprop=softwareVersion]").text();
+				try {
+					if (version.equals("") || version.contains("Varies") == true) {
+						String newVer = doc.getElementsByClass("recent-change").text();
+						System.out.println("old new version:" + newVer);
+						newVer = newVer.substring(newVer.indexOf(".") - 1, newVer.indexOf(".") + 5).trim();
+						version = newVer.replaceAll("[^0-9.]", "");
+						System.out.println("new version:" + version);
+					} 
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				dto.setGametittle(t);
 				dto.setCategory(g.select("[itemprop=genre]").text());
-				dto.setVersion(info.select("[itemprop=softwareVersion]").text());
+				dto.setVersion(version);//**NOTE: check the version
 				dto.setSize(info.select("[itemprop=fileSize]").text());
 				dto.setGamedate(info.select("[itemprop=datePublished]").text());
 				dto.setDescription(desc.select("[itemprop=description]").text());
@@ -116,21 +129,22 @@ public class GameCardDaoImpl implements GameCardDao {
 				dto.setPackagename(packagename);
 				dto.setSize(null);
 				dto.setVersion(null);
-				Transaction trn = session.beginTransaction();
+				/*Transaction trn = session.beginTransaction();
 				session.save(dto);
 				trn.commit();
-				System.out.println("non game data has been save");
+				System.out.println("non game data has been save");*/
 				return dto;
 
 			}
 
-			/*if (dto.getGametittle().equals("") && dto.getCategory().equals("") && dto.getVersion().equals("")
-					&& dto.getSize().equals("") && dto.getGamedate().equals("") && dto.getPackagename().equals("")
-					&& dto.getDescription().equals("")) {
-				System.out.println("All data is not fetched");
-			} else {
-				playStoreDetails.add(dto);
-			}*/
+			/*
+			 * if (dto.getGametittle().equals("") &&
+			 * dto.getCategory().equals("") && dto.getVersion().equals("") &&
+			 * dto.getSize().equals("") && dto.getGamedate().equals("") &&
+			 * dto.getPackagename().equals("") &&
+			 * dto.getDescription().equals("")) { System.out.println(
+			 * "All data is not fetched"); } else { playStoreDetails.add(dto); }
+			 */
 
 			// showing game name
 			System.out.println("Title of Game: " + dto.getGametittle());
@@ -155,6 +169,10 @@ public class GameCardDaoImpl implements GameCardDao {
 			dto.setPackagename(packagename);
 			dto.setSize(null);
 			dto.setVersion(null);
+			/*Transaction trn = session.beginTransaction();
+			session.save(dto);
+			trn.commit();
+			System.out.println("non package data has been save");*/
 			return dto;
 
 		}
@@ -164,7 +182,7 @@ public class GameCardDaoImpl implements GameCardDao {
 	/*--------checking into the database and storing if not present--------*/
 	public PlaystoreDto insertnewpackage(PlaystoreDto list1, String packagename) {
 		System.out.println("ready to check for data base");
-		
+
 		PlaystoreDto dto = new PlaystoreDto();
 
 		dto.setId(list1.getId());
@@ -180,10 +198,9 @@ public class GameCardDaoImpl implements GameCardDao {
 		Transaction trn = session.beginTransaction();
 		session.save(dto);
 		trn.commit();
-		session.close();
-		
+		//session.close();
 		return dto;
-		
+
 	}
 
 }

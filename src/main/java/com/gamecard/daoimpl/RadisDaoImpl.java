@@ -38,13 +38,13 @@ public class RadisDaoImpl implements RadisDao {
 
 	}
 
-	public String redisPublisher(String redistopic, String list) {
+	public boolean redisPublisher(String redistopic, String list) {
 		JedisPool jedispool = new JedisPool("localhost");
 		Jedis publisherJedis = jedispool.getResource();
 		new Publisher(list, redistopic).start();
 		//subscriber.unsubscribe();
 		jedispool.returnResource(publisherJedis);
-		return "success";
+		return true;
 
 	}
 

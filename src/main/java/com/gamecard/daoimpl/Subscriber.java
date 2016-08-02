@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.gamecard.dto.GamePackageListReq;
 import com.gamecard.dto.PlaystoreDto;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import redis.clients.jedis.JedisPubSub;
 
@@ -40,35 +41,35 @@ public class Subscriber extends JedisPubSub {
 				packagerespo = cardDaoImpl.findPackage(b);
 				System.out.println("List generated:" + packagerespo);
 
-				
-				if(packagerespo==null){
-					
+				if (packagerespo == null) {
 					packagerespo = cardDaoImpl.getPlayStoreData(b);
 					System.out.println("else list :" + packagerespo);
-					if (packagerespo != null ) {
+					if (packagerespo != null) {
 						GameCardApkDaoImpl apkDaoImpl = new GameCardApkDaoImpl();
-						boolean found = apkDaoImpl.createApkSiteDetails(packagerespo, b);
-						if (found == true) {
+						PlaystoreDto found = apkDaoImpl.createApkSiteDetails(packagerespo, b);
+						/*if (found == true) {*/
 							cardDaoImpl.insertnewpackage(packagerespo, b);
-						}
+						//}
 					}
 
 				}
-				String mqttTopic=reqlist.getTopic();
-				Gson gson = new Gson();
+				String mqttTopic = reqlist.getTopic();
+				Gson gson = new GsonBuilder().serializeNulls().create();;
 				String jsonArray = gson.toJson(packagerespo);
 				System.out.println("list of json is" + jsonArray);
-				MqttDaoImpl  mqttDaoImpl=new MqttDaoImpl();
+				MqttDaoImpl mqttDaoImpl = new MqttDaoImpl();
 				mqttDaoImpl.message(mqttTopic, jsonArray);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	@Override
 	public void onSubscribe(String channel, int subscribedChannels) {
-		System.out.println("channel name:" + channel + " " + "sub channel is:" + subscribedChannels +"****************");
+		System.out
+				.println("channel name:" + channel + " " + "sub channel is:" + subscribedChannels + "****************");
 	}
 
 }

@@ -6,6 +6,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.codehaus.jackson.map.ObjectMapper;
+
+import com.gamecard.dto.GamePackageListReq;
 import com.gamecard.dto.PlaystoreDto;
 
 import redis.clients.jedis.Jedis;
@@ -25,15 +28,15 @@ public class Publisher {
 	public void start() {
 		System.out.println("Type your message....exit for terminate");
 		try {
-
+			ObjectMapper mapper = new ObjectMapper();
+			GamePackageListReq reqlist;
+			reqlist = mapper.readValue(list, GamePackageListReq.class);
 			System.out.println("list value:" + list);
 
 			Jedis publisherJedis = new Jedis();
 			long a = publisherJedis.publish(channel_name, list);
 			System.out.println("publish value:" + a);
-			if ("exit".equals(list)) {
-				System.out.println("exit enter");
-			}
+			
 		} catch (Exception e) {
 			System.out.println("IO failure while reading input, e");
 		}

@@ -7,6 +7,6 @@ import com.gamecard.dto.PlaystoreDto;
 
 public interface RadisDao {
 	public void isredis(String redistopic );
-	public String redisPublisher(String redistopic, String list); 
+	public boolean redisPublisher(String redistopic, String list); 
 	
 }

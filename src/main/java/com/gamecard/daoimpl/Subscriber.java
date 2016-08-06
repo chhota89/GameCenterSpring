@@ -67,7 +67,7 @@ public class Subscriber extends JedisPubSub {
 																								// check
 																								// version
 						/* if (found == true) { */
-						cardDaoImpl.insertnewpackage(packagerespo, b);// -----inserting
+						packagerespo=cardDaoImpl.insertnewpackage(packagerespo, b);// -----inserting
 																		// the
 																		// new
 																		// package

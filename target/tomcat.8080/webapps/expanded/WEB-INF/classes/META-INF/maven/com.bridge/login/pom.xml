@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd ">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.bridge</groupId>
-	<artifactId>GameCard</artifactId>
+	<artifactId>login</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>login Maven Webapp</name>
 	<url>http://maven.apache.org</url>
@@ -81,8 +81,12 @@
 		</dependency>
 
 
-		<!-- <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-log4j12</artifactId> 
-			<version>1.5.6</version> </dependency> -->
+<!-- 		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.5.6</version>
+		</dependency>
+ -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
@@ -92,7 +96,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>4.0.1.Final</version>
+			    <version>4.0.1.Final</version>
 		</dependency>
 
 		<dependency>
@@ -214,17 +218,17 @@
 			<scope>compile</scope>
 		</dependency>
 
-		<dependency>
+ <dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-redis</artifactId>
 			<version>1.7.2.RELEASE</version>
-		</dependency>
+		</dependency> 
 
 
 
 	</dependencies>
 	<build>
-		<finalName>GameCard</finalName>
+		<finalName>login</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
@@ -240,34 +244,8 @@
 					</connectors>
 				</configuration>
 			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.3</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>copy</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>com.github.jsimone</groupId>
-									<artifactId>webapp-runner</artifactId>
-									<version>8.0.30.2</version>
-									<destFileName>webapp-runner.jar</destFileName>
-								</artifactItem>
-							</artifactItems>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
 		</plugins>
 
 	</build>
-	<packaging>war</packaging>
 </project>
 

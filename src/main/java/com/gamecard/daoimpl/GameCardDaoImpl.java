@@ -67,8 +67,8 @@ public class GameCardDaoImpl implements GameCardDao {
 			String t = doc.getElementsByClass("document-title").text();
 			System.out.println("title is ---->" + t);
 
-			/*String downLink = doc.getElementsByClass("play-action-container").select("[data-video-url]").attr("href");
-			System.out.println("playstore download link:-------->"+downLink);*/
+			String downLink = doc.getElementsByClass("play-action-container").attr("data-video-url");
+			System.out.println("playstore download link:-------->"+downLink);
 			Elements g = doc.getElementsByClass("document-subtitle");
 			Elements info = doc.getElementsByClass("meta-info");
 			Elements desc = doc.getElementsByClass("show-more-content");
@@ -204,10 +204,19 @@ public class GameCardDaoImpl implements GameCardDao {
 		dto.setVersion(list1.getVersion());
 		dto.setDescription(list1.getDescription());
 		dto.setIsgame(list1.getIsgame());
-/*return your file from db after inserting into db*/
+
 		Transaction trn = session.beginTransaction();
 		session.save(dto);//Storing the value into the DB
 		trn.commit();
+		/*return your file from db after inserting into db*/
+		Query query = session.createQuery("from PlaystoreDto where packagename=?");//Hibernte select query is fire
+		query.setParameter(0, packagename);
+		System.out.println("query is :" + query);
+		ArrayList<PlaystoreDto> list = (ArrayList<PlaystoreDto>) query.list();
+		if (list != null && list.size() > 0) {//checking if list is null
+			System.out.println("returning the find package list:" + list);
+			return list.get(0);
+		}
 		//session.close();
 		return dto;
 

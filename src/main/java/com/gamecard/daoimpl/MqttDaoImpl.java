@@ -14,11 +14,12 @@ import com.gamecard.dao.MqttDao;
 @Repository
 public class MqttDaoImpl implements MqttDao {
 
+	/*--------Method call during the mqqt sub-------*/
 	public boolean isSubcribe(String topic) throws MqttPersistenceException,InterruptedException {
 
 		System.out.println("topic url match:" + topic);
-		String broker = "tcp://localhost:1883";
-		String clientId = "mqttpublish";
+		String broker = "tcp://52.66.116.176:1883";//MQTT Server 
+		String clientId = "mqttpublish";//assigning some client id
 		boolean check = false;
 		// 0(only one time) 1(at least one time) 2(exactly one time)
 		int qos = 2;
@@ -28,12 +29,12 @@ public class MqttDaoImpl implements MqttDao {
 			MqttClient client = new MqttClient(broker, clientId,peristance);
 			MqttConnectOptions connOpts = new MqttConnectOptions();
 			connOpts.setCleanSession(true);
-			client.connect(connOpts);
+			client.connect(connOpts);//connecting with MQTT Server
 			check=client.isConnected();
 			MqttMessage message = new MqttMessage("GAME_CENTER".getBytes());
 			message.setRetained(true);
 			message.setQos(qos);
-			client.publish(topic, message);
+			client.publish(topic, message);//publishing topic and client 
 			if(check==true)
 			{
 				System.out.println(check);
@@ -51,12 +52,11 @@ public class MqttDaoImpl implements MqttDao {
 
 	}
 	
-	
+	/*-------method call to publish to the client------*/
 	public boolean message(String topic,String json) throws MqttPersistenceException,InterruptedException {
-
 		System.out.println("topic url match:" + topic);
-		String broker = "tcp://localhost:1883";
-		String clientId = "mqttpublish";
+		String broker = "tcp://52.66.116.176:1883";//MQTT Server
+		String clientId = "mqttpublish";//redis Client ID
 		boolean check = false;
 		// 0(only one time) 1(at least one time) 2(exactly one time)
 		int qos = 1;
@@ -65,12 +65,12 @@ public class MqttDaoImpl implements MqttDao {
 			MqttClient client = new MqttClient(broker, clientId,peristance);
 			MqttConnectOptions connOpts = new MqttConnectOptions();
 			connOpts.setCleanSession(true);
-			client.connect(connOpts);
+			client.connect(connOpts);//connecting with MQTT 
 			check=client.isConnected();
 			MqttMessage message = new MqttMessage(json.getBytes());
 			message.setRetained(true);
 			message.setQos(qos);
-			client.publish(topic, message);
+			client.publish(topic, message);//publishing topic and message
 			if(check==true)
 			{
 				System.out.println(check);

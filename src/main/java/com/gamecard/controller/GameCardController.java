@@ -34,7 +34,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 @RestController("abc")
-
 public class GameCardController<E> {
 
 	@Autowired
@@ -45,41 +44,31 @@ public class GameCardController<E> {
 	protected MqttDaoImpl mqttDaoImpl;
 	@Autowired
 	protected RadisDaoImpl radisDaoImpl;
-	
-	private static boolean subcribed=false;
 
-	PlaystoreDto dto = new PlaystoreDto();
-	ArrayList<PlaystoreDto> list = new ArrayList<PlaystoreDto>();
-
+	private static boolean subcribed = false;
 
 	/*-------------Multiple Package Operation-------------*/
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/package", headers = "Accept=application/json")
 	@ResponseBody
-	public E reqpost(@RequestBody String a, HttpServletRequest req) {
+	public E reqpost(@RequestBody String a) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			GamePackageListReq reqlist = mapper.readValue(a, GamePackageListReq.class);
+			GamePackageListReq reqlist = mapper.readValue(a, GamePackageListReq.class);//reading the post url
 			System.out.println(reqlist.getPackageList().toString());
 
 			System.out.println("topic is:" + reqlist.getTopic());
-			/*-----Mqtt Call----*/
-			//boolean result = mqttDaoImpl.isSubcribe(reqlist.getTopic());
-			/*if (result == true) {*/
-			  boolean result=radisDaoImpl.redisPublisher("Play_Store",a);
-				String msg = "topic is inserted";
-				ArrayList<MqttDto> arraymqttDto = new ArrayList<MqttDto>();//optional
-				MqttDto mqttDto = new MqttDto();
-				mqttDto.setStatus(result);
-				mqttDto.setMsg(msg);
-				System.out.println("msg of mqtt is:" + mqttDto.getMsg() + "status is:" + mqttDto.getStatus());
-				arraymqttDto.add(mqttDto);
-				/*------radis pub sub-----*/
-			
-				return (E) arraymqttDto.get(0);
-			//}
+			/*------radis pub sub-----*/
+			boolean result = radisDaoImpl.redisPublisher("Play_Store", a);//calling the redispublisher(topic,request list) 
+			String msg = "topic is inserted";
+			ArrayList<MqttDto> arraymqttDto = new ArrayList<MqttDto>();// setting the result(true/false) and message and returning to client
+			MqttDto mqttDto = new MqttDto();
+			mqttDto.setStatus(result);
+			mqttDto.setMsg(msg);
+			System.out.println("msg of mqtt is:" + mqttDto.getMsg() + "status is:" + mqttDto.getStatus());
+			arraymqttDto.add(mqttDto);
 
-			//radisDaoImpl.isredis(reqlist.getTopic(), a);
-
+			return (E) arraymqttDto.get(0);
 		}
 
 		catch (Exception e) {
@@ -88,15 +77,17 @@ public class GameCardController<E> {
 		System.out.println("null return");
 		return null;
 	}
-	
+	/*---------allowing the redis sub to start at the start of the tomcat server------- */
 	@PostConstruct
-	public void check()  {
-		  System.out.println("Init method after properties are set : ");
-		  if(subcribed==false){
-			  radisDaoImpl.isredis("Play_Store");
-			  subcribed=true;
-		  }
+	public void check() {
+		System.out.println("Init method after properties are set : ");
+		if (subcribed == false)//allowing the redis sub to start at one time
+			{
+			
+			radisDaoImpl.isredis("Play_Store");//calling the redis sub
+			subcribed = true;
 		}
-		
+		System.out.println("on load if return call"+subcribed);
+	}
 
 }

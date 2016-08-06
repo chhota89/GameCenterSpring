@@ -14,31 +14,32 @@ import com.gamecard.dto.PlaystoreDto;
 import redis.clients.jedis.Jedis;
 
 public class Publisher {
-	// private final Jedis publisherJedis;
+	
 	private final String channel_name;
 	String list;
-
-	public Publisher(String list, String channel) {
+	Jedis publisherJedis;
+     /*-------constructor call with parameter json list and topic-------*/
+	public Publisher(Jedis publisherJedis,String list, String channel) {
 		System.out.println("publish jedis:" + list + " " + "channel:" + channel);
-		// this.publisherJedis = publisherJedis;
 		this.list = list;
 		this.channel_name = channel;
+		this.publisherJedis=publisherJedis;
 	}
-
+	
+	/*-------method call to redis publisher-------*/
 	public void start() {
-		System.out.println("Type your message....exit for terminate");
+		System.out.println("in start()");
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			GamePackageListReq reqlist;
-			reqlist = mapper.readValue(list, GamePackageListReq.class);
+			reqlist = mapper.readValue(list, GamePackageListReq.class);//reading the json and setting to dto class
 			System.out.println("list value:" + list);
 
-			Jedis publisherJedis = new Jedis();
-			long a = publisherJedis.publish(channel_name, list);
+			long a = publisherJedis.publish(channel_name, list);//calling OnMessage() to publish message
 			System.out.println("publish value:" + a);
 			
 		} catch (Exception e) {
-			System.out.println("IO failure while reading input, e");
+			System.out.println("IO failure while reading input:"+e);
 		}
 	}
 

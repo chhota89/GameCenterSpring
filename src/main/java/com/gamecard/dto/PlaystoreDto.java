@@ -44,7 +44,7 @@ public class PlaystoreDto {
 	private String packagename;
 	@SerializedName("description")
 	@Expose
-	@Column
+	@Column(length=20000)
 	private String description;
 	@SerializedName("isgame")
 	@Expose

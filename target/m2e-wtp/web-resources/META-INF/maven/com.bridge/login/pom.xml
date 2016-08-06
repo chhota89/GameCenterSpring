@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd ">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.bridge</groupId>
-	<artifactId>GameCard</artifactId>
+	<artifactId>login</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>login Maven Webapp</name>
 	<url>http://maven.apache.org</url>
@@ -228,7 +228,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>GameCard</finalName>
+		<finalName>login</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>

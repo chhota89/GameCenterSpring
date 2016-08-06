@@ -35,11 +35,11 @@ public class GameCardDaoImpl implements GameCardDao {
 		try {
 
 			System.out.println("session is :" + session);
-			Query query = session.createQuery("from PlaystoreDto where packagename=?");
+			Query query = session.createQuery("from PlaystoreDto where packagename=?");//Hibernte select query is fire
 			query.setParameter(0, packagename);
 			System.out.println("query is :" + query);
 			list = (ArrayList<PlaystoreDto>) query.list();
-			if (list != null && list.size() > 0) {
+			if (list != null && list.size() > 0) {//checking if list is null
 				System.out.println("returning the find package list:" + list);
 				// session.close();
 				return list.get(0);
@@ -67,13 +67,16 @@ public class GameCardDaoImpl implements GameCardDao {
 			String t = doc.getElementsByClass("document-title").text();
 			System.out.println("title is ---->" + t);
 
+			/*String downLink = doc.getElementsByClass("play-action-container").select("[data-video-url]").attr("href");
+			System.out.println("playstore download link:-------->"+downLink);*/
 			Elements g = doc.getElementsByClass("document-subtitle");
 			Elements info = doc.getElementsByClass("meta-info");
 			Elements desc = doc.getElementsByClass("show-more-content");
-
+		//	System.out.println("describe"+desc);
 			String categoury = g.select("[itemprop=genre]").text();
 			System.out.println("categoury is :" + categoury);
-
+			
+			/*-----checking weather catefgoury contant & or some spacing----*/
 			if (categoury.contains("&") || categoury.contains(" ")) {
 				String[] fcat = categoury.split("&");
 				System.out.println("& operater  is there" + fcat[0]);
@@ -82,6 +85,7 @@ public class GameCardDaoImpl implements GameCardDao {
 				System.out.println("space is there" + fcat1[0]);
 				categoury = fcat1[0];
 			}
+			/*----checking if categoury is game or not----*/
 			if (categoury.equalsIgnoreCase("Action") || categoury.equalsIgnoreCase("Adventure")
 					|| categoury.equalsIgnoreCase("Racing") || categoury.equalsIgnoreCase("Arcade")
 					|| categoury.equalsIgnoreCase("Board") || categoury.equalsIgnoreCase("Card")
@@ -96,6 +100,7 @@ public class GameCardDaoImpl implements GameCardDao {
 				System.out.println(result);
 
 				String version = info.select("[itemprop=softwareVersion]").text();
+				/*------checking if version contant version no or not------*/
 				try {
 					if (version.equals("") || version.contains("Varies") == true) {
 						String newVer = doc.getElementsByClass("recent-change").text();
@@ -107,17 +112,20 @@ public class GameCardDaoImpl implements GameCardDao {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				/*setting all the jsoup value into the java dto*/
 				dto.setGametittle(t);
 				dto.setCategory(g.select("[itemprop=genre]").text());
 				dto.setVersion(version);//**NOTE: check the version
 				dto.setSize(info.select("[itemprop=fileSize]").text());
 				dto.setGamedate(info.select("[itemprop=datePublished]").text());
 				dto.setDescription(desc.select("[itemprop=description]").text());
+				/*String a=dto.getDescription();
+				System.out.println(a);*/
 				dto.setPackagename(packagename);
 				dto.setIsgame(result);
 
 			}
-
+			/*-----this condistion come if it is not a game----*/
 			else {
 				System.out.println("it is not a game " + result);
 
@@ -159,7 +167,9 @@ public class GameCardDaoImpl implements GameCardDao {
 			// showing package name
 			System.out.println("Package Name:" + packagename);
 
-		} catch (Exception e) {
+		} 
+		/*-----handle the excption if it is not not a valide package----*/
+		catch (Exception e) {
 			// System.out.println("HI U HAVE ENTER THE WORG URL.......");
 			dto.setGametittle(null);
 			dto.setCategory(null);
@@ -184,7 +194,7 @@ public class GameCardDaoImpl implements GameCardDao {
 		System.out.println("ready to check for data base");
 
 		PlaystoreDto dto = new PlaystoreDto();
-
+		/*setting the list value into dto value and storing into DB*/
 		dto.setId(list1.getId());
 		dto.setGametittle(list1.getGametittle());
 		dto.setGamedate(list1.getGamedate());
@@ -194,9 +204,9 @@ public class GameCardDaoImpl implements GameCardDao {
 		dto.setVersion(list1.getVersion());
 		dto.setDescription(list1.getDescription());
 		dto.setIsgame(list1.getIsgame());
-
+/*return your file from db after inserting into db*/
 		Transaction trn = session.beginTransaction();
-		session.save(dto);
+		session.save(dto);//Storing the value into the DB
 		trn.commit();
 		//session.close();
 		return dto;

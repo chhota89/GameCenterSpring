@@ -24,7 +24,7 @@ public class GameCardApkDaoImpl implements GameCardApkDao {
 	@Resource(name = "sessionFactory")
 	private SessionFactory sessionFactory;
 
-	public /*boolean*/ PlaystoreDto createApkSiteDetails(PlaystoreDto dto, String packagename) {
+	public  PlaystoreDto createApkSiteDetails(PlaystoreDto dto, String packagename) {
 		
 		boolean found = false;
 		ArrayList<String> apkSiteDetails = new ArrayList<String>();
@@ -48,7 +48,7 @@ public class GameCardApkDaoImpl implements GameCardApkDao {
 			downLink = ("https:").concat(downLink.trim());
 			System.out.println("downLink" + downLink);
 
-			
+			/*checking the title or version is blank */
 			if (title.equals("") || version.equals("")) {
 				System.out.println("All data is not fetched");
 			} else {

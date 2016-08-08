@@ -50,6 +50,11 @@ public class PlaystoreDto {
 	@Expose
 	@Column
 	private boolean isgame;
+	@SerializedName("jsonImageVedioLink")
+	@Expose
+	@Column(length=20000)
+	private String jsonImageVedioLink;
+
 
 	public int getId() {
 		return id;
@@ -123,4 +128,12 @@ public class PlaystoreDto {
 		this.isgame = isgame;
 	}
 
+	public String getJsonImageVedioLink() {
+		return jsonImageVedioLink;
+	}
+
+	public void setJsonImageVedioLink(String jsonImageVedioLink) {
+		this.jsonImageVedioLink = jsonImageVedioLink;
+	}
+	
 }

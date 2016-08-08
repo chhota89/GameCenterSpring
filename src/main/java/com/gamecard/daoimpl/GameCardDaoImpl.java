@@ -1,6 +1,7 @@
 package com.gamecard.daoimpl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -21,8 +22,12 @@ import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.stereotype.Repository;
 
 import com.gamecard.dao.GameCardDao;
+import com.gamecard.dto.DownloadLinkDato;
 import com.gamecard.dto.GameCardDto;
 import com.gamecard.dto.PlaystoreDto;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.sun.accessibility.internal.resources.accessibility;
 
 @Repository
 public class GameCardDaoImpl implements GameCardDao {
@@ -35,11 +40,15 @@ public class GameCardDaoImpl implements GameCardDao {
 		try {
 
 			System.out.println("session is :" + session);
-			Query query = session.createQuery("from PlaystoreDto where packagename=?");//Hibernte select query is fire
+			Query query = session.createQuery("from PlaystoreDto where packagename=?");// Hibernte
+																						// select
+																						// query
+																						// is
+																						// fire
 			query.setParameter(0, packagename);
 			System.out.println("query is :" + query);
 			list = (ArrayList<PlaystoreDto>) query.list();
-			if (list != null && list.size() > 0) {//checking if list is null
+			if (list != null && list.size() > 0) {// checking if list is null
 				System.out.println("returning the find package list:" + list);
 				// session.close();
 				return list.get(0);
@@ -56,6 +65,7 @@ public class GameCardDaoImpl implements GameCardDao {
 	public PlaystoreDto getPlayStoreData(String packagename) {
 		boolean result = false;
 		PlaystoreDto dto = new PlaystoreDto();
+		DownloadLinkDato link = new DownloadLinkDato();
 
 		try {
 			// fetch the document over HTTP
@@ -67,14 +77,39 @@ public class GameCardDaoImpl implements GameCardDao {
 			String t = doc.getElementsByClass("document-title").text();
 			System.out.println("title is ---->" + t);
 
+			/*-----vedio download link----
 			String downLink = doc.getElementsByClass("play-action-container").attr("data-video-url");
-			System.out.println("playstore download link:-------->"+downLink);
+			System.out.println("playstore download link:-------->" + downLink);
+			link.setVedioLink(downLink);
+			-------image download-------
+			
+			List<String> imageList=new ArrayList<String>();
+			Elements elements = doc.getElementsByClass("full-screenshot");
+			for (int i = 0; i < elements.size(); i++) {
+				System.out.println("imagelink count  :------> " + i);
+				String imageLink = elements.get(i).attr("src");
+				System.out.println("image link is :--------->" + imageLink);
+				if (imageLink.contains("http:")) {
+					imageList.add(imageLink);
+				} else {
+					imageLink = ("http:").concat(imageLink);
+					imageList.add(imageLink);
+				}
+			}
+			link.setImageList(imageList);
+			*/
+			/*-------creating the json for the link------*/
+			Gson gson = new Gson();
+			String jsonArray = gson.toJson(link,DownloadLinkDato.class);
+			System.out.println("json of the array list" + jsonArray);
+
 			Elements g = doc.getElementsByClass("document-subtitle");
 			Elements info = doc.getElementsByClass("meta-info");
 			Elements desc = doc.getElementsByClass("show-more-content");
-		//	System.out.println("describe"+desc);
+			// System.out.println("describe"+desc);
 			String categoury = g.select("[itemprop=genre]").text();
 			System.out.println("categoury is :" + categoury);
+
 			
 			/*-----checking weather catefgoury contant & or some spacing----*/
 			if (categoury.contains("&") || categoury.contains(" ")) {
@@ -108,21 +143,20 @@ public class GameCardDaoImpl implements GameCardDao {
 						newVer = newVer.substring(newVer.indexOf(".") - 1, newVer.indexOf(".") + 5).trim();
 						version = newVer.replaceAll("[^0-9.]", "");
 						System.out.println("new version:" + version);
-					} 
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				/*setting all the jsoup value into the java dto*/
+				/* setting all the jsoup value into the java dto */
 				dto.setGametittle(t);
 				dto.setCategory(g.select("[itemprop=genre]").text());
-				dto.setVersion(version);//**NOTE: check the version
+				dto.setVersion(version);// **NOTE: check the version
 				dto.setSize(info.select("[itemprop=fileSize]").text());
 				dto.setGamedate(info.select("[itemprop=datePublished]").text());
 				dto.setDescription(desc.select("[itemprop=description]").text());
-				/*String a=dto.getDescription();
-				System.out.println(a);*/
 				dto.setPackagename(packagename);
 				dto.setIsgame(result);
+				dto.setJsonImageVedioLink(null);
 
 			}
 			/*-----this condistion come if it is not a game----*/
@@ -137,10 +171,12 @@ public class GameCardDaoImpl implements GameCardDao {
 				dto.setPackagename(packagename);
 				dto.setSize(null);
 				dto.setVersion(null);
-				/*Transaction trn = session.beginTransaction();
-				session.save(dto);
-				trn.commit();
-				System.out.println("non game data has been save");*/
+				dto.setJsonImageVedioLink(null);
+				/*
+				 * Transaction trn = session.beginTransaction();
+				 * session.save(dto); trn.commit(); System.out.println(
+				 * "non game data has been save");
+				 */
 				return dto;
 
 			}
@@ -167,7 +203,7 @@ public class GameCardDaoImpl implements GameCardDao {
 			// showing package name
 			System.out.println("Package Name:" + packagename);
 
-		} 
+		}
 		/*-----handle the excption if it is not not a valide package----*/
 		catch (Exception e) {
 			// System.out.println("HI U HAVE ENTER THE WORG URL.......");
@@ -179,10 +215,12 @@ public class GameCardDaoImpl implements GameCardDao {
 			dto.setPackagename(packagename);
 			dto.setSize(null);
 			dto.setVersion(null);
-			/*Transaction trn = session.beginTransaction();
-			session.save(dto);
-			trn.commit();
-			System.out.println("non package data has been save");*/
+			dto.setJsonImageVedioLink(null);
+			/*
+			 * Transaction trn = session.beginTransaction(); session.save(dto);
+			 * trn.commit(); System.out.println("non package data has been save"
+			 * );
+			 */
 			return dto;
 
 		}
@@ -194,7 +232,7 @@ public class GameCardDaoImpl implements GameCardDao {
 		System.out.println("ready to check for data base");
 
 		PlaystoreDto dto = new PlaystoreDto();
-		/*setting the list value into dto value and storing into DB*/
+		/* setting the list value into dto value and storing into DB */
 		dto.setId(list1.getId());
 		dto.setGametittle(list1.getGametittle());
 		dto.setGamedate(list1.getGamedate());
@@ -204,20 +242,26 @@ public class GameCardDaoImpl implements GameCardDao {
 		dto.setVersion(list1.getVersion());
 		dto.setDescription(list1.getDescription());
 		dto.setIsgame(list1.getIsgame());
+		//dto.setJsonImageVedioLink(list1.getJsonImageVedioLink());
 
 		Transaction trn = session.beginTransaction();
-		session.save(dto);//Storing the value into the DB
+		session.save(dto);// Storing the value into the DB
 		trn.commit();
-		/*return your file from db after inserting into db*/
-		Query query = session.createQuery("from PlaystoreDto where packagename=?");//Hibernte select query is fire
+		
+		/* return your file from db after inserting into db */
+		Query query = session.createQuery("from PlaystoreDto where packagename=?");// Hibernte
+																					// select
+																					// query
+																					// is
+																					// fire
 		query.setParameter(0, packagename);
 		System.out.println("query is :" + query);
 		ArrayList<PlaystoreDto> list = (ArrayList<PlaystoreDto>) query.list();
-		if (list != null && list.size() > 0) {//checking if list is null
+		if (list != null && list.size() > 0) {// checking if list is null
 			System.out.println("returning the find package list:" + list);
 			return list.get(0);
 		}
-		//session.close();
+		// session.close();
 		return dto;
 
 	}

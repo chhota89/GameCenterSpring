@@ -19,8 +19,8 @@
 <property name="suffix" value=".jsp"></property>
 </bean>
 
-<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+<!-- <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 <property name="basename" value="/WEB-INF/message"></property>
-</bean>
+</bean> -->
 
 </beans>

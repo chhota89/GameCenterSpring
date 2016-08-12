@@ -40,11 +40,7 @@ public class GameCardDaoImpl implements GameCardDao {
 		try {
 
 			System.out.println("session is :" + session);
-			Query query = session.createQuery("from PlaystoreDto where packagename=?");// Hibernte
-																						// select
-																						// query
-																						// is
-																						// fire
+			Query query = session.createQuery("from PlaystoreDto where packagename=?");
 			query.setParameter(0, packagename);
 			System.out.println("query is :" + query);
 			list = (ArrayList<PlaystoreDto>) query.list();
@@ -99,6 +95,15 @@ public class GameCardDaoImpl implements GameCardDao {
 			link.setImageList(imageList);
 			*/
 			/*-------creating the json for the link------*/
+			/*--------------logo and is game jsoup---------*/
+			
+			//Image url
+			String imageurl=doc.getElementsByClass("cover-container").select("[itemprop=image]").attr("src");
+			if(!imageurl.contains("http"))
+				imageurl=("http:").concat(imageurl);
+			System.out.println("image url "+imageurl);
+			
+			
 			Gson gson = new Gson();
 			String jsonArray = gson.toJson(link,DownloadLinkDato.class);
 			System.out.println("json of the array list" + jsonArray);
@@ -106,12 +111,22 @@ public class GameCardDaoImpl implements GameCardDao {
 			Elements g = doc.getElementsByClass("document-subtitle");
 			Elements info = doc.getElementsByClass("meta-info");
 			Elements desc = doc.getElementsByClass("show-more-content");
-			// System.out.println("describe"+desc);
+			
+			String cat=g.select("[class=document-subtitle category]").attr("href").toLowerCase();
+			System.out.println("g:"+g);
+			System.out.println("Category:"+cat);
+			if(cat.contains("game"))
+				result=true;
+			System.out.println("cateogry link:"+cat+" ,found :"+result);
+			
+			/*// System.out.println("describe"+desc);
 			String categoury = g.select("[itemprop=genre]").text();
 			System.out.println("categoury is :" + categoury);
+			
+			
 
 			
-			/*-----checking weather catefgoury contant & or some spacing----*/
+			-----checking weather catefgoury contant & or some spacing----
 			if (categoury.contains("&") || categoury.contains(" ")) {
 				String[] fcat = categoury.split("&");
 				System.out.println("& operater  is there" + fcat[0]);
@@ -120,7 +135,7 @@ public class GameCardDaoImpl implements GameCardDao {
 				System.out.println("space is there" + fcat1[0]);
 				categoury = fcat1[0];
 			}
-			/*----checking if categoury is game or not----*/
+			----checking if categoury is game or not----
 			if (categoury.equalsIgnoreCase("Action") || categoury.equalsIgnoreCase("Adventure")
 					|| categoury.equalsIgnoreCase("Racing") || categoury.equalsIgnoreCase("Arcade")
 					|| categoury.equalsIgnoreCase("Board") || categoury.equalsIgnoreCase("Card")
@@ -129,9 +144,10 @@ public class GameCardDaoImpl implements GameCardDao {
 					|| categoury.equalsIgnoreCase("Puzzle") || categoury.equalsIgnoreCase("Role Playing")
 					|| categoury.equalsIgnoreCase("Simulation") || categoury.equalsIgnoreCase("Sports")
 					|| categoury.equalsIgnoreCase("Strategy") || categoury.equalsIgnoreCase("Trivia")
-					|| categoury.equalsIgnoreCase("Word")) {
+					|| categoury.equalsIgnoreCase("Word")) {*/
+			if(result){
 
-				result = true;
+				//result = true;
 				System.out.println(result);
 
 				String version = info.select("[itemprop=softwareVersion]").text();

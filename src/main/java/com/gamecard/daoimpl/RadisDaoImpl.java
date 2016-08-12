@@ -23,7 +23,8 @@ public class RadisDaoImpl implements RadisDao {
 
 		@SuppressWarnings("resource")
 		JedisPoolConfig config = new JedisPoolConfig();
-		JedisPool jedispool = new JedisPool(config,"23.23.233.73", 15589, 5000, "pc0924q4lm4fvabg06f638rivs9");
+		//JedisPool jedispool = new JedisPool(config,"23.23.233.73", 15589, 5000, "pc0924q4lm4fvabg06f638rivs9");
+		JedisPool jedispool = new JedisPool("localhost");
 		//-----connecting to jedis server
 		final Jedis subscriberJedis = jedispool.getResource();
 
@@ -45,7 +46,8 @@ public class RadisDaoImpl implements RadisDao {
 	public boolean redisPublisher(String redistopic, String list) {
 		System.out.println("redispublisher() call<--------------> ");
 		JedisPoolConfig config = new JedisPoolConfig();
-		JedisPool jedispool = new JedisPool(config,"23.23.233.73", 15589, 1000, "pc0924q4lm4fvabg06f638rivs9");//connecting to jedis
+		//JedisPool jedispool = new JedisPool(config,"23.23.233.73", 15589, 1000, "pc0924q4lm4fvabg06f638rivs9");//connecting to jedis
+		JedisPool jedispool = new JedisPool("localhost");
 		Jedis publisherJedis = jedispool.getResource();
 		new Publisher(publisherJedis,list, redistopic).start();//------start method is call of Publisher class
 		//subscriber.unsubscribe();

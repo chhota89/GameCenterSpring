@@ -1,6 +1,7 @@
 /home/bridgeit/springPractice/GameCardProgram/src/main/java/com/gamecard/controller/GameCardController.java
 /home/bridgeit/springPractice/GameCardProgram/src/main/java/com/gamecard/daoimpl/GameCardDaoImpl.java
 /home/bridgeit/springPractice/GameCardProgram/src/main/java/com/gamecard/daoimpl/MqttDaoImpl.java
+/home/bridgeit/springPractice/GameCardProgram/src/main/java/com/gamecard/dto/UserInfo.java
 /home/bridgeit/springPractice/GameCardProgram/src/main/java/com/gamecard/dao/RadisDao.java
 /home/bridgeit/springPractice/GameCardProgram/src/main/java/com/gamecard/daoimpl/RadisDaoImpl.java
 /home/bridgeit/springPractice/GameCardProgram/src/main/java/com/gamecard/daoimpl/Subscriber.java

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+   http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="connectionFactory"
+		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+		p:host-name="localhost" p:port="6379" p:password="" />
+
+	<!-- redis template -->
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
+		p:connection-factory-ref="connectionFactory" />
+
+	<bean id="userRepository" class="com.gamecard.redis.UserRepository">
+		<property name="redisTemplate" ref="redisTemplate" />
+	</bean>
+	
+	<bean id="redisMap" class="com.gamecard.daoimpl.RedisMap">
+		<property name="redisTemplate" ref="redisTemplate" />
+	</bean>
+
+</beans>

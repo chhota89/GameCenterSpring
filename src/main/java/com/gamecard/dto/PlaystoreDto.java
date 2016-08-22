@@ -50,6 +50,20 @@ public class PlaystoreDto {
 	@Expose
 	@Column
 	private boolean isgame;
+	
+	@SerializedName("iconLink")
+	@Expose
+	@Column
+	private String iconLink;
+	
+	public String getIconLink() {
+		return iconLink;
+	}
+
+	public void setIconLink(String iconLink) {
+		this.iconLink = iconLink;
+	}
+
 	@SerializedName("jsonImageVedioLink")
 	@Expose
 	@Column(length=20000)

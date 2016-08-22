@@ -25,6 +25,8 @@ import com.gamecard.dao.GameCardDao;
 import com.gamecard.dto.DownloadLinkDato;
 import com.gamecard.dto.GameCardDto;
 import com.gamecard.dto.PlaystoreDto;
+import com.gamecard.dto.UserInfo;
+import com.gamecard.utility.StringUtility;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.sun.accessibility.internal.resources.accessibility;
@@ -73,18 +75,18 @@ public class GameCardDaoImpl implements GameCardDao {
 			String t = doc.getElementsByClass("document-title").text();
 			System.out.println("title is ---->" + t);
 
-			/*-----vedio download link----
+			// -----vedio download link----
 			String downLink = doc.getElementsByClass("play-action-container").attr("data-video-url");
 			System.out.println("playstore download link:-------->" + downLink);
 			link.setVedioLink(downLink);
-			-------image download-------
-			
-			List<String> imageList=new ArrayList<String>();
+			// -------image download-------
+
+			List<String> imageList = new ArrayList<String>();
 			Elements elements = doc.getElementsByClass("full-screenshot");
 			for (int i = 0; i < elements.size(); i++) {
-				System.out.println("imagelink count  :------> " + i);
 				String imageLink = elements.get(i).attr("src");
-				System.out.println("image link is :--------->" + imageLink);
+				//Reduce size of the image 
+				imageLink=StringUtility.compressImageUrl(imageLink, "h400");
 				if (imageLink.contains("http:")) {
 					imageList.add(imageLink);
 				} else {
@@ -93,61 +95,69 @@ public class GameCardDaoImpl implements GameCardDao {
 				}
 			}
 			link.setImageList(imageList);
-			*/
+
 			/*-------creating the json for the link------*/
 			/*--------------logo and is game jsoup---------*/
-			
-			//Image url
-			String imageurl=doc.getElementsByClass("cover-container").select("[itemprop=image]").attr("src");
-			if(!imageurl.contains("http"))
-				imageurl=("http:").concat(imageurl);
-			System.out.println("image url "+imageurl);
-			
-			
+
+			// Image url
+			String iconUrl = doc.getElementsByClass("cover-container").select("[itemprop=image]").attr("src");
+			if (!iconUrl.contains("http"))
+				iconUrl = ("http:").concat(iconUrl);
+			iconUrl=StringUtility.compressImageUrl(iconUrl, "w100");
+			System.out.println("image url " + iconUrl);
+
 			Gson gson = new Gson();
-			String jsonArray = gson.toJson(link,DownloadLinkDato.class);
+			String jsonArray = gson.toJson(link, DownloadLinkDato.class);
 			System.out.println("json of the array list" + jsonArray);
 
 			Elements g = doc.getElementsByClass("document-subtitle");
 			Elements info = doc.getElementsByClass("meta-info");
 			Elements desc = doc.getElementsByClass("show-more-content");
-			
-			String cat=g.select("[class=document-subtitle category]").attr("href").toLowerCase();
-			System.out.println("g:"+g);
-			System.out.println("Category:"+cat);
-			if(cat.contains("game"))
-				result=true;
-			System.out.println("cateogry link:"+cat+" ,found :"+result);
-			
-			/*// System.out.println("describe"+desc);
-			String categoury = g.select("[itemprop=genre]").text();
-			System.out.println("categoury is :" + categoury);
-			
-			
 
-			
-			-----checking weather catefgoury contant & or some spacing----
-			if (categoury.contains("&") || categoury.contains(" ")) {
-				String[] fcat = categoury.split("&");
-				System.out.println("& operater  is there" + fcat[0]);
+			String cat = g.select("[class=document-subtitle category]").attr("href").toLowerCase();
+			System.out.println("g:" + g);
+			System.out.println("Category:" + cat);
+			if (cat.contains("game"))
+				result = true;
+			System.out.println("cateogry link:" + cat + " ,found :" + result);
 
-				String[] fcat1 = categoury.split(" ");
-				System.out.println("space is there" + fcat1[0]);
-				categoury = fcat1[0];
-			}
-			----checking if categoury is game or not----
-			if (categoury.equalsIgnoreCase("Action") || categoury.equalsIgnoreCase("Adventure")
-					|| categoury.equalsIgnoreCase("Racing") || categoury.equalsIgnoreCase("Arcade")
-					|| categoury.equalsIgnoreCase("Board") || categoury.equalsIgnoreCase("Card")
-					|| categoury.equalsIgnoreCase("Casino") || categoury.equalsIgnoreCase("Casual")
-					|| categoury.equalsIgnoreCase("Educational") || categoury.equalsIgnoreCase("Music")
-					|| categoury.equalsIgnoreCase("Puzzle") || categoury.equalsIgnoreCase("Role Playing")
-					|| categoury.equalsIgnoreCase("Simulation") || categoury.equalsIgnoreCase("Sports")
-					|| categoury.equalsIgnoreCase("Strategy") || categoury.equalsIgnoreCase("Trivia")
-					|| categoury.equalsIgnoreCase("Word")) {*/
-			if(result){
+			/*
+			 * // System.out.println("describe"+desc); String categoury =
+			 * g.select("[itemprop=genre]").text();
+			 * System.out.println("categoury is :" + categoury);
+			 * 
+			 * 
+			 * 
+			 * 
+			 * -----checking weather catefgoury contant & or some spacing---- if
+			 * (categoury.contains("&") || categoury.contains(" ")) { String[]
+			 * fcat = categoury.split("&");
+			 * System.out.println("& operater  is there" + fcat[0]);
+			 * 
+			 * String[] fcat1 = categoury.split(" ");
+			 * System.out.println("space is there" + fcat1[0]); categoury =
+			 * fcat1[0]; } ----checking if categoury is game or not---- if
+			 * (categoury.equalsIgnoreCase("Action") ||
+			 * categoury.equalsIgnoreCase("Adventure") ||
+			 * categoury.equalsIgnoreCase("Racing") ||
+			 * categoury.equalsIgnoreCase("Arcade") ||
+			 * categoury.equalsIgnoreCase("Board") ||
+			 * categoury.equalsIgnoreCase("Card") ||
+			 * categoury.equalsIgnoreCase("Casino") ||
+			 * categoury.equalsIgnoreCase("Casual") ||
+			 * categoury.equalsIgnoreCase("Educational") ||
+			 * categoury.equalsIgnoreCase("Music") ||
+			 * categoury.equalsIgnoreCase("Puzzle") ||
+			 * categoury.equalsIgnoreCase("Role Playing") ||
+			 * categoury.equalsIgnoreCase("Simulation") ||
+			 * categoury.equalsIgnoreCase("Sports") ||
+			 * categoury.equalsIgnoreCase("Strategy") ||
+			 * categoury.equalsIgnoreCase("Trivia") ||
+			 * categoury.equalsIgnoreCase("Word")) {
+			 */
+			if (result) {
 
-				//result = true;
+				// result = true;
 				System.out.println(result);
 
 				String version = info.select("[itemprop=softwareVersion]").text();
@@ -172,7 +182,8 @@ public class GameCardDaoImpl implements GameCardDao {
 				dto.setDescription(desc.select("[itemprop=description]").text());
 				dto.setPackagename(packagename);
 				dto.setIsgame(result);
-				dto.setJsonImageVedioLink(null);
+				dto.setIconLink(iconUrl);
+				dto.setJsonImageVedioLink(jsonArray);
 
 			}
 			/*-----this condistion come if it is not a game----*/
@@ -187,6 +198,7 @@ public class GameCardDaoImpl implements GameCardDao {
 				dto.setPackagename(packagename);
 				dto.setSize(null);
 				dto.setVersion(null);
+				dto.setIconLink(null);
 				dto.setJsonImageVedioLink(null);
 				/*
 				 * Transaction trn = session.beginTransaction();
@@ -231,6 +243,7 @@ public class GameCardDaoImpl implements GameCardDao {
 			dto.setPackagename(packagename);
 			dto.setSize(null);
 			dto.setVersion(null);
+			dto.setIconLink(null);
 			dto.setJsonImageVedioLink(null);
 			/*
 			 * Transaction trn = session.beginTransaction(); session.save(dto);
@@ -258,12 +271,13 @@ public class GameCardDaoImpl implements GameCardDao {
 		dto.setVersion(list1.getVersion());
 		dto.setDescription(list1.getDescription());
 		dto.setIsgame(list1.getIsgame());
-		//dto.setJsonImageVedioLink(list1.getJsonImageVedioLink());
+		dto.setIconLink(list1.getIconLink());
+		dto.setJsonImageVedioLink(list1.getJsonImageVedioLink());
 
 		Transaction trn = session.beginTransaction();
 		session.save(dto);// Storing the value into the DB
 		trn.commit();
-		
+
 		/* return your file from db after inserting into db */
 		Query query = session.createQuery("from PlaystoreDto where packagename=?");// Hibernte
 																					// select
@@ -280,6 +294,38 @@ public class GameCardDaoImpl implements GameCardDao {
 		// session.close();
 		return dto;
 
+	}
+
+	public List<PlaystoreDto> getPlayStoreDto(List<String> packageList) {
+		// TODO Auto-generated method stub
+		String queryString = "from PlaystoreDto where packagename IN (:packageList)";
+		try {
+			Query query = session.createQuery(queryString);
+			query.setParameterList("packageList", packageList);
+			return query.list();
+		} catch (Exception exception) {
+			System.out.println(exception.getMessage());
+			return null;
+		}
+	}
+
+	public boolean saveUserInfo(UserInfo userinfo, boolean update) {
+		Transaction trn = session.beginTransaction();
+		try {
+			if (update)
+				session.update(userinfo);
+			else
+				session.save(userinfo);
+			return true;
+		} catch (Exception exception) {
+			return false;
+		} finally {
+			trn.commit();
+		}
+	}
+
+	public UserInfo checkUserInfo(String userId) {
+		return (UserInfo) session.get(UserInfo.class, userId);
 	}
 
 }

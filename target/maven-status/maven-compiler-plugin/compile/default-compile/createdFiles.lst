@@ -1,4 +1,5 @@
 com/gamecard/dao/CallbackList.class
+com/gamecard/dto/UserInfo.class
 com/gamecard/dao/RadisDao.class
 com/gamecard/dto/PlaystoreDto.class
 com/gamecard/daoimpl/MqttDaoImpl.class

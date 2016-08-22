@@ -13,12 +13,15 @@ import com.gamecard.dao.MqttDao;
 
 @Repository
 public class MqttDaoImpl implements MqttDao {
+	
+	private static final String BROKER="tcp://192.168.0.128:1883";
 
 	/*--------Method call during the mqqt sub-------*/
 	public boolean isSubcribe(String topic) throws MqttPersistenceException,InterruptedException {
 
 		System.out.println("topic url match:" + topic);
-		String broker = "tcp://52.66.116.176:1883";//MQTT Server 
+		//String broker = "tcp://52.66.116.176:1883";//MQTT Server 
+		//String broker = "tcp://192.168.0.128:1883";//MQTT Server 
 		String clientId = "mqttpublish";//assigning some client id
 		boolean check = false;
 		// 0(only one time) 1(at least one time) 2(exactly one time)
@@ -26,7 +29,7 @@ public class MqttDaoImpl implements MqttDao {
 
 		MemoryPersistence peristance=new MemoryPersistence();
 		try {
-			MqttClient client = new MqttClient(broker, clientId,peristance);
+			MqttClient client = new MqttClient(BROKER, clientId,peristance);
 			MqttConnectOptions connOpts = new MqttConnectOptions();
 			connOpts.setCleanSession(true);
 			client.connect(connOpts);//connecting with MQTT Server
@@ -55,14 +58,14 @@ public class MqttDaoImpl implements MqttDao {
 	/*-------method call to publish to the client------*/
 	public boolean message(String topic,String json) throws MqttPersistenceException,InterruptedException {
 		System.out.println("topic url match:" + topic);
-		String broker = "tcp://52.66.116.176:1883";//MQTT Server
+		//String broker = "tcp://52.66.116.176:1883";//MQTT Server
 		String clientId = "mqttpublish";//redis Client ID
 		boolean check = false;
 		// 0(only one time) 1(at least one time) 2(exactly one time)
-		int qos = 1;
+		int qos = 2;
 		MemoryPersistence peristance=new MemoryPersistence();
 		try {
-			MqttClient client = new MqttClient(broker, clientId,peristance);
+			MqttClient client = new MqttClient(BROKER, clientId,peristance);
 			MqttConnectOptions connOpts = new MqttConnectOptions();
 			connOpts.setCleanSession(true);
 			client.connect(connOpts);//connecting with MQTT 

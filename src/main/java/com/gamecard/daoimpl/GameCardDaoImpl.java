@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -34,6 +35,7 @@ import com.sun.accessibility.internal.resources.accessibility;
 @Repository
 public class GameCardDaoImpl implements GameCardDao {
 	Session session = new AnnotationConfiguration().configure("app.cfg.xml").buildSessionFactory().openSession();
+	private static final Logger log = Logger.getLogger(GameCardDaoImpl.class);
 
 	/*------cheking package name into database-----*/
 	public PlaystoreDto findPackage(String packagename) {
@@ -54,6 +56,7 @@ public class GameCardDaoImpl implements GameCardDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			log.error(e);
 		}
 		// session.close();
 		return null;
@@ -76,9 +79,10 @@ public class GameCardDaoImpl implements GameCardDao {
 			System.out.println("title is ---->" + t);
 
 			// -----vedio download link----
-			String downLink = doc.getElementsByClass("play-action-container").attr("data-video-url");
-			System.out.println("playstore download link:-------->" + downLink);
-			link.setVedioLink(downLink);
+			String vedioLink = doc.getElementsByClass("play-action-container").attr("data-video-url");
+			if(vedioLink.equals(""))
+				vedioLink=null;
+			link.setVedioLink(vedioLink);
 			// -------image download-------
 
 			List<String> imageList = new ArrayList<String>();
@@ -94,6 +98,7 @@ public class GameCardDaoImpl implements GameCardDao {
 					imageList.add(imageLink);
 				}
 			}
+			link.setApkLink(GameCardApkDaoImpl.getApkDownloadLink(packagename));
 			link.setImageList(imageList);
 
 			/*-------creating the json for the link------*/
@@ -172,6 +177,7 @@ public class GameCardDaoImpl implements GameCardDao {
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
+					log.error(e);
 				}
 				/* setting all the jsoup value into the java dto */
 				dto.setGametittle(t);
@@ -305,6 +311,7 @@ public class GameCardDaoImpl implements GameCardDao {
 			return query.list();
 		} catch (Exception exception) {
 			System.out.println(exception.getMessage());
+			log.error(exception);
 			return null;
 		}
 	}
@@ -318,6 +325,7 @@ public class GameCardDaoImpl implements GameCardDao {
 				session.save(userinfo);
 			return true;
 		} catch (Exception exception) {
+			log.error(exception);
 			return false;
 		} finally {
 			trn.commit();

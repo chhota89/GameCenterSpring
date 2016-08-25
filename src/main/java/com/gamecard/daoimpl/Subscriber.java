@@ -58,9 +58,10 @@ public class Subscriber extends JedisPubSub {
 				dbPackageList.add(pDto.getPackagename());
 				if(pDto.getIsgame())
 					userGames.add(pDto.getPackagename());
+				pDto.setSuggestion(false);
 				String jsonArray = gson.toJson(pDto);
 				System.out.println("list of json is" + jsonArray);				
-				// calling the mqtt message() to publish to thesubcriber
+				// calling the mqtt message() to publish to the subscriber
 				mqttDaoImpl.message(reqlist.getTopic(), jsonArray);
 			}
 			
@@ -79,29 +80,49 @@ public class Subscriber extends JedisPubSub {
 					PlaystoreDto found = apkDaoImpl.createApkSiteDetails(packagerespo, newPackage);
 					packagerespo=cardDaoImpl.insertnewpackage(packagerespo, newPackage);
 				}
+				packagerespo.setSuggestion(false);
+				String jsonArray = gson.toJson(packagerespo);				
+				// calling the mqtt message() to publish to the subscriber
+				mqttDaoImpl.message(reqlist.getTopic(), jsonArray);
+				
 			}
 			
-			//Save the userGames in redis
-			saveUserListInRedis(userGames);
+			boolean update=false;
+			List<String> userGamesClone=new ArrayList<String>();
+			userGamesClone.addAll(userGames);
 			
-			
-			//Genrate suggestion for the user
-			genrateSuggestion(userGames);
+			//check for userInfo
+			UserInfo userInfo=cardDaoImpl.checkUserInfo(reqlist.getTopic());
+			if(userInfo==null){
+				//user is new user
+				userInfo=new UserInfo();
+				
+				//Save the userGames in redis
+				saveUserListInRedis(null,userGames);
+			}else{
+				update=true;
+				//Retrieve user previous game record
+				List<String> previousGames=new ArrayList<String>();
+				for(PlaystoreDto playstoreDto:userInfo.getPlaystoreDtos())
+					previousGames.add(playstoreDto.getPackagename());
+								
+				userGames.removeAll(previousGames);
+				
+				//Check for any new game downloaded of not
+				if(userGames.size()!=0)
+					saveUserListInRedis(previousGames, userGames);
+			}
 			
 			//set userInfo
-			UserInfo userInfo=cardDaoImpl.checkUserInfo(reqlist.getTopic());
-			boolean update=false;
-			if(userInfo==null)
-				userInfo=new UserInfo();
-			else
-				update=true;
-			
-			userInfo.setPlaystoreDtos(cardDaoImpl.getPlayStoreDto(reqlist.getPackageList()));
+			userInfo.setPlaystoreDtos(cardDaoImpl.getPlayStoreDto(userGamesClone));
 			userInfo.setAndroidVersion(reqlist.getVersion());
 			userInfo.setManufacturer(reqlist.getManufacturer());
 			
 			userInfo.setUserId(reqlist.getTopic());
 			cardDaoImpl.saveUserInfo(userInfo,update);
+			
+			//Generate suggestion for the user
+			genrateSuggestion(userGamesClone);
 			
 			
 		} catch (Exception e) {
@@ -110,35 +131,34 @@ public class Subscriber extends JedisPubSub {
 
 	}
 	
-	public void saveUserListInRedis(List<String> userGame){
-		new GameSuggestion().insertNewList(userGame);
+	public void saveUserListInRedis(List<String> previousGames,List<String> newGames){
+		new GameSuggestion().createCombinationWithOlderUesrGame(previousGames,newGames);
 	}
 	
 	public void genrateSuggestion(List<String> userGame){
 		GameSuggestion gameSuggestion=new GameSuggestion();
-		Map<String, Double> suggestion=gameSuggestion.suggestionList(userGame);
-		List<String> suggestionGame=new ArrayList<String>(suggestion.keySet());
+		List<String> suggestionGame=gameSuggestion.suggestionList(userGame);
 		List<PlaystoreDto> playstoreDtoslist=cardDaoImpl.getPlayStoreDto(suggestionGame);
-		sendDataToMqtt(playstoreDtoslist);
+		if(playstoreDtoslist!=null)
+			sendDataToMqtt(playstoreDtoslist);
 	}
 	
 	public void sendDataToMqtt(List<PlaystoreDto> playstoreDtoslist){
 		for(PlaystoreDto pDto:playstoreDtoslist){
+			pDto.setSuggestion(true);
 			String jsonArray = gson.toJson(pDto);
 			System.out.println("Suggestion for game is ------->"+jsonArray);
 			try {
-				mqttDaoImpl.message(reqlist.getTopic()+"Suggestion", jsonArray);
+				mqttDaoImpl.message(reqlist.getTopic(), jsonArray);
 			} catch (MqttPersistenceException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
 
-	/*-------- Redis Subcribing the topic------*/
+	/*-------- Redis Subscribing the topic------*/
 	@Override
 	public void onSubscribe(String channel, int subscribedChannels) {
 		System.out

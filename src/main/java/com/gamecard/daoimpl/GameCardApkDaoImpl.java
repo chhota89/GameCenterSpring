@@ -1,10 +1,12 @@
 package com.gamecard.daoimpl;
 
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -23,6 +25,10 @@ public class GameCardApkDaoImpl implements GameCardApkDao {
 
 	@Resource(name = "sessionFactory")
 	private SessionFactory sessionFactory;
+	
+	public static final String APK_DL_URL = "https://apk-dl.com/";
+	private static final Logger log = Logger.getLogger(GameCardApkDaoImpl.class);
+
 
 	public  PlaystoreDto createApkSiteDetails(PlaystoreDto dto, String packagename) {
 		
@@ -46,7 +52,6 @@ public class GameCardApkDaoImpl implements GameCardApkDao {
 			String downLink = doc.getElementsByClass("btn-md").select("[rel=nofollow]").attr("href");
 
 			downLink = ("https:").concat(downLink.trim());
-			System.out.println("downLink" + downLink);
 
 			/*checking the title or version is blank */
 			if (title.equals("") || version.equals("")) {
@@ -87,9 +92,47 @@ public class GameCardApkDaoImpl implements GameCardApkDao {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			log.error(e);
 		}
 		System.out.println("null value is return");
 		return null ;
+	}
+	
+	
+	public static String getApkDownloadLink(String packageName){
+		String apkSite = APK_DL_URL.concat(packageName);
+		String downUrl=null;
+		try {
+			// fetch the document over HTTP
+			Document doc = Jsoup.connect(apkSite).userAgent("Chrome/47.0.2526.80").timeout(10000).get();
+
+			//getting download link
+			String downLink = doc.getElementsByClass("btn-md").attr("href");
+			if (downLink.contains("http") == false) // checking whether download url/link contains "http"
+				downLink = ("http:").concat(downLink.trim());
+
+			//scrapping download url to get download link
+			Document doc1 = Jsoup.connect(downLink).userAgent("Chrome/47.0.2526.80").timeout(10000).get();
+			downUrl = doc1.getElementsByTag("p").select("a[href]").attr("href");
+			if (downUrl != "") {
+				if (downUrl.contains("http") == false) // adding "http" to link if not present
+				{
+					downUrl = ("http:").concat(downUrl);
+				}
+			} else {
+				downUrl = null; // no download link present
+			} //end of getting download link
+			
+			return downUrl;
+		} catch (UnknownHostException u) {
+			u.printStackTrace();
+			log.error(u);
+			
+		} catch (Exception e) {
+			log.error(e);
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

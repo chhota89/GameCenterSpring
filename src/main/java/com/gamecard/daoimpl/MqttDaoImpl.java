@@ -14,7 +14,7 @@ import com.gamecard.dao.MqttDao;
 @Repository
 public class MqttDaoImpl implements MqttDao {
 	
-	private static final String BROKER="tcp://192.168.0.128:1883";
+	private static final String BROKER="tcp://52.66.142.120:1883";
 
 	/*--------Method call during the mqqt sub-------*/
 	public boolean isSubcribe(String topic) throws MqttPersistenceException,InterruptedException {

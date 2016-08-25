@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -56,6 +57,22 @@ public class PlaystoreDto {
 	@Column
 	private String iconLink;
 	
+	
+	@SerializedName("suggestion")
+	@Expose
+	@Transient
+	private boolean suggestion;
+	
+	
+	
+	public boolean isSuggestion() {
+		return suggestion;
+	}
+
+	public void setSuggestion(boolean suggestion) {
+		this.suggestion = suggestion;
+	}
+
 	public String getIconLink() {
 		return iconLink;
 	}

@@ -3,10 +3,20 @@ package com.gamecard.dto;
 import java.util.List;
 
 public class DownloadLinkDato {
-	public String vedioLink;
-	public List<String> imageList;
-
+	private String vedioLink;
 	
+	private List<String> imageList;
+
+	private String apkLink;
+	
+	
+	
+	public String getApkLink() {
+		return apkLink;
+	}
+	public void setApkLink(String apkLink) {
+		this.apkLink = apkLink;
+	}
 	public String getVedioLink() {
 		return vedioLink;
 	}

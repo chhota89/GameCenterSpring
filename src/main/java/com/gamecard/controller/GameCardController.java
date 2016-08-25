@@ -11,6 +11,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -45,8 +46,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
 @RestController("abc")
-public class GameCardController<E> {
-
+public class GameCardController<E> { 
 	@Autowired
 	protected GameCardDaoImpl cardDaoImpl;
 	@Autowired
@@ -58,10 +58,13 @@ public class GameCardController<E> {
 	
 	@Autowired
 	protected UserRepository userRepository;
+	
 	@Autowired
 	RedisMap redisMap;
-
-	private static boolean subcribed = false;
+	
+	private static final Logger log = Logger.getLogger(GameCardController.class);
+	
+ private static boolean subcribed = false;
 
 	/*-------------Multiple Package Operation-------------*/
 	@SuppressWarnings("unchecked")
@@ -69,6 +72,7 @@ public class GameCardController<E> {
 	@ResponseBody
 	public E reqpost(@RequestBody String a) {
 		ObjectMapper mapper = new ObjectMapper();
+		log.info("/package is called --> "+a);
 		try {
 			GamePackageListReq reqlist = mapper.readValue(a, GamePackageListReq.class);//reading the post url
 			System.out.println(reqlist.getPackageList().toString());
@@ -88,6 +92,7 @@ public class GameCardController<E> {
 		}
 
 		catch (Exception e) {
+			log.error(e);
 			e.printStackTrace();
 		}
 		System.out.println("null return");

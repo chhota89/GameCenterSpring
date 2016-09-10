@@ -29,8 +29,8 @@ public class RadisDaoImpl implements RadisDao {
 		@SuppressWarnings("resource")
 		JedisShardInfo shardInfo = new JedisShardInfo(REDIS_HOST, REDIS_PORT);
 		shardInfo.setPassword(REDIS_PASSWORD);
-		//final Jedis subscriberJedis = new Jedis(shardInfo);
-		final Jedis subscriberJedis = new Jedis("localhost");
+		final Jedis subscriberJedis = new Jedis(shardInfo);
+		//final Jedis subscriberJedis = new Jedis("localhost");
 
 		final Subscriber subscriber = new Subscriber();//-----object off subcriber
 		new Thread(new Runnable() {
@@ -51,8 +51,8 @@ public class RadisDaoImpl implements RadisDao {
 		System.out.println("redispublisher() call<--------------> ");
 		JedisShardInfo shardInfo = new JedisShardInfo(REDIS_HOST, REDIS_PORT);
 		shardInfo.setPassword(REDIS_PASSWORD);
-		//final Jedis publisherJedis = new Jedis(shardInfo);
-		final Jedis publisherJedis = new Jedis("localhost");
+		final Jedis publisherJedis = new Jedis(shardInfo);
+		//final Jedis publisherJedis = new Jedis("localhost");
 
 
 		new Publisher(publisherJedis,list, redistopic).start();//------start method is call of Publisher class

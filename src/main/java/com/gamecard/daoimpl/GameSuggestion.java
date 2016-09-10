@@ -36,8 +36,8 @@ public class GameSuggestion {
 	public GameSuggestion() {
 		JedisShardInfo shardInfo = new JedisShardInfo(RadisDaoImpl.REDIS_HOST, RadisDaoImpl.REDIS_PORT);
 		shardInfo.setPassword(RadisDaoImpl.REDIS_PASSWORD);
-		// jedis = new Jedis(shardInfo);
-		jedis = new Jedis("localhost");
+		 jedis = new Jedis(shardInfo);
+		//jedis = new Jedis("localhost");
 	}
 
 	public void insertNewList(List<String> userGames) {

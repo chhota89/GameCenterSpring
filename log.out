@@ -990,3 +990,5 @@ Result row: EntityKey[com.gamecard.dto.PlaystoreDto#135]
 Result set row: 5
 Result row: EntityKey[com.gamecard.dto.PlaystoreDto#137]
 Initializing non-lazy collections
+HHH000031: Closing
+HHH000030: Cleaning up connection pool [jdbc:mysql://localhost:3306/game_center]

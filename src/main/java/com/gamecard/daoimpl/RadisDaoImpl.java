@@ -27,15 +27,10 @@ public class RadisDaoImpl implements RadisDao {
 	public void isredis(final String redistopic) {
 
 		@SuppressWarnings("resource")
-		//JedisPoolConfig config = new JedisPoolConfig();
-		//JedisPool jedispool = new JedisPool(config,REDIS_HOST, REDIS_PORT, 5000, "pc0924q4lm4fvabg06f638rivs9");
-		//JedisPool jedispool = new JedisPool("localhost");
-		//-----connecting to jedis server
-		//final Jedis subscriberJedis = jedispool.getResource();
 		JedisShardInfo shardInfo = new JedisShardInfo(REDIS_HOST, REDIS_PORT);
 		shardInfo.setPassword(REDIS_PASSWORD);
-		final Jedis subscriberJedis = new Jedis(shardInfo);
-
+		//final Jedis subscriberJedis = new Jedis(shardInfo);
+		final Jedis subscriberJedis = new Jedis("localhost");
 
 		final Subscriber subscriber = new Subscriber();//-----object off subcriber
 		new Thread(new Runnable() {
@@ -54,12 +49,11 @@ public class RadisDaoImpl implements RadisDao {
 	/*-------publish the topic and package list-----*/
 	public boolean redisPublisher(String redistopic, String list) {
 		System.out.println("redispublisher() call<--------------> ");
-		//JedisPoolConfig config = new JedisPoolConfig();
-		//JedisPool jedispool = new JedisPool(config,"23.23.233.73", 15589, 1000, "pc0924q4lm4fvabg06f638rivs9");//connecting to jedis
-		//JedisPool jedispool = new JedisPool("localhost");
 		JedisShardInfo shardInfo = new JedisShardInfo(REDIS_HOST, REDIS_PORT);
 		shardInfo.setPassword(REDIS_PASSWORD);
-		final Jedis publisherJedis = new Jedis(shardInfo);
+		//final Jedis publisherJedis = new Jedis(shardInfo);
+		final Jedis publisherJedis = new Jedis("localhost");
+
 
 		new Publisher(publisherJedis,list, redistopic).start();//------start method is call of Publisher class
 		//subscriber.unsubscribe();

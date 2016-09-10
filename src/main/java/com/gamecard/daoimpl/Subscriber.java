@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 
@@ -17,12 +18,15 @@ import org.eclipse.paho.client.mqttv3.MqttPersistenceException;
 import org.hibernate.SessionFactory;
 import org.hibernate.search.query.dsl.impl.ConnectedQueryContextBuilder.HSearchEntityContext;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import com.gamecard.dto.GamePackageListReq;
 import com.gamecard.dto.PlaystoreDto;
 import com.gamecard.dto.UserInfo;
 import com.gamecard.redis.UserRepository;
+import com.gamecard.utility.PlayStoreDataFetcher;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -39,12 +43,17 @@ public class Subscriber extends JedisPubSub {
 	Gson gson;
 	Jedis jedis = new Jedis("localhost");
 	GameCardDaoImpl cardDaoImpl;
+	//ApplicationContext context ;
 
 	/*------publish the redis topic and packagelist-----*/
 	@Override
 	public void onMessage(String channel, String packagenamelist) {
 		System.out.println("Message received from channel:  ................. " + channel + " Msg: " + packagenamelist);
 		cardDaoImpl = new GameCardDaoImpl();
+		
+		/*context = new ClassPathXmlApplicationContext("ThreadPoolExecutor.xml");
+		ThreadPoolTaskExecutor taskExecutor = (ThreadPoolTaskExecutor) context.getBean("taskExecutor");*/
+
 		List<String> userGames=new ArrayList<String>();
 		gson = new GsonBuilder().serializeNulls().create();
 		mqttDaoImpl = new MqttDaoImpl();
@@ -68,7 +77,10 @@ public class Subscriber extends JedisPubSub {
 			//New Package list.
 			List<String> newPackageList= reqlist.getPackageList();
 			newPackageList.removeAll(dbPackageList);
+			
 			for(String newPackage:newPackageList){
+				
+				//taskExecutor.execute(new PlayStoreDataFetcher(newPackage, cardDaoImpl,gson,mqttDaoImpl,reqlist.getTopic()));
 
 				packagerespo = cardDaoImpl.getPlayStoreData(newPackage);
 				
@@ -77,7 +89,7 @@ public class Subscriber extends JedisPubSub {
 				
 				if (packagerespo != null) {
 					GameCardApkDaoImpl apkDaoImpl = new GameCardApkDaoImpl();
-					PlaystoreDto found = apkDaoImpl.createApkSiteDetails(packagerespo, newPackage);
+					//PlaystoreDto found = apkDaoImpl.createApkSiteDetails(packagerespo, newPackage);
 					packagerespo=cardDaoImpl.insertnewpackage(packagerespo, newPackage);
 				}
 				packagerespo.setSuggestion(false);
@@ -86,6 +98,21 @@ public class Subscriber extends JedisPubSub {
 				mqttDaoImpl.message(reqlist.getTopic(), jsonArray);
 				
 			}
+			
+			/*taskExecutor.setWaitForTasksToCompleteOnShutdown(true);
+			try {
+			  taskExecutor.getThreadPoolExecutor().awaitTermination(60, TimeUnit.SECONDS);
+			} catch (IllegalStateException e) {
+			  e.printStackTrace();
+			} catch (InterruptedException e) {
+			  e.printStackTrace();
+			}
+			taskExecutor.shutdown();    
+
+			for(PlaystoreDto pDto:cardDaoImpl.getPlayStoreDto(newPackageList)){
+				if(pDto.getIsgame())
+					userGames.add(pDto.getPackagename());
+			}*/
 			
 			boolean update=false;
 			List<String> userGamesClone=new ArrayList<String>();
@@ -132,7 +159,9 @@ public class Subscriber extends JedisPubSub {
 	}
 	
 	public void saveUserListInRedis(List<String> previousGames,List<String> newGames){
-		new GameSuggestion().createCombinationWithOlderUesrGame(previousGames,newGames);
+		GameSuggestion gameSuggestion=new GameSuggestion();
+		gameSuggestion.createCombinationWithOlderUesrGame(previousGames,newGames);
+		//gameSuggestion.createZSet(newGames);
 	}
 	
 	public void genrateSuggestion(List<String> userGame){

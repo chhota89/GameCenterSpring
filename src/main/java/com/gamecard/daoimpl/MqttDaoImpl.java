@@ -35,7 +35,6 @@ public class MqttDaoImpl implements MqttDao {
 			client.connect(connOpts);//connecting with MQTT Server
 			check=client.isConnected();
 			MqttMessage message = new MqttMessage("GAME_CENTER".getBytes());
-			message.setRetained(true);
 			message.setQos(qos);
 			client.publish(topic, message);//publishing topic and client 
 			if(check==true)
@@ -43,7 +42,7 @@ public class MqttDaoImpl implements MqttDao {
 				System.out.println(check);
 				return check;
 			}
-			Thread.sleep(20000);
+			//Thread.sleep(20000);
 			client.disconnect();
 			System.out.println("connection is Disconnected to broker");
 			return check;
@@ -71,7 +70,6 @@ public class MqttDaoImpl implements MqttDao {
 			client.connect(connOpts);//connecting with MQTT 
 			check=client.isConnected();
 			MqttMessage message = new MqttMessage(json.getBytes());
-			message.setRetained(true);
 			message.setQos(qos);
 			client.publish(topic, message);//publishing topic and message
 			if(check==true)
@@ -79,7 +77,7 @@ public class MqttDaoImpl implements MqttDao {
 				System.out.println(check);
 				return check;
 			}
-			Thread.sleep(20000);
+			//Thread.sleep(20000);
 			client.disconnect();
 			System.out.println("connection is Disconnected to broker");
 			return check;

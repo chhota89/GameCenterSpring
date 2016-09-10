@@ -25,21 +25,19 @@ public class GameSuggestion {
 	JedisPoolConfig config;
 	JedisPool jedispool;
 	Jedis jedis;
-	private static final double THRESHOLD = 0.0;
+	private static final double THRESHOLD = 0.1;
 	private static final String DOWNLOAD_MAP = "DOWNLOAD_MAP24";
 	private static final String GAME_SET = "GAME_SET24";
 	private static final String COMBINE_MAP = "COMBINE_MAP24";
+	private static final String Z_DOWNLOAD_SET = "Z_DOWNLOAD_SET";
 
 	private static final Logger log = Logger.getLogger(GameSuggestion.class);
 
 	public GameSuggestion() {
-		//config = new JedisPoolConfig();
-		//jedispool = new JedisPool(config, "23.23.233.73", 15589, 5000, "pc0924q4lm4fvabg06f638rivs9");
-		 //jedis = jedispool.getResource();
-		//jedis = new Jedis("localhost");
 		JedisShardInfo shardInfo = new JedisShardInfo(RadisDaoImpl.REDIS_HOST, RadisDaoImpl.REDIS_PORT);
 		shardInfo.setPassword(RadisDaoImpl.REDIS_PASSWORD);
-		jedis = new Jedis(shardInfo);
+		// jedis = new Jedis(shardInfo);
+		jedis = new Jedis("localhost");
 	}
 
 	public void insertNewList(List<String> userGames) {
@@ -68,9 +66,10 @@ public class GameSuggestion {
 					jedis.hincrBy(COMBINE_MAP, combineList, 1);
 				}
 			}
+			createZSet(userGames);
 		}
 
-		//suggestionList(userGames);
+		// suggestionList(userGames);
 	}
 
 	// This function is used when user install new game.
@@ -92,6 +91,7 @@ public class GameSuggestion {
 					} else
 						combineList = newGame + " " + preGame;
 					jedis.hincrBy(COMBINE_MAP, combineList, 1);
+					addDataInZset(preGame,newGame);
 				}
 			}
 		}
@@ -191,7 +191,7 @@ public class GameSuggestion {
 		while (it.hasNext()) {
 			Map.Entry pair = (Map.Entry) it.next();
 
-			if ((Double) pair.getValue() / remaningGame.size() > THRESHOLD) {
+			if ((Double) pair.getValue() / userGame.size() > THRESHOLD) {
 				suggestionList.add((String) pair.getKey());
 			}
 		}
@@ -200,6 +200,28 @@ public class GameSuggestion {
 
 	public double calculateProbability(double combineEfinity, double downloadForUserGame, double downloadforAnother) {
 		return combineEfinity / (downloadForUserGame + downloadforAnother - combineEfinity);
+	}
+
+	public void createZSet(List<String> gameList) {
+		if (gameList != null) {
+			for (int i = 0; i < gameList.size() - 1; i++) {
+				for (int j = i + 1; j < gameList.size(); j++) {
+					addDataInZset(gameList.get(i),gameList.get(j));
+					jedis.zincrby(Z_DOWNLOAD_SET, 1, gameList.get(i));
+				}
+			}
+			jedis.zincrby(Z_DOWNLOAD_SET, 1, gameList.get(gameList.size() - 1));
+		}
+	}
+	
+	private void addDataInZset(String gameName1,String gameName2){
+		jedis.zincrby(gameName1, 1, gameName2);
+		jedis.zincrby(gameName2, 1, gameName1);
+	}
+	
+	public List<String> getCombinationForGame(String packageName){
+		Set<String> elements = jedis.zrevrange(packageName, 0, 5);
+		return new ArrayList<String>(elements);
 	}
 
 }

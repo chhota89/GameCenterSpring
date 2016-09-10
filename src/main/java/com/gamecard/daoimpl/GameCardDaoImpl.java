@@ -27,6 +27,7 @@ import com.gamecard.dto.DownloadLinkDato;
 import com.gamecard.dto.GameCardDto;
 import com.gamecard.dto.PlaystoreDto;
 import com.gamecard.dto.UserInfo;
+import com.gamecard.dto.VedioModel;
 import com.gamecard.utility.StringUtility;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -80,8 +81,8 @@ public class GameCardDaoImpl implements GameCardDao {
 
 			// -----vedio download link----
 			String vedioLink = doc.getElementsByClass("play-action-container").attr("data-video-url");
-			if(vedioLink.equals(""))
-				vedioLink=null;
+			if (vedioLink.equals(""))
+				vedioLink = null;
 			link.setVedioLink(vedioLink);
 			// -------image download-------
 
@@ -89,8 +90,8 @@ public class GameCardDaoImpl implements GameCardDao {
 			Elements elements = doc.getElementsByClass("full-screenshot");
 			for (int i = 0; i < elements.size(); i++) {
 				String imageLink = elements.get(i).attr("src");
-				//Reduce size of the image 
-				imageLink=StringUtility.compressImageUrl(imageLink, "h400");
+				// Reduce size of the image
+				imageLink = StringUtility.compressImageUrl(imageLink, "h400");
 				if (imageLink.contains("http:")) {
 					imageList.add(imageLink);
 				} else {
@@ -108,7 +109,7 @@ public class GameCardDaoImpl implements GameCardDao {
 			String iconUrl = doc.getElementsByClass("cover-container").select("[itemprop=image]").attr("src");
 			if (!iconUrl.contains("http"))
 				iconUrl = ("http:").concat(iconUrl);
-			iconUrl=StringUtility.compressImageUrl(iconUrl, "w100");
+			iconUrl = StringUtility.compressImageUrl(iconUrl, "w100");
 			System.out.println("image url " + iconUrl);
 
 			Gson gson = new Gson();
@@ -266,6 +267,8 @@ public class GameCardDaoImpl implements GameCardDao {
 	public PlaystoreDto insertnewpackage(PlaystoreDto list1, String packagename) {
 		System.out.println("ready to check for data base");
 
+		Session session1 = new AnnotationConfiguration().configure("app.cfg.xml").buildSessionFactory().openSession();
+
 		PlaystoreDto dto = new PlaystoreDto();
 		/* setting the list value into dto value and storing into DB */
 		dto.setId(list1.getId());
@@ -280,9 +283,10 @@ public class GameCardDaoImpl implements GameCardDao {
 		dto.setIconLink(list1.getIconLink());
 		dto.setJsonImageVedioLink(list1.getJsonImageVedioLink());
 
-		Transaction trn = session.beginTransaction();
-		session.save(dto);// Storing the value into the DB
+		Transaction trn = session1.beginTransaction();
+		session1.save(dto);// Storing the value into the DB
 		trn.commit();
+		session1.close();
 
 		/* return your file from db after inserting into db */
 		Query query = session.createQuery("from PlaystoreDto where packagename=?");// Hibernte
@@ -330,6 +334,38 @@ public class GameCardDaoImpl implements GameCardDao {
 		} finally {
 			trn.commit();
 		}
+	}
+
+	// Generate vedio link for gameList
+	public List<VedioModel> getVedioLink(List<String> gameList) {
+		System.out.println("Get combination for game " + gameList);
+		List<PlaystoreDto> playStoreList = getPlayStoreDto(gameList);
+		List<VedioModel> vedioLinkList = new ArrayList<VedioModel>();
+		if (playStoreList != null) {
+			for (PlaystoreDto pDto : playStoreList) {
+				DownloadLinkDato downloadLinkDato = new Gson().fromJson(pDto.getJsonImageVedioLink(),
+						DownloadLinkDato.class);
+				// System.out.println(pDto.getPackagename()+" --->"+vedioLink);
+				if (downloadLinkDato.getVedioLink() != null && !downloadLinkDato.getVedioLink().equals("")) {
+					VedioModel vedioModel = new VedioModel();
+					vedioModel.setApkLink(downloadLinkDato.getApkLink());
+					vedioModel.setVedioLink(downloadLinkDato.getVedioLink());
+					vedioModel.setPackageName(pDto.getPackagename());
+					vedioModel.setGameTitle(pDto.getGametittle());
+					vedioModel.setIconLink(pDto.getIconLink());
+
+					vedioLinkList.add(vedioModel);
+
+				}
+			}
+		}
+		return vedioLinkList;
+	}
+
+	public List<VedioModel> genrateVedioList(String packageName) {
+		GameSuggestion gameSuggestion = new GameSuggestion();
+		System.out.println(packageName);
+		return getVedioLink(gameSuggestion.getCombinationForGame(packageName));
 	}
 
 	public UserInfo checkUserInfo(String userId) {

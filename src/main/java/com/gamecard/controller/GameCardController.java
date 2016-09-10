@@ -1,11 +1,16 @@
 package com.gamecard.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.gamecard.dao.MqttDao;
 import com.gamecard.dao.RadisDao;
@@ -44,6 +50,7 @@ import com.google.gson.reflect.TypeToken;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.Tuple;
 
 @RestController("abc")
 public class GameCardController<E> { 
@@ -53,8 +60,8 @@ public class GameCardController<E> {
 	protected GameCardApkDaoImpl apkDaoImpl;
 	@Autowired
 	protected MqttDaoImpl mqttDaoImpl;
-	@Autowired
-	protected RadisDaoImpl radisDaoImpl;
+	
+	protected  static RadisDaoImpl radisDaoImpl=new RadisDaoImpl();
 	
 	@Autowired
 	protected UserRepository userRepository;
@@ -111,6 +118,33 @@ public class GameCardController<E> {
 		System.out.println("on load if return call"+subcribed);
 	}
 	
+	//@RequestMapping(value = "/getVedioList" /*, params="packageName", method = RequestMethod.GET, produces = "application/json" */)
+	
+	@RequestMapping(value = "/getVedioList",params="packageName", method = RequestMethod.GET, produces = "application/json")
+	public E getVedioLink(@RequestParam("packageName") String packageName){
+		  //System.out.println("Vedio Link is "+cardDaoImpl.genrateVedioList("com.pinkpointer.math"));
+		return (E) cardDaoImpl.genrateVedioList(packageName);
+	}
+	
+	/*@RequestMapping(value="/upload", method=RequestMethod.POST)
+    public @ResponseBody String handleFileUpload(@RequestParam("file") MultipartFile file){
+        String name = "test11";
+        if (!file.isEmpty()) {
+            try {
+                byte[] bytes = file.getBytes();
+                BufferedOutputStream stream = 
+                        new BufferedOutputStream(new FileOutputStream(new File(name + "-uploaded")));
+                stream.write(bytes);
+                stream.close();
+                return "You successfully uploaded " + name + " into " + name + "-uploaded !";
+            } catch (Exception e) {
+                return "You failed to upload " + name + " => " + e.getMessage();
+            }
+        } else {
+            return "You failed to upload " + name + " because the file was empty.";
+        }
+    }*/
+	
 	@RequestMapping(value = "/redis")
 	public void redisPractice(){
 		
@@ -141,13 +175,29 @@ public class GameCardController<E> {
 		Jedis jedis = new Jedis("localhost");
 		//jedis.hincrBy("Download", "number", 1);
 		//System.out.println("out put is+ "+jedis.hgetAll(Subscriber.PACKAGE_TABLE));
+		
 		GameSuggestion gameSuggestion=new GameSuggestion();
 		String testArray[] = { "A B H G", "A E B C" , "A B C", "H G A", "A B C", "L M N"};
 		for (int i = 0; i < testArray.length; i++) {
 			String array[] = testArray[i].split(" ");
 			Arrays.sort(array);
-			gameSuggestion.insertNewList(new ArrayList<String>(Arrays.asList(array)));
+			gameSuggestion.createZSet(new ArrayList<String>(Arrays.asList(array)));
 		}
+		
+		System.out.println("Combine game for A is "+gameSuggestion.getCombinationForGame("A"));
+		
+		/*jedis.zadd("mohmad44" ,1, "clash of clans");
+		jedis.zadd("mohmad44" ,2, "clash of clans1");
+		jedis.zadd("mohmad44" ,4, "clash of clans4");
+		jedis.zadd("mohmad44" ,6, "clash of clans6");
+		jedis.zadd("mohmad44" ,7, "clash of clans7");
+		jedis.zadd("mohmad44" ,8, "clash of clans9");
+		
+		
+		jedis.zincrby("mohmad44", 1, "clash of clans9");
+		
+		Set<String> elements = jedis.zrevrange("mohmad44", 0, -1);
+		System.out.println(elements);*/
 	}
 
 }

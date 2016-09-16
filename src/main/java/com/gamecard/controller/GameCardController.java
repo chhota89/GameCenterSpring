@@ -38,13 +38,10 @@ import com.gamecard.daoimpl.GameCardDaoImpl;
 import com.gamecard.daoimpl.GameSuggestion;
 import com.gamecard.daoimpl.MqttDaoImpl;
 import com.gamecard.daoimpl.RadisDaoImpl;
-import com.gamecard.daoimpl.RedisMap;
 import com.gamecard.daoimpl.Subscriber;
 import com.gamecard.dto.GamePackageListReq;
 import com.gamecard.dto.MqttDto;
 import com.gamecard.dto.PlaystoreDto;
-import com.gamecard.redis.User;
-import com.gamecard.redis.UserRepository;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -62,12 +59,6 @@ public class GameCardController<E> {
 	protected MqttDaoImpl mqttDaoImpl;
 	
 	protected  static RadisDaoImpl radisDaoImpl=new RadisDaoImpl();
-	
-	@Autowired
-	protected UserRepository userRepository;
-	
-	@Autowired
-	RedisMap redisMap;
 	
 	private static final Logger log = Logger.getLogger(GameCardController.class);
 	

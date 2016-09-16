@@ -36,7 +36,7 @@ public class GameSuggestion {
 	public GameSuggestion() {
 		JedisShardInfo shardInfo = new JedisShardInfo(RadisDaoImpl.REDIS_HOST, RadisDaoImpl.REDIS_PORT);
 		shardInfo.setPassword(RadisDaoImpl.REDIS_PASSWORD);
-		 jedis = new Jedis(shardInfo);
+		jedis = new Jedis(shardInfo);
 		//jedis = new Jedis("localhost");
 	}
 
@@ -215,12 +215,12 @@ public class GameSuggestion {
 	}
 	
 	private void addDataInZset(String gameName1,String gameName2){
-		jedis.zincrby(gameName1, 1, gameName2);
 		jedis.zincrby(gameName2, 1, gameName1);
+		jedis.zincrby(gameName1, 1, gameName2);
 	}
 	
 	public List<String> getCombinationForGame(String packageName){
-		Set<String> elements = jedis.zrevrange(packageName, 0, 5);
+		Set<String> elements = jedis.zrevrange(packageName, 0, -1);
 		return new ArrayList<String>(elements);
 	}
 

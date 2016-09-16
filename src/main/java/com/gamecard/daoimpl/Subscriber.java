@@ -25,7 +25,6 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import com.gamecard.dto.GamePackageListReq;
 import com.gamecard.dto.PlaystoreDto;
 import com.gamecard.dto.UserInfo;
-import com.gamecard.redis.UserRepository;
 import com.gamecard.utility.PlayStoreDataFetcher;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -41,7 +40,6 @@ public class Subscriber extends JedisPubSub {
 	ObjectMapper mapper = new ObjectMapper();
 	MqttDaoImpl mqttDaoImpl;
 	Gson gson;
-	Jedis jedis = new Jedis("localhost");
 	GameCardDaoImpl cardDaoImpl;
 	//ApplicationContext context ;
 

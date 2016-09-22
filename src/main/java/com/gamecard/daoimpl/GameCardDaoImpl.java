@@ -236,7 +236,7 @@ public class GameCardDaoImpl implements GameCardDao {
 	public PlaystoreDto insertnewpackage(PlaystoreDto list1, String packagename) {
 		System.out.println("ready to check for data base");
 
-		Session session1 = new AnnotationConfiguration().configure("app.cfg.xml").buildSessionFactory().openSession();
+		//Session session1 = new AnnotationConfiguration().configure("app.cfg.xml").buildSessionFactory().openSession();
 
 		PlaystoreDto dto = new PlaystoreDto();
 		/* setting the list value into dto value and storing into DB */
@@ -252,10 +252,10 @@ public class GameCardDaoImpl implements GameCardDao {
 		dto.setIconLink(list1.getIconLink());
 		dto.setJsonImageVedioLink(list1.getJsonImageVedioLink());
 
-		Transaction trn = session1.beginTransaction();
-		session1.save(dto);// Storing the value into the DB
+		Transaction trn = session.beginTransaction();
+		session.save(dto);// Storing the value into the DB
 		trn.commit();
-		session1.close();
+		//session1.close();
 
 		/* return your file from db after inserting into db */
 		Query query = session.createQuery("from PlaystoreDto where packagename=?");// Hibernte

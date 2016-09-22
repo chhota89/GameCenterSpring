@@ -39,6 +39,10 @@ public class GameSuggestion {
 		jedis = new Jedis(shardInfo);
 		//jedis = new Jedis("localhost");
 	}
+	
+	public void destructorGameSuggestion(){
+		jedis.disconnect();
+	}
 
 	public void insertNewList(List<String> userGames) {
 		Collections.sort(userGames);

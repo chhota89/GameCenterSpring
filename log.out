@@ -1,94 +1,94 @@
 Logging Provider: org.jboss.logging.Log4jLoggerProvider
-Adding type registration boolean -> org.hibernate.type.BooleanType@358d74e9
-Adding type registration boolean -> org.hibernate.type.BooleanType@358d74e9
-Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@358d74e9
-Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@427036f7
-Adding type registration true_false -> org.hibernate.type.TrueFalseType@59d82bed
-Adding type registration yes_no -> org.hibernate.type.YesNoType@7dc891ed
-Adding type registration byte -> org.hibernate.type.ByteType@33b273
-Adding type registration byte -> org.hibernate.type.ByteType@33b273
-Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@33b273
-Adding type registration character -> org.hibernate.type.CharacterType@54a75543
-Adding type registration char -> org.hibernate.type.CharacterType@54a75543
-Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@54a75543
-Adding type registration short -> org.hibernate.type.ShortType@61b7f0a8
-Adding type registration short -> org.hibernate.type.ShortType@61b7f0a8
-Adding type registration java.lang.Short -> org.hibernate.type.ShortType@61b7f0a8
-Adding type registration integer -> org.hibernate.type.IntegerType@4f750c9a
-Adding type registration int -> org.hibernate.type.IntegerType@4f750c9a
-Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@4f750c9a
-Adding type registration long -> org.hibernate.type.LongType@66e141c4
-Adding type registration long -> org.hibernate.type.LongType@66e141c4
-Adding type registration java.lang.Long -> org.hibernate.type.LongType@66e141c4
-Adding type registration float -> org.hibernate.type.FloatType@6c58115a
-Adding type registration float -> org.hibernate.type.FloatType@6c58115a
-Adding type registration java.lang.Float -> org.hibernate.type.FloatType@6c58115a
-Adding type registration double -> org.hibernate.type.DoubleType@16fb856f
-Adding type registration double -> org.hibernate.type.DoubleType@16fb856f
-Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@16fb856f
-Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@50e889ab
-Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@50e889ab
-Adding type registration big_integer -> org.hibernate.type.BigIntegerType@36f29303
-Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@36f29303
-Adding type registration string -> org.hibernate.type.StringType@4888ecfc
-Adding type registration java.lang.String -> org.hibernate.type.StringType@4888ecfc
-Adding type registration url -> org.hibernate.type.UrlType@1b3a85f7
-Adding type registration java.net.URL -> org.hibernate.type.UrlType@1b3a85f7
-Adding type registration date -> org.hibernate.type.DateType@f131c34
-Adding type registration java.sql.Date -> org.hibernate.type.DateType@f131c34
-Adding type registration time -> org.hibernate.type.TimeType@33d22ca6
-Adding type registration java.sql.Time -> org.hibernate.type.TimeType@33d22ca6
-Adding type registration timestamp -> org.hibernate.type.TimestampType@360ee668
-Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@360ee668
-Adding type registration java.util.Date -> org.hibernate.type.TimestampType@360ee668
-Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@65d54738
-Adding type registration calendar -> org.hibernate.type.CalendarType@2f013331
-Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@2f013331
-Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@2f013331
-Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@164ce288
-Adding type registration locale -> org.hibernate.type.LocaleType@4d3587d7
-Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@4d3587d7
-Adding type registration currency -> org.hibernate.type.CurrencyType@329bab0f
-Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@329bab0f
-Adding type registration timezone -> org.hibernate.type.TimeZoneType@9e8e892
-Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@9e8e892
-Adding type registration class -> org.hibernate.type.ClassType@446a246
-Adding type registration java.lang.Class -> org.hibernate.type.ClassType@446a246
-Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@47d31362
-Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@47d31362
-Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@2caa7f4b
-Adding type registration pg-uuid -> org.hibernate.type.PostgresUUIDType@1518a0ff
-Adding type registration binary -> org.hibernate.type.BinaryType@164b754c
-Adding type registration byte[] -> org.hibernate.type.BinaryType@164b754c
-Adding type registration [B -> org.hibernate.type.BinaryType@164b754c
-Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@104c810b
-Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@104c810b
-Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@104c810b
-Adding type registration image -> org.hibernate.type.ImageType@74f82cf3
-Adding type registration characters -> org.hibernate.type.CharArrayType@5aea7311
-Adding type registration char[] -> org.hibernate.type.CharArrayType@5aea7311
-Adding type registration [C -> org.hibernate.type.CharArrayType@5aea7311
-Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@391be57
-Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@391be57
-Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@391be57
-Adding type registration text -> org.hibernate.type.TextType@5d83ad04
-Adding type registration blob -> org.hibernate.type.BlobType@b0c7452
-Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@b0c7452
-Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@73102c34
-Adding type registration clob -> org.hibernate.type.ClobType@23a0446
-Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@23a0446
-Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@75079549
-Adding type registration serializable -> org.hibernate.type.SerializableType@7761f1fe
-Adding type registration object -> org.hibernate.type.ObjectType@6052e71
-Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@6052e71
-Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@5e81f4fb
-Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@71d83ffc
-Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@3673544e
-Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@7e604ba5
-Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@2f974ebe
-Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@1f80a36f
-Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@337d45f5
-Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@4f3c0d5c
+Adding type registration boolean -> org.hibernate.type.BooleanType@7a29e85b
+Adding type registration boolean -> org.hibernate.type.BooleanType@7a29e85b
+Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@7a29e85b
+Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@5dba312b
+Adding type registration true_false -> org.hibernate.type.TrueFalseType@1e57ba00
+Adding type registration yes_no -> org.hibernate.type.YesNoType@78d7cacc
+Adding type registration byte -> org.hibernate.type.ByteType@317d07e2
+Adding type registration byte -> org.hibernate.type.ByteType@317d07e2
+Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@317d07e2
+Adding type registration character -> org.hibernate.type.CharacterType@7d441ee0
+Adding type registration char -> org.hibernate.type.CharacterType@7d441ee0
+Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@7d441ee0
+Adding type registration short -> org.hibernate.type.ShortType@1286144e
+Adding type registration short -> org.hibernate.type.ShortType@1286144e
+Adding type registration java.lang.Short -> org.hibernate.type.ShortType@1286144e
+Adding type registration integer -> org.hibernate.type.IntegerType@593bf922
+Adding type registration int -> org.hibernate.type.IntegerType@593bf922
+Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@593bf922
+Adding type registration long -> org.hibernate.type.LongType@583c4eec
+Adding type registration long -> org.hibernate.type.LongType@583c4eec
+Adding type registration java.lang.Long -> org.hibernate.type.LongType@583c4eec
+Adding type registration float -> org.hibernate.type.FloatType@34f2845
+Adding type registration float -> org.hibernate.type.FloatType@34f2845
+Adding type registration java.lang.Float -> org.hibernate.type.FloatType@34f2845
+Adding type registration double -> org.hibernate.type.DoubleType@9fd983e
+Adding type registration double -> org.hibernate.type.DoubleType@9fd983e
+Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@9fd983e
+Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@4d72e3f5
+Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@4d72e3f5
+Adding type registration big_integer -> org.hibernate.type.BigIntegerType@64cb7be
+Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@64cb7be
+Adding type registration string -> org.hibernate.type.StringType@554b70f1
+Adding type registration java.lang.String -> org.hibernate.type.StringType@554b70f1
+Adding type registration url -> org.hibernate.type.UrlType@19c0b50e
+Adding type registration java.net.URL -> org.hibernate.type.UrlType@19c0b50e
+Adding type registration date -> org.hibernate.type.DateType@68ae0ce5
+Adding type registration java.sql.Date -> org.hibernate.type.DateType@68ae0ce5
+Adding type registration time -> org.hibernate.type.TimeType@676aa575
+Adding type registration java.sql.Time -> org.hibernate.type.TimeType@676aa575
+Adding type registration timestamp -> org.hibernate.type.TimestampType@c635b96
+Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@c635b96
+Adding type registration java.util.Date -> org.hibernate.type.TimestampType@c635b96
+Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@44ceb333
+Adding type registration calendar -> org.hibernate.type.CalendarType@35d519a1
+Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@35d519a1
+Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@35d519a1
+Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@1659d131
+Adding type registration locale -> org.hibernate.type.LocaleType@3781ed38
+Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@3781ed38
+Adding type registration currency -> org.hibernate.type.CurrencyType@4c66e7c3
+Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@4c66e7c3
+Adding type registration timezone -> org.hibernate.type.TimeZoneType@710d21f7
+Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@710d21f7
+Adding type registration class -> org.hibernate.type.ClassType@50ee3d2f
+Adding type registration java.lang.Class -> org.hibernate.type.ClassType@50ee3d2f
+Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@1ea450d3
+Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@1ea450d3
+Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@413c8def
+Adding type registration pg-uuid -> org.hibernate.type.PostgresUUIDType@5ea890e8
+Adding type registration binary -> org.hibernate.type.BinaryType@7478ace0
+Adding type registration byte[] -> org.hibernate.type.BinaryType@7478ace0
+Adding type registration [B -> org.hibernate.type.BinaryType@7478ace0
+Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@34cf6202
+Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@34cf6202
+Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@34cf6202
+Adding type registration image -> org.hibernate.type.ImageType@20709afd
+Adding type registration characters -> org.hibernate.type.CharArrayType@79ef5389
+Adding type registration char[] -> org.hibernate.type.CharArrayType@79ef5389
+Adding type registration [C -> org.hibernate.type.CharArrayType@79ef5389
+Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@a3ce5f2
+Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@a3ce5f2
+Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@a3ce5f2
+Adding type registration text -> org.hibernate.type.TextType@249cee96
+Adding type registration blob -> org.hibernate.type.BlobType@619f0432
+Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@619f0432
+Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@69fdd9c5
+Adding type registration clob -> org.hibernate.type.ClobType@687f1e7c
+Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@687f1e7c
+Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@1269cee8
+Adding type registration serializable -> org.hibernate.type.SerializableType@54432f13
+Adding type registration object -> org.hibernate.type.ObjectType@555a86c8
+Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@555a86c8
+Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@ac47fc3
+Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@ba9c495
+Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@63336a72
+Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@6d0985c5
+Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@449ac5c0
+Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@1d22caa
+Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@794aa618
+Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@58cc2359
 HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
 HHH000412: Hibernate Core {4.0.1.Final}
 HHH000206: hibernate.properties not found
@@ -110,22 +110,24 @@ Registering IdentifierGenerator strategy [enhanced-sequence] -> [org.hibernate.i
 Registering IdentifierGenerator strategy [enhanced-table] -> [org.hibernate.id.enhanced.TableGenerator]
 HHH000043: Configuring from resource: app.cfg.xml
 HHH000040: Configuration resource: app.cfg.xml
-Trying to resolve system-id [http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd]
-HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
-Attempting to resolve on classpath under org/hibernate/
-Located [http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd] in classpath
-hibernate.connection.driver_class=com.mysql.jdbc.Driver
-hibernate.connection.username=bridgelabz_mysql
-hibernate.connection.password=bridgelabz2016
-hibernate.connection.url=jdbc:mysql://52.66.119.239:3306/Game_Center
-hibernate.dialect=org.hibernate.dialect.MySQLDialect
-hibernate.hbm2ddl.auto=create
+Trying to resolve system-id [http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd]
+Recognized hibernate namespace; attempting to resolve on classpath under org/hibernate/
+Located [http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd] in classpath
+hibernate.connection.driver_class=org.postgresql.Driver
+hibernate.connection.url=jdbc:postgresql://ec2-54-235-68-4.compute-1.amazonaws.com:5432/d3o7tuj1qjtjo?username=rgszmooztieyep&password=hh-vm8Nnnf_gp0z4oxyZDI0ot7&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+hibernate.connection.username=rgszmooztieyep
+hibernate.connection.password=hh-vm8Nnnf_gp0z4oxyZDI0ot7
+connection.pool_size=1
 hibernate.show_sql=true
+hibernate.hbm2ddl.auto=create
+current_session_context_class=thread
+cache.provider_class=org.hibernate.cache.NoCacheProvider
 Session-factory config [null] named class [com.gamecard.dto.PlaystoreDto] for mapping
 Session-factory config [null] named class [com.gamecard.dto.UserInfo] for mapping
 HHH000041: Configured SessionFactory: null
-Properties: {java.vendor=Oracle Corporation, sun.java.launcher=SUN_STANDARD, catalina.base=/home/bridgeit/springPractice/.metadata/.plugins/org.eclipse.wst.server.core/tmp0, hibernate.connection.url=jdbc:mysql://52.66.119.239:3306/Game_Center, sun.management.compiler=HotSpot 64-Bit Tiered Compilers, catalina.useNaming=true, os.name=Linux, sun.boot.class.path=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes, sun.desktop=gnome, java.vm.specification.vendor=Oracle Corporation, java.runtime.version=1.8.0_91-8u91-b14-3ubuntu1~16.04.1-b14, user.name=bridgeit, shared.loader=, tomcat.util.buf.StringCache.byte.enabled=true, user.language=en, java.naming.factory.initial=org.apache.naming.java.javaURLContextFactory, sun.boot.library.path=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64, java.version=1.8.0_91, user.timezone=Asia/Kolkata, sun.arch.data.model=64, java.endorsed.dirs=/home/bridgeit/spring/apache-tomcat-7.0.69/endorsed, sun.cpu.isalist=, sun.jnu.encoding=UTF-8, file.encoding.pkg=sun.io, package.access=sun.,org.apache.catalina.,org.apache.coyote.,org.apache.jasper.,org.apache.naming.resources.,org.apache.tomcat., file.separator=/, java.specification.name=Java Platform API Specification, java.class.version=52.0, user.country=IN, java.home=/usr/lib/jvm/java-8-openjdk-amd64/jre, java.vm.info=mixed mode, os.version=4.4.0-34-generic, path.separator=:, java.vm.version=25.91-b14, hibernate.connection.password=bridgelabz2016, jboss.i18n.generate-proxies=true, java.awt.printerjob=sun.print.PSPrinterJob, sun.io.unicode.encoding=UnicodeLittle, tomcat.util.scan.DefaultJarScanner.jarsToSkip=bootstrap.jar,commons-daemon.jar,tomcat-juli.jar,annotations-api.jar,el-api.jar,jsp-api.jar,servlet-api.jar,websocket-api.jar,catalina.jar,catalina-ant.jar,catalina-ha.jar,catalina-tribes.jar,jasper.jar,jasper-el.jar,ecj-*.jar,tomcat-api.jar,tomcat-util.jar,tomcat-coyote.jar,tomcat-dbcp.jar,tomcat-jni.jar,tomcat-spdy.jar,tomcat-i18n-en.jar,tomcat-i18n-es.jar,tomcat-i18n-fr.jar,tomcat-i18n-ja.jar,tomcat-juli-adapters.jar,catalina-jmx-remote.jar,catalina-ws.jar,tomcat-jdbc.jar,tools.jar,commons-beanutils*.jar,commons-codec*.jar,commons-collections*.jar,commons-dbcp*.jar,commons-digester*.jar,commons-fileupload*.jar,commons-httpclient*.jar,commons-io*.jar,commons-lang*.jar,commons-logging*.jar,commons-math*.jar,commons-pool*.jar,jstl.jar,taglibs-standard-spec-*.jar,geronimo-spec-jaxrpc*.jar,wsdl4j*.jar,ant.jar,ant-junit*.jar,aspectj*.jar,jmx.jar,h2*.jar,hibernate*.jar,httpclient*.jar,jmx-tools.jar,jta*.jar,log4j.jar,log4j-1*.jar,mail*.jar,slf4j*.jar,xercesImpl.jar,xmlParserAPIs.jar,xml-apis.jar,junit.jar,junit-*.jar,hamcrest*.jar,org.hamcrest*.jar,ant-launcher.jar,cobertura-*.jar,asm-*.jar,dom4j-*.jar,icu4j-*.jar,jaxen-*.jar,jdom-*.jar,jetty-*.jar,oro-*.jar,servlet-api-*.jar,tagsoup-*.jar,xmlParserAPIs-*.jar,xom-*.jar, awt.toolkit=sun.awt.X11.XToolkit, hibernate.connection.username=bridgelabz_mysql, package.definition=sun.,java.,org.apache.catalina.,org.apache.coyote.,org.apache.jasper.,org.apache.naming.,org.apache.tomcat., java.naming.factory.url.pkgs=org.apache.naming, user.home=/home/bridgeit, org.apache.catalina.startup.ContextConfig.jarsToSkip=, java.specification.vendor=Oracle Corporation, hibernate.hbm2ddl.auto=create, java.library.path=/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib, java.vendor.url=http://java.oracle.com/, hibernate.connection.driver_class=com.mysql.jdbc.Driver, org.apache.catalina.startup.TldConfig.jarsToSkip=tomcat7-websocket.jar, java.vm.vendor=Oracle Corporation, hibernate.dialect=org.hibernate.dialect.MySQLDialect, common.loader=${catalina.base}/lib,${catalina.base}/lib/*.jar,${catalina.home}/lib,${catalina.home}/lib/*.jar, java.runtime.name=OpenJDK Runtime Environment, sun.java.command=org.apache.catalina.startup.Bootstrap start, java.class.path=/home/bridgeit/spring/apache-tomcat-7.0.69/bin/bootstrap.jar:/home/bridgeit/spring/apache-tomcat-7.0.69/bin/tomcat-juli.jar:/usr/lib/jvm/java-8-openjdk-amd64/lib/tools.jar, hibernate.bytecode.use_reflection_optimizer=false, java.vm.specification.name=Java Virtual Machine Specification, java.vm.specification.version=1.8, catalina.home=/home/bridgeit/spring/apache-tomcat-7.0.69, sun.cpu.endian=little, sun.os.patch.level=unknown, java.io.tmpdir=/tmp, java.vendor.url.bug=http://bugreport.sun.com/bugreport/, server.loader=, os.arch=amd64, java.awt.graphicsenv=sun.awt.X11GraphicsEnvironment, java.ext.dirs=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext:/usr/java/packages/lib/ext, user.dir=/home/bridgeit/jee-latest-released2/eclipse, line.separator=
-, wtp.deploy=/home/bridgeit/springPractice/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps, java.vm.name=OpenJDK 64-Bit Server VM, file.encoding=UTF-8, java.specification.version=1.8, hibernate.show_sql=true}
+Properties: {java.vendor=Oracle Corporation, sun.java.launcher=SUN_STANDARD, catalina.base=/home/bridgeit/springPractice/.metadata/.plugins/org.eclipse.wst.server.core/tmp0, hibernate.connection.url=jdbc:postgresql://ec2-54-235-68-4.compute-1.amazonaws.com:5432/d3o7tuj1qjtjo?username=rgszmooztieyep&password=hh-vm8Nnnf_gp0z4oxyZDI0ot7&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory, sun.management.compiler=HotSpot 64-Bit Tiered Compilers, catalina.useNaming=true, os.name=Linux, sun.boot.class.path=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes, hibernate.current_session_context_class=thread, sun.desktop=gnome, java.vm.specification.vendor=Oracle Corporation, java.runtime.version=1.8.0_91-8u91-b14-3ubuntu1~16.04.1-b14, hibernate.cache.provider_class=org.hibernate.cache.NoCacheProvider, user.name=bridgeit, shared.loader=, tomcat.util.buf.StringCache.byte.enabled=true, current_session_context_class=thread, user.language=en, java.naming.factory.initial=org.apache.naming.java.javaURLContextFactory, sun.boot.library.path=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64, java.version=1.8.0_91, user.timezone=Asia/Kolkata, sun.arch.data.model=64, java.endorsed.dirs=/home/bridgeit/spring/apache-tomcat-7.0.69/endorsed, sun.cpu.isalist=, sun.jnu.encoding=UTF-8, file.encoding.pkg=sun.io, package.access=sun.,org.apache.catalina.,org.apache.coyote.,org.apache.jasper.,org.apache.naming.resources.,org.apache.tomcat., file.separator=/, java.specification.name=Java Platform API Specification, java.class.version=52.0, user.country=IN, java.home=/usr/lib/jvm/java-8-openjdk-amd64/jre, java.vm.info=mixed mode, os.version=4.4.0-38-generic, path.separator=:, java.vm.version=25.91-b14, hibernate.connection.password=hh-vm8Nnnf_gp0z4oxyZDI0ot7, java.awt.printerjob=sun.print.PSPrinterJob, sun.io.unicode.encoding=UnicodeLittle, tomcat.util.scan.DefaultJarScanner.jarsToSkip=bootstrap.jar,commons-daemon.jar,tomcat-juli.jar,annotations-api.jar,el-api.jar,jsp-api.jar,servlet-api.jar,websocket-api.jar,catalina.jar,catalina-ant.jar,catalina-ha.jar,catalina-tribes.jar,jasper.jar,jasper-el.jar,ecj-*.jar,tomcat-api.jar,tomcat-util.jar,tomcat-coyote.jar,tomcat-dbcp.jar,tomcat-jni.jar,tomcat-spdy.jar,tomcat-i18n-en.jar,tomcat-i18n-es.jar,tomcat-i18n-fr.jar,tomcat-i18n-ja.jar,tomcat-juli-adapters.jar,catalina-jmx-remote.jar,catalina-ws.jar,tomcat-jdbc.jar,tools.jar,commons-beanutils*.jar,commons-codec*.jar,commons-collections*.jar,commons-dbcp*.jar,commons-digester*.jar,commons-fileupload*.jar,commons-httpclient*.jar,commons-io*.jar,commons-lang*.jar,commons-logging*.jar,commons-math*.jar,commons-pool*.jar,jstl.jar,taglibs-standard-spec-*.jar,geronimo-spec-jaxrpc*.jar,wsdl4j*.jar,ant.jar,ant-junit*.jar,aspectj*.jar,jmx.jar,h2*.jar,hibernate*.jar,httpclient*.jar,jmx-tools.jar,jta*.jar,log4j.jar,log4j-1*.jar,mail*.jar,slf4j*.jar,xercesImpl.jar,xmlParserAPIs.jar,xml-apis.jar,junit.jar,junit-*.jar,hamcrest*.jar,org.hamcrest*.jar,ant-launcher.jar,cobertura-*.jar,asm-*.jar,dom4j-*.jar,icu4j-*.jar,jaxen-*.jar,jdom-*.jar,jetty-*.jar,oro-*.jar,servlet-api-*.jar,tagsoup-*.jar,xmlParserAPIs-*.jar,xom-*.jar, awt.toolkit=sun.awt.X11.XToolkit, hibernate.connection.username=rgszmooztieyep, package.definition=sun.,java.,org.apache.catalina.,org.apache.coyote.,org.apache.jasper.,org.apache.naming.,org.apache.tomcat., java.naming.factory.url.pkgs=org.apache.naming, user.home=/home/bridgeit, org.apache.catalina.startup.ContextConfig.jarsToSkip=, java.specification.vendor=Oracle Corporation, hibernate.hbm2ddl.auto=create, java.library.path=/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib, java.vendor.url=http://java.oracle.com/, hibernate.connection.driver_class=org.postgresql.Driver, org.apache.catalina.startup.TldConfig.jarsToSkip=tomcat7-websocket.jar, java.vm.vendor=Oracle Corporation, hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect, common.loader=${catalina.base}/lib,${catalina.base}/lib/*.jar,${catalina.home}/lib,${catalina.home}/lib/*.jar, java.runtime.name=OpenJDK Runtime Environment, sun.java.command=org.apache.catalina.startup.Bootstrap start, java.class.path=/home/bridgeit/spring/apache-tomcat-7.0.69/bin/bootstrap.jar:/home/bridgeit/spring/apache-tomcat-7.0.69/bin/tomcat-juli.jar:/usr/lib/jvm/java-8-openjdk-amd64/lib/tools.jar, hibernate.bytecode.use_reflection_optimizer=false, java.vm.specification.name=Java Virtual Machine Specification, java.vm.specification.version=1.8, catalina.home=/home/bridgeit/spring/apache-tomcat-7.0.69, sun.cpu.endian=little, sun.os.patch.level=unknown, connection.pool_size=1, java.io.tmpdir=/tmp, java.vendor.url.bug=http://bugreport.sun.com/bugreport/, server.loader=, os.arch=amd64, java.awt.graphicsenv=sun.awt.X11GraphicsEnvironment, java.ext.dirs=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext:/usr/java/packages/lib/ext, user.dir=/home/bridgeit/jee-latest-released2/eclipse, line.separator=
+, wtp.deploy=/home/bridgeit/springPractice/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps, java.vm.name=OpenJDK 64-Bit Server VM, cache.provider_class=org.hibernate.cache.NoCacheProvider, file.encoding=UTF-8, java.specification.version=1.8, hibernate.show_sql=true, hibernate.connection.pool_size=1}
 Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
 Adding Integrator [org.hibernate.search.hcore.impl.HibernateSearchIntegrator].
 Adding Integrator [org.hibernate.search.hcore.impl.MassIndexerFactoryIntegrator].
@@ -233,561 +235,20 @@ Processing foreign key constraints
 Resolving reference to class: com.gamecard.dto.PlaystoreDto
 Resolving reference to class: com.gamecard.dto.UserInfo
 HHH000402: Using Hibernate built-in connection pool (not for production use!)
-HHH000115: Hibernate connection pool size: 20
+HHH000115: Hibernate connection pool size: 1
 HHH000006: Autocommit mode: false
-HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://52.66.119.239:3306/Game_Center]
-HHH000046: Connection properties: {user=bridgelabz_mysql, password=bridgelabz2016}
+HHH000401: using driver [org.postgresql.Driver] at URL [jdbc:postgresql://ec2-54-235-68-4.compute-1.amazonaws.com:5432/d3o7tuj1qjtjo?username=rgszmooztieyep&password=hh-vm8Nnnf_gp0z4oxyZDI0ot7&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory]
+HHH000046: Connection properties: {user=rgszmooztieyep, password=hh-vm8Nnnf_gp0z4oxyZDI0ot7}
 Opening new JDBC connection
-Created connection to: jdbc:mysql://52.66.119.239:3306/Game_Center, Isolation Level: 4
+Created connection to: jdbc:postgresql://ec2-54-235-68-4.compute-1.amazonaws.com:5432/d3o7tuj1qjtjo?username=rgszmooztieyep&password=hh-vm8Nnnf_gp0z4oxyZDI0ot7&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory, Isolation Level: 2
 Database ->
-       name : MySQL
-    version : 5.6.27-log
-      major : 5
-      minor : 6
+       name : PostgreSQL
+    version : 9.5.4
+      major : 9
+      minor : 5
 Driver ->
-       name : MySQL Connector Java
-    version : mysql-connector-java-5.1.30 ( Revision: alexander.soklakov@oracle.com-20140310090514-8xt1yoht5ksg2e7c )
-      major : 5
-      minor : 1
+       name : PostgreSQL Native Driver
+    version : PostgreSQL 9.3 JDBC4.1 (build 1101)
+      major : 9
+      minor : 3
 JDBC version : 4.0
-HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
-Automatic flush during beforeCompletion(): disabled
-Automatic session close at end of transaction: disabled
-JDBC batch size: 15
-JDBC batch updates for versioned data: disabled
-Scrollable result sets: enabled
-Wrap result sets: disabled
-JDBC3 getGeneratedKeys(): enabled
-Connection release mode: auto
-HHH000399: Using default transaction strategy (direct JDBC transactions)
-Maximum outer join fetch depth: 2
-Default batch fetch size: 1
-Generate SQL with comments: disabled
-Order SQL updates by primary key: disabled
-Order SQL inserts for batching: disabled
-Query translator: org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory
-HHH000397: Using ASTQueryTranslatorFactory
-Query language substitutions: {}
-JPA-QL strict compliance: disabled
-Second-level cache: enabled
-Query cache: disabled
-Cache region factory : org.hibernate.cache.internal.NoCachingRegionFactory
-org.hibernate.cache.internal.NoCachingRegionFactory did not provide constructor accepting java.util.Properties; attempting no-arg constructor.
-Optimize cache for minimal puts: disabled
-Structured second-level cache entries: disabled
-Statistics: disabled
-Deleted entity synthetic identifier rollback: disabled
-Default entity-mode: pojo
-Named query checking : enabled
-Check Nullability in Core (should be disabled when Bean Validation is on): enabled
-multi-tenancy strategy : NONE
-Building session factory
-Session factory constructed with filter configurations : {}
-Instantiating session factory with properties: {java.vendor=Oracle Corporation, sun.java.launcher=SUN_STANDARD, catalina.base=/home/bridgeit/springPractice/.metadata/.plugins/org.eclipse.wst.server.core/tmp0, hibernate.connection.url=jdbc:mysql://52.66.119.239:3306/Game_Center, sun.management.compiler=HotSpot 64-Bit Tiered Compilers, catalina.useNaming=true, os.name=Linux, sun.boot.class.path=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes, sun.desktop=gnome, java.vm.specification.vendor=Oracle Corporation, java.runtime.version=1.8.0_91-8u91-b14-3ubuntu1~16.04.1-b14, user.name=bridgeit, shared.loader=, tomcat.util.buf.StringCache.byte.enabled=true, user.language=en, java.naming.factory.initial=org.apache.naming.java.javaURLContextFactory, sun.boot.library.path=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64, java.version=1.8.0_91, user.timezone=Asia/Kolkata, sun.arch.data.model=64, java.endorsed.dirs=/home/bridgeit/spring/apache-tomcat-7.0.69/endorsed, sun.cpu.isalist=, sun.jnu.encoding=UTF-8, file.encoding.pkg=sun.io, package.access=sun.,org.apache.catalina.,org.apache.coyote.,org.apache.jasper.,org.apache.naming.resources.,org.apache.tomcat., file.separator=/, java.specification.name=Java Platform API Specification, java.class.version=52.0, user.country=IN, java.home=/usr/lib/jvm/java-8-openjdk-amd64/jre, java.vm.info=mixed mode, os.version=4.4.0-34-generic, path.separator=:, java.vm.version=25.91-b14, hibernate.connection.password=bridgelabz2016, jboss.i18n.generate-proxies=true, java.awt.printerjob=sun.print.PSPrinterJob, sun.io.unicode.encoding=UnicodeLittle, tomcat.util.scan.DefaultJarScanner.jarsToSkip=bootstrap.jar,commons-daemon.jar,tomcat-juli.jar,annotations-api.jar,el-api.jar,jsp-api.jar,servlet-api.jar,websocket-api.jar,catalina.jar,catalina-ant.jar,catalina-ha.jar,catalina-tribes.jar,jasper.jar,jasper-el.jar,ecj-*.jar,tomcat-api.jar,tomcat-util.jar,tomcat-coyote.jar,tomcat-dbcp.jar,tomcat-jni.jar,tomcat-spdy.jar,tomcat-i18n-en.jar,tomcat-i18n-es.jar,tomcat-i18n-fr.jar,tomcat-i18n-ja.jar,tomcat-juli-adapters.jar,catalina-jmx-remote.jar,catalina-ws.jar,tomcat-jdbc.jar,tools.jar,commons-beanutils*.jar,commons-codec*.jar,commons-collections*.jar,commons-dbcp*.jar,commons-digester*.jar,commons-fileupload*.jar,commons-httpclient*.jar,commons-io*.jar,commons-lang*.jar,commons-logging*.jar,commons-math*.jar,commons-pool*.jar,jstl.jar,taglibs-standard-spec-*.jar,geronimo-spec-jaxrpc*.jar,wsdl4j*.jar,ant.jar,ant-junit*.jar,aspectj*.jar,jmx.jar,h2*.jar,hibernate*.jar,httpclient*.jar,jmx-tools.jar,jta*.jar,log4j.jar,log4j-1*.jar,mail*.jar,slf4j*.jar,xercesImpl.jar,xmlParserAPIs.jar,xml-apis.jar,junit.jar,junit-*.jar,hamcrest*.jar,org.hamcrest*.jar,ant-launcher.jar,cobertura-*.jar,asm-*.jar,dom4j-*.jar,icu4j-*.jar,jaxen-*.jar,jdom-*.jar,jetty-*.jar,oro-*.jar,servlet-api-*.jar,tagsoup-*.jar,xmlParserAPIs-*.jar,xom-*.jar, awt.toolkit=sun.awt.X11.XToolkit, hibernate.connection.username=bridgelabz_mysql, package.definition=sun.,java.,org.apache.catalina.,org.apache.coyote.,org.apache.jasper.,org.apache.naming.,org.apache.tomcat., java.naming.factory.url.pkgs=org.apache.naming, user.home=/home/bridgeit, org.apache.catalina.startup.ContextConfig.jarsToSkip=, java.specification.vendor=Oracle Corporation, hibernate.hbm2ddl.auto=create, java.library.path=/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib, java.vendor.url=http://java.oracle.com/, hibernate.connection.driver_class=com.mysql.jdbc.Driver, org.apache.catalina.startup.TldConfig.jarsToSkip=tomcat7-websocket.jar, java.vm.vendor=Oracle Corporation, hibernate.dialect=org.hibernate.dialect.MySQLDialect, common.loader=/home/bridgeit/springPractice/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/lib,/home/bridgeit/springPractice/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/lib/*.jar,/home/bridgeit/spring/apache-tomcat-7.0.69/lib,/home/bridgeit/spring/apache-tomcat-7.0.69/lib/*.jar, java.runtime.name=OpenJDK Runtime Environment, sun.java.command=org.apache.catalina.startup.Bootstrap start, java.class.path=/home/bridgeit/spring/apache-tomcat-7.0.69/bin/bootstrap.jar:/home/bridgeit/spring/apache-tomcat-7.0.69/bin/tomcat-juli.jar:/usr/lib/jvm/java-8-openjdk-amd64/lib/tools.jar, hibernate.bytecode.use_reflection_optimizer=false, java.vm.specification.name=Java Virtual Machine Specification, java.vm.specification.version=1.8, catalina.home=/home/bridgeit/spring/apache-tomcat-7.0.69, sun.cpu.endian=little, sun.os.patch.level=unknown, java.io.tmpdir=/tmp, java.vendor.url.bug=http://bugreport.sun.com/bugreport/, server.loader=, os.arch=amd64, java.awt.graphicsenv=sun.awt.X11GraphicsEnvironment, java.ext.dirs=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext:/usr/java/packages/lib/ext, user.dir=/home/bridgeit/jee-latest-released2/eclipse, line.separator=
-, java.vm.name=OpenJDK 64-Bit Server VM, wtp.deploy=/home/bridgeit/springPractice/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps, file.encoding=UTF-8, java.specification.version=1.8, hibernate.show_sql=true}
-HSEARCH000034: Hibernate Search 4.3.0.Final
-HSEARCH000075: Configuration setting hibernate.search.lucene_version was not specified, using LUCENE_CURRENT.
-Using default similarity implementation: org.apache.lucene.search.DefaultSimilarity
-Hibernate Search event listeners deactivated
-Hibernate Search dirty checks enabled
-Setting dialect [org.hibernate.dialect.MySQLDialect]
-Setting dialect [org.hibernate.dialect.MySQLDialect]
-Static SQL for entity: com.gamecard.dto.UserInfo
- Version select: select userId from user_info where userId =?
- Snapshot select: select userinfo_.userId, userinfo_.android_version as android2_1_, userinfo_.manufacturer as manufact3_1_ from user_info userinfo_ where userinfo_.userId=?
- Insert 0: insert into user_info (android_version, manufacturer, userId) values (?, ?, ?)
- Update 0: update user_info set android_version=?, manufacturer=? where userId=?
- Delete 0: delete from user_info where userId=?
-Static SQL for entity: com.gamecard.dto.PlaystoreDto
- Version select: select id from gameplaystore where id =?
- Snapshot select: select playstored_.id, playstored_.Size as Size0_, playstored_.category as category0_, playstored_.description as descript4_0_, playstored_.gamedate as gamedate0_, playstored_.gametittle as gametittle0_, playstored_.iconLink as iconLink0_, playstored_.isgame as isgame0_, playstored_.jsonImageVedioLink as jsonImag9_0_, playstored_.packagename as package10_0_, playstored_.version as version0_ from gameplaystore playstored_ where playstored_.id=?
- Insert 0: insert into gameplaystore (Size, category, description, gamedate, gametittle, iconLink, isgame, jsonImageVedioLink, packagename, version, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
- Update 0: update gameplaystore set Size=?, category=?, description=?, gamedate=?, gametittle=?, iconLink=?, isgame=?, jsonImageVedioLink=?, packagename=?, version=? where id=?
- Delete 0: delete from gameplaystore where id=?
- Identity insert: insert into gameplaystore (Size, category, description, gamedate, gametittle, iconLink, isgame, jsonImageVedioLink, packagename, version) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-Static SQL for collection: com.gamecard.dto.UserInfo.playstoreDtos
- Row insert: insert into user_info_gameplaystore (user_info_userId, playstoreDtos_id) values (?, ?)
- Row update: update user_info_gameplaystore set playstoreDtos_id=? where user_info_userId=? and playstoreDtos_id=?
- Row delete: delete from user_info_gameplaystore where user_info_userId=? and playstoreDtos_id=?
- One-shot delete: delete from user_info_gameplaystore where user_info_userId=?
-Static select for entity com.gamecard.dto.UserInfo [NONE]: select userinfo0_.userId as userId1_0_, userinfo0_.android_version as android2_1_0_, userinfo0_.manufacturer as manufact3_1_0_ from user_info userinfo0_ where userinfo0_.userId=?
-Static select for entity com.gamecard.dto.UserInfo [READ]: select userinfo0_.userId as userId1_0_, userinfo0_.android_version as android2_1_0_, userinfo0_.manufacturer as manufact3_1_0_ from user_info userinfo0_ where userinfo0_.userId=?
-Static select for entity com.gamecard.dto.UserInfo [UPGRADE]: select userinfo0_.userId as userId1_0_, userinfo0_.android_version as android2_1_0_, userinfo0_.manufacturer as manufact3_1_0_ from user_info userinfo0_ where userinfo0_.userId=? for update
-Static select for entity com.gamecard.dto.UserInfo [UPGRADE_NOWAIT]: select userinfo0_.userId as userId1_0_, userinfo0_.android_version as android2_1_0_, userinfo0_.manufacturer as manufact3_1_0_ from user_info userinfo0_ where userinfo0_.userId=? for update
-Static select for entity com.gamecard.dto.UserInfo [FORCE]: select userinfo0_.userId as userId1_0_, userinfo0_.android_version as android2_1_0_, userinfo0_.manufacturer as manufact3_1_0_ from user_info userinfo0_ where userinfo0_.userId=? for update
-Static select for entity com.gamecard.dto.UserInfo [PESSIMISTIC_READ]: select userinfo0_.userId as userId1_0_, userinfo0_.android_version as android2_1_0_, userinfo0_.manufacturer as manufact3_1_0_ from user_info userinfo0_ where userinfo0_.userId=? lock in share mode
-Static select for entity com.gamecard.dto.UserInfo [PESSIMISTIC_WRITE]: select userinfo0_.userId as userId1_0_, userinfo0_.android_version as android2_1_0_, userinfo0_.manufacturer as manufact3_1_0_ from user_info userinfo0_ where userinfo0_.userId=? for update
-Static select for entity com.gamecard.dto.UserInfo [PESSIMISTIC_FORCE_INCREMENT]: select userinfo0_.userId as userId1_0_, userinfo0_.android_version as android2_1_0_, userinfo0_.manufacturer as manufact3_1_0_ from user_info userinfo0_ where userinfo0_.userId=? for update
-Static select for entity com.gamecard.dto.UserInfo [OPTIMISTIC]: select userinfo0_.userId as userId1_0_, userinfo0_.android_version as android2_1_0_, userinfo0_.manufacturer as manufact3_1_0_ from user_info userinfo0_ where userinfo0_.userId=?
-Static select for entity com.gamecard.dto.UserInfo [OPTIMISTIC_FORCE_INCREMENT]: select userinfo0_.userId as userId1_0_, userinfo0_.android_version as android2_1_0_, userinfo0_.manufacturer as manufact3_1_0_ from user_info userinfo0_ where userinfo0_.userId=?
-Static select for action ACTION_MERGE on entity com.gamecard.dto.UserInfo: select userinfo0_.userId as userId1_1_, userinfo0_.android_version as android2_1_1_, userinfo0_.manufacturer as manufact3_1_1_, playstored1_.user_info_userId as user1_1_3_, playstored2_.id as playstor2_3_, playstored2_.id as id0_0_, playstored2_.Size as Size0_0_, playstored2_.category as category0_0_, playstored2_.description as descript4_0_0_, playstored2_.gamedate as gamedate0_0_, playstored2_.gametittle as gametittle0_0_, playstored2_.iconLink as iconLink0_0_, playstored2_.isgame as isgame0_0_, playstored2_.jsonImageVedioLink as jsonImag9_0_0_, playstored2_.packagename as package10_0_0_, playstored2_.version as version0_0_ from user_info userinfo0_ left outer join user_info_gameplaystore playstored1_ on userinfo0_.userId=playstored1_.user_info_userId left outer join gameplaystore playstored2_ on playstored1_.playstoreDtos_id=playstored2_.id where userinfo0_.userId=?
-Static select for action ACTION_REFRESH on entity com.gamecard.dto.UserInfo: select userinfo0_.userId as userId1_1_, userinfo0_.android_version as android2_1_1_, userinfo0_.manufacturer as manufact3_1_1_, playstored1_.user_info_userId as user1_1_3_, playstored2_.id as playstor2_3_, playstored2_.id as id0_0_, playstored2_.Size as Size0_0_, playstored2_.category as category0_0_, playstored2_.description as descript4_0_0_, playstored2_.gamedate as gamedate0_0_, playstored2_.gametittle as gametittle0_0_, playstored2_.iconLink as iconLink0_0_, playstored2_.isgame as isgame0_0_, playstored2_.jsonImageVedioLink as jsonImag9_0_0_, playstored2_.packagename as package10_0_0_, playstored2_.version as version0_0_ from user_info userinfo0_ left outer join user_info_gameplaystore playstored1_ on userinfo0_.userId=playstored1_.user_info_userId left outer join gameplaystore playstored2_ on playstored1_.playstoreDtos_id=playstored2_.id where userinfo0_.userId=?
-Static select for entity com.gamecard.dto.PlaystoreDto [NONE]: select playstored0_.id as id0_0_, playstored0_.Size as Size0_0_, playstored0_.category as category0_0_, playstored0_.description as descript4_0_0_, playstored0_.gamedate as gamedate0_0_, playstored0_.gametittle as gametittle0_0_, playstored0_.iconLink as iconLink0_0_, playstored0_.isgame as isgame0_0_, playstored0_.jsonImageVedioLink as jsonImag9_0_0_, playstored0_.packagename as package10_0_0_, playstored0_.version as version0_0_ from gameplaystore playstored0_ where playstored0_.id=?
-Static select for entity com.gamecard.dto.PlaystoreDto [READ]: select playstored0_.id as id0_0_, playstored0_.Size as Size0_0_, playstored0_.category as category0_0_, playstored0_.description as descript4_0_0_, playstored0_.gamedate as gamedate0_0_, playstored0_.gametittle as gametittle0_0_, playstored0_.iconLink as iconLink0_0_, playstored0_.isgame as isgame0_0_, playstored0_.jsonImageVedioLink as jsonImag9_0_0_, playstored0_.packagename as package10_0_0_, playstored0_.version as version0_0_ from gameplaystore playstored0_ where playstored0_.id=?
-Static select for entity com.gamecard.dto.PlaystoreDto [UPGRADE]: select playstored0_.id as id0_0_, playstored0_.Size as Size0_0_, playstored0_.category as category0_0_, playstored0_.description as descript4_0_0_, playstored0_.gamedate as gamedate0_0_, playstored0_.gametittle as gametittle0_0_, playstored0_.iconLink as iconLink0_0_, playstored0_.isgame as isgame0_0_, playstored0_.jsonImageVedioLink as jsonImag9_0_0_, playstored0_.packagename as package10_0_0_, playstored0_.version as version0_0_ from gameplaystore playstored0_ where playstored0_.id=? for update
-Static select for entity com.gamecard.dto.PlaystoreDto [UPGRADE_NOWAIT]: select playstored0_.id as id0_0_, playstored0_.Size as Size0_0_, playstored0_.category as category0_0_, playstored0_.description as descript4_0_0_, playstored0_.gamedate as gamedate0_0_, playstored0_.gametittle as gametittle0_0_, playstored0_.iconLink as iconLink0_0_, playstored0_.isgame as isgame0_0_, playstored0_.jsonImageVedioLink as jsonImag9_0_0_, playstored0_.packagename as package10_0_0_, playstored0_.version as version0_0_ from gameplaystore playstored0_ where playstored0_.id=? for update
-Static select for entity com.gamecard.dto.PlaystoreDto [FORCE]: select playstored0_.id as id0_0_, playstored0_.Size as Size0_0_, playstored0_.category as category0_0_, playstored0_.description as descript4_0_0_, playstored0_.gamedate as gamedate0_0_, playstored0_.gametittle as gametittle0_0_, playstored0_.iconLink as iconLink0_0_, playstored0_.isgame as isgame0_0_, playstored0_.jsonImageVedioLink as jsonImag9_0_0_, playstored0_.packagename as package10_0_0_, playstored0_.version as version0_0_ from gameplaystore playstored0_ where playstored0_.id=? for update
-Static select for entity com.gamecard.dto.PlaystoreDto [PESSIMISTIC_READ]: select playstored0_.id as id0_0_, playstored0_.Size as Size0_0_, playstored0_.category as category0_0_, playstored0_.description as descript4_0_0_, playstored0_.gamedate as gamedate0_0_, playstored0_.gametittle as gametittle0_0_, playstored0_.iconLink as iconLink0_0_, playstored0_.isgame as isgame0_0_, playstored0_.jsonImageVedioLink as jsonImag9_0_0_, playstored0_.packagename as package10_0_0_, playstored0_.version as version0_0_ from gameplaystore playstored0_ where playstored0_.id=? lock in share mode
-Static select for entity com.gamecard.dto.PlaystoreDto [PESSIMISTIC_WRITE]: select playstored0_.id as id0_0_, playstored0_.Size as Size0_0_, playstored0_.category as category0_0_, playstored0_.description as descript4_0_0_, playstored0_.gamedate as gamedate0_0_, playstored0_.gametittle as gametittle0_0_, playstored0_.iconLink as iconLink0_0_, playstored0_.isgame as isgame0_0_, playstored0_.jsonImageVedioLink as jsonImag9_0_0_, playstored0_.packagename as package10_0_0_, playstored0_.version as version0_0_ from gameplaystore playstored0_ where playstored0_.id=? for update
-Static select for entity com.gamecard.dto.PlaystoreDto [PESSIMISTIC_FORCE_INCREMENT]: select playstored0_.id as id0_0_, playstored0_.Size as Size0_0_, playstored0_.category as category0_0_, playstored0_.description as descript4_0_0_, playstored0_.gamedate as gamedate0_0_, playstored0_.gametittle as gametittle0_0_, playstored0_.iconLink as iconLink0_0_, playstored0_.isgame as isgame0_0_, playstored0_.jsonImageVedioLink as jsonImag9_0_0_, playstored0_.packagename as package10_0_0_, playstored0_.version as version0_0_ from gameplaystore playstored0_ where playstored0_.id=? for update
-Static select for entity com.gamecard.dto.PlaystoreDto [OPTIMISTIC]: select playstored0_.id as id0_0_, playstored0_.Size as Size0_0_, playstored0_.category as category0_0_, playstored0_.description as descript4_0_0_, playstored0_.gamedate as gamedate0_0_, playstored0_.gametittle as gametittle0_0_, playstored0_.iconLink as iconLink0_0_, playstored0_.isgame as isgame0_0_, playstored0_.jsonImageVedioLink as jsonImag9_0_0_, playstored0_.packagename as package10_0_0_, playstored0_.version as version0_0_ from gameplaystore playstored0_ where playstored0_.id=?
-Static select for entity com.gamecard.dto.PlaystoreDto [OPTIMISTIC_FORCE_INCREMENT]: select playstored0_.id as id0_0_, playstored0_.Size as Size0_0_, playstored0_.category as category0_0_, playstored0_.description as descript4_0_0_, playstored0_.gamedate as gamedate0_0_, playstored0_.gametittle as gametittle0_0_, playstored0_.iconLink as iconLink0_0_, playstored0_.isgame as isgame0_0_, playstored0_.jsonImageVedioLink as jsonImag9_0_0_, playstored0_.packagename as package10_0_0_, playstored0_.version as version0_0_ from gameplaystore playstored0_ where playstored0_.id=?
-Static select for action ACTION_MERGE on entity com.gamecard.dto.PlaystoreDto: select playstored0_.id as id0_0_, playstored0_.Size as Size0_0_, playstored0_.category as category0_0_, playstored0_.description as descript4_0_0_, playstored0_.gamedate as gamedate0_0_, playstored0_.gametittle as gametittle0_0_, playstored0_.iconLink as iconLink0_0_, playstored0_.isgame as isgame0_0_, playstored0_.jsonImageVedioLink as jsonImag9_0_0_, playstored0_.packagename as package10_0_0_, playstored0_.version as version0_0_ from gameplaystore playstored0_ where playstored0_.id=?
-Static select for action ACTION_REFRESH on entity com.gamecard.dto.PlaystoreDto: select playstored0_.id as id0_0_, playstored0_.Size as Size0_0_, playstored0_.category as category0_0_, playstored0_.description as descript4_0_0_, playstored0_.gamedate as gamedate0_0_, playstored0_.gametittle as gametittle0_0_, playstored0_.iconLink as iconLink0_0_, playstored0_.isgame as isgame0_0_, playstored0_.jsonImageVedioLink as jsonImag9_0_0_, playstored0_.packagename as package10_0_0_, playstored0_.version as version0_0_ from gameplaystore playstored0_ where playstored0_.id=?
-Static select for collection com.gamecard.dto.UserInfo.playstoreDtos: select playstored0_.user_info_userId as user1_1_1_, playstored0_.playstoreDtos_id as playstor2_1_, playstored1_.id as id0_0_, playstored1_.Size as Size0_0_, playstored1_.category as category0_0_, playstored1_.description as descript4_0_0_, playstored1_.gamedate as gamedate0_0_, playstored1_.gametittle as gametittle0_0_, playstored1_.iconLink as iconLink0_0_, playstored1_.isgame as isgame0_0_, playstored1_.jsonImageVedioLink as jsonImag9_0_0_, playstored1_.packagename as package10_0_0_, playstored1_.version as version0_0_ from user_info_gameplaystore playstored0_ inner join gameplaystore playstored1_ on playstored0_.playstoreDtos_id=playstored1_.id where playstored0_.user_info_userId=?
-Initializing SessionFactoryRegistry : org.hibernate.internal.SessionFactoryRegistry@3559ab8a
-Registering SessionFactory: c2cedcea-775a-4647-8b14-76e8c73941dc (<unnamed>)
-Not binding SessionFactory to JNDI, no JNDI name configured
-Instantiated session factory
-Processing hbm.xml files
-Process annotated classes
-Processing fk mappings (*ToOne and JoinedSubclass)
-Processing extends queue
-Processing extends queue
-Processing collection mappings
-Processing native query and ResultSetMapping mappings
-Processing association property references
-Processing foreign key constraints
-Resolving reference to class: com.gamecard.dto.PlaystoreDto
-Resolving reference to class: com.gamecard.dto.UserInfo
-Setting dialect [org.hibernate.dialect.MySQLDialect]
-Setting dialect [org.hibernate.dialect.MySQLDialect]
-Processing hbm.xml files
-Process annotated classes
-Processing fk mappings (*ToOne and JoinedSubclass)
-Processing extends queue
-Processing extends queue
-Processing collection mappings
-Processing native query and ResultSetMapping mappings
-Processing association property references
-Processing foreign key constraints
-Resolving reference to class: com.gamecard.dto.PlaystoreDto
-Resolving reference to class: com.gamecard.dto.UserInfo
-Setting dialect [org.hibernate.dialect.MySQLDialect]
-Setting dialect [org.hibernate.dialect.MySQLDialect]
-Setting dialect [org.hibernate.dialect.MySQLDialect]
-Setting dialect [org.hibernate.dialect.MySQLDialect]
-HHH000227: Running hbm2ddl schema export
-Import file not found: /import.sql
-alter table user_info_gameplaystore drop foreign key FKF057399E139EC879
-HHH000389: Unsuccessful: alter table user_info_gameplaystore drop foreign key FKF057399E139EC879
-Can't DROP 'FKF057399E139EC879'; check that column/key exists
-alter table user_info_gameplaystore drop foreign key FKF057399E164C228A
-HHH000389: Unsuccessful: alter table user_info_gameplaystore drop foreign key FKF057399E164C228A
-Can't DROP 'FKF057399E164C228A'; check that column/key exists
-drop table if exists gameplaystore
-drop table if exists user_info
-drop table if exists user_info_gameplaystore
-create table gameplaystore (id integer not null auto_increment, Size varchar(255), category varchar(255), description longtext, gamedate varchar(255), gametittle varchar(255), iconLink varchar(255), isgame boolean, jsonImageVedioLink longtext, packagename varchar(255), version varchar(255), primary key (id))
-create table user_info (userId varchar(255) not null, android_version integer, manufacturer varchar(255), primary key (userId))
-create table user_info_gameplaystore (user_info_userId varchar(255) not null, playstoreDtos_id integer not null)
-alter table user_info_gameplaystore add index FKF057399E139EC879 (playstoreDtos_id), add constraint FKF057399E139EC879 foreign key (playstoreDtos_id) references gameplaystore (id)
-HHH000389: Unsuccessful: alter table user_info_gameplaystore add index FKF057399E139EC879 (playstoreDtos_id), add constraint FKF057399E139EC879 foreign key (playstoreDtos_id) references gameplaystore (id)
-Can't write; duplicate key in table '#sql-bea_2576'
-alter table user_info_gameplaystore add index FKF057399E164C228A (user_info_userId), add constraint FKF057399E164C228A foreign key (user_info_userId) references user_info (userId)
-HHH000389: Unsuccessful: alter table user_info_gameplaystore add index FKF057399E164C228A (user_info_userId), add constraint FKF057399E164C228A foreign key (user_info_userId) references user_info (userId)
-Can't write; duplicate key in table '#sql-bea_2576'
-HHH000230: Schema export complete
-Checking 0 named HQL queries
-Checking 0 named SQL queries
-Statistics initialized [enabled=false]
-Opened session at timestamp: 14740017488
-Adding type registration boolean -> org.hibernate.type.BooleanType@358d74e9
-Adding type registration boolean -> org.hibernate.type.BooleanType@358d74e9
-Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@358d74e9
-Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@427036f7
-Adding type registration true_false -> org.hibernate.type.TrueFalseType@59d82bed
-Adding type registration yes_no -> org.hibernate.type.YesNoType@7dc891ed
-Adding type registration byte -> org.hibernate.type.ByteType@33b273
-Adding type registration byte -> org.hibernate.type.ByteType@33b273
-Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@33b273
-Adding type registration character -> org.hibernate.type.CharacterType@54a75543
-Adding type registration char -> org.hibernate.type.CharacterType@54a75543
-Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@54a75543
-Adding type registration short -> org.hibernate.type.ShortType@61b7f0a8
-Adding type registration short -> org.hibernate.type.ShortType@61b7f0a8
-Adding type registration java.lang.Short -> org.hibernate.type.ShortType@61b7f0a8
-Adding type registration integer -> org.hibernate.type.IntegerType@4f750c9a
-Adding type registration int -> org.hibernate.type.IntegerType@4f750c9a
-Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@4f750c9a
-Adding type registration long -> org.hibernate.type.LongType@66e141c4
-Adding type registration long -> org.hibernate.type.LongType@66e141c4
-Adding type registration java.lang.Long -> org.hibernate.type.LongType@66e141c4
-Adding type registration float -> org.hibernate.type.FloatType@6c58115a
-Adding type registration float -> org.hibernate.type.FloatType@6c58115a
-Adding type registration java.lang.Float -> org.hibernate.type.FloatType@6c58115a
-Adding type registration double -> org.hibernate.type.DoubleType@16fb856f
-Adding type registration double -> org.hibernate.type.DoubleType@16fb856f
-Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@16fb856f
-Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@50e889ab
-Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@50e889ab
-Adding type registration big_integer -> org.hibernate.type.BigIntegerType@36f29303
-Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@36f29303
-Adding type registration string -> org.hibernate.type.StringType@4888ecfc
-Adding type registration java.lang.String -> org.hibernate.type.StringType@4888ecfc
-Adding type registration url -> org.hibernate.type.UrlType@1b3a85f7
-Adding type registration java.net.URL -> org.hibernate.type.UrlType@1b3a85f7
-Adding type registration date -> org.hibernate.type.DateType@f131c34
-Adding type registration java.sql.Date -> org.hibernate.type.DateType@f131c34
-Adding type registration time -> org.hibernate.type.TimeType@33d22ca6
-Adding type registration java.sql.Time -> org.hibernate.type.TimeType@33d22ca6
-Adding type registration timestamp -> org.hibernate.type.TimestampType@360ee668
-Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@360ee668
-Adding type registration java.util.Date -> org.hibernate.type.TimestampType@360ee668
-Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@65d54738
-Adding type registration calendar -> org.hibernate.type.CalendarType@2f013331
-Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@2f013331
-Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@2f013331
-Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@164ce288
-Adding type registration locale -> org.hibernate.type.LocaleType@4d3587d7
-Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@4d3587d7
-Adding type registration currency -> org.hibernate.type.CurrencyType@329bab0f
-Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@329bab0f
-Adding type registration timezone -> org.hibernate.type.TimeZoneType@9e8e892
-Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@9e8e892
-Adding type registration class -> org.hibernate.type.ClassType@446a246
-Adding type registration java.lang.Class -> org.hibernate.type.ClassType@446a246
-Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@47d31362
-Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@47d31362
-Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@2caa7f4b
-Adding type registration pg-uuid -> org.hibernate.type.PostgresUUIDType@1518a0ff
-Adding type registration binary -> org.hibernate.type.BinaryType@164b754c
-Adding type registration byte[] -> org.hibernate.type.BinaryType@164b754c
-Adding type registration [B -> org.hibernate.type.BinaryType@164b754c
-Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@104c810b
-Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@104c810b
-Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@104c810b
-Adding type registration image -> org.hibernate.type.ImageType@74f82cf3
-Adding type registration characters -> org.hibernate.type.CharArrayType@5aea7311
-Adding type registration char[] -> org.hibernate.type.CharArrayType@5aea7311
-Adding type registration [C -> org.hibernate.type.CharArrayType@5aea7311
-Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@391be57
-Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@391be57
-Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@391be57
-Adding type registration text -> org.hibernate.type.TextType@5d83ad04
-Adding type registration blob -> org.hibernate.type.BlobType@b0c7452
-Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@b0c7452
-Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@73102c34
-Adding type registration clob -> org.hibernate.type.ClobType@23a0446
-Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@23a0446
-Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@75079549
-Adding type registration serializable -> org.hibernate.type.SerializableType@7761f1fe
-Adding type registration object -> org.hibernate.type.ObjectType@6052e71
-Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@6052e71
-Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@103a5f37
-Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@56b076e0
-Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@5b6ab83d
-Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@434388cb
-Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@142a473
-Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@5490c5cd
-Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@5ab53432
-Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@5effa7f
-Registering IdentifierGenerator strategy [uuid2] -> [org.hibernate.id.UUIDGenerator]
-Registering IdentifierGenerator strategy [guid] -> [org.hibernate.id.GUIDGenerator]
-Registering IdentifierGenerator strategy [uuid] -> [org.hibernate.id.UUIDHexGenerator]
-Registering IdentifierGenerator strategy [uuid.hex] -> [org.hibernate.id.UUIDHexGenerator]
-Registering IdentifierGenerator strategy [hilo] -> [org.hibernate.id.TableHiLoGenerator]
-Registering IdentifierGenerator strategy [assigned] -> [org.hibernate.id.Assigned]
-Registering IdentifierGenerator strategy [identity] -> [org.hibernate.id.IdentityGenerator]
-Registering IdentifierGenerator strategy [select] -> [org.hibernate.id.SelectGenerator]
-Registering IdentifierGenerator strategy [sequence] -> [org.hibernate.id.SequenceGenerator]
-Registering IdentifierGenerator strategy [seqhilo] -> [org.hibernate.id.SequenceHiLoGenerator]
-Registering IdentifierGenerator strategy [increment] -> [org.hibernate.id.IncrementGenerator]
-Registering IdentifierGenerator strategy [foreign] -> [org.hibernate.id.ForeignGenerator]
-Registering IdentifierGenerator strategy [sequence-identity] -> [org.hibernate.id.SequenceIdentityGenerator]
-Registering IdentifierGenerator strategy [enhanced-sequence] -> [org.hibernate.id.enhanced.SequenceStyleGenerator]
-Registering IdentifierGenerator strategy [enhanced-table] -> [org.hibernate.id.enhanced.TableGenerator]
-HHH000044: Configuring from URL: file:/home/bridgeit/springPractice/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/GameCardProgram/WEB-INF/classes/app.cfg.xml
-Trying to resolve system-id [http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd]
-HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
-Attempting to resolve on classpath under org/hibernate/
-Located [http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd] in classpath
-hibernate.connection.driver_class=com.mysql.jdbc.Driver
-hibernate.connection.username=bridgelabz_mysql
-hibernate.connection.password=bridgelabz2016
-hibernate.connection.url=jdbc:mysql://52.66.119.239:3306/Game_Center
-hibernate.dialect=org.hibernate.dialect.MySQLDialect
-hibernate.hbm2ddl.auto=create
-hibernate.show_sql=true
-Session-factory config [null] named class [com.gamecard.dto.PlaystoreDto] for mapping
-Session-factory config [null] named class [com.gamecard.dto.UserInfo] for mapping
-HHH000041: Configured SessionFactory: null
-Properties: {java.vendor=Oracle Corporation, sun.java.launcher=SUN_STANDARD, catalina.base=/home/bridgeit/springPractice/.metadata/.plugins/org.eclipse.wst.server.core/tmp0, hibernate.connection.url=jdbc:mysql://52.66.119.239:3306/Game_Center, sun.management.compiler=HotSpot 64-Bit Tiered Compilers, catalina.useNaming=true, os.name=Linux, sun.boot.class.path=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes, hibernate.current_session_context_class=org.springframework.orm.hibernate4.SpringSessionContext, sun.desktop=gnome, java.vm.specification.vendor=Oracle Corporation, java.runtime.version=1.8.0_91-8u91-b14-3ubuntu1~16.04.1-b14, user.name=bridgeit, shared.loader=, tomcat.util.buf.StringCache.byte.enabled=true, user.language=en, java.naming.factory.initial=org.apache.naming.java.javaURLContextFactory, sun.boot.library.path=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64, java.version=1.8.0_91, user.timezone=Asia/Kolkata, sun.arch.data.model=64, java.endorsed.dirs=/home/bridgeit/spring/apache-tomcat-7.0.69/endorsed, sun.cpu.isalist=, sun.jnu.encoding=UTF-8, file.encoding.pkg=sun.io, package.access=sun.,org.apache.catalina.,org.apache.coyote.,org.apache.jasper.,org.apache.naming.resources.,org.apache.tomcat., file.separator=/, java.specification.name=Java Platform API Specification, java.class.version=52.0, user.country=IN, java.home=/usr/lib/jvm/java-8-openjdk-amd64/jre, java.vm.info=mixed mode, os.version=4.4.0-34-generic, path.separator=:, java.vm.version=25.91-b14, hibernate.connection.password=bridgelabz2016, jboss.i18n.generate-proxies=true, java.awt.printerjob=sun.print.PSPrinterJob, sun.io.unicode.encoding=UnicodeLittle, tomcat.util.scan.DefaultJarScanner.jarsToSkip=bootstrap.jar,commons-daemon.jar,tomcat-juli.jar,annotations-api.jar,el-api.jar,jsp-api.jar,servlet-api.jar,websocket-api.jar,catalina.jar,catalina-ant.jar,catalina-ha.jar,catalina-tribes.jar,jasper.jar,jasper-el.jar,ecj-*.jar,tomcat-api.jar,tomcat-util.jar,tomcat-coyote.jar,tomcat-dbcp.jar,tomcat-jni.jar,tomcat-spdy.jar,tomcat-i18n-en.jar,tomcat-i18n-es.jar,tomcat-i18n-fr.jar,tomcat-i18n-ja.jar,tomcat-juli-adapters.jar,catalina-jmx-remote.jar,catalina-ws.jar,tomcat-jdbc.jar,tools.jar,commons-beanutils*.jar,commons-codec*.jar,commons-collections*.jar,commons-dbcp*.jar,commons-digester*.jar,commons-fileupload*.jar,commons-httpclient*.jar,commons-io*.jar,commons-lang*.jar,commons-logging*.jar,commons-math*.jar,commons-pool*.jar,jstl.jar,taglibs-standard-spec-*.jar,geronimo-spec-jaxrpc*.jar,wsdl4j*.jar,ant.jar,ant-junit*.jar,aspectj*.jar,jmx.jar,h2*.jar,hibernate*.jar,httpclient*.jar,jmx-tools.jar,jta*.jar,log4j.jar,log4j-1*.jar,mail*.jar,slf4j*.jar,xercesImpl.jar,xmlParserAPIs.jar,xml-apis.jar,junit.jar,junit-*.jar,hamcrest*.jar,org.hamcrest*.jar,ant-launcher.jar,cobertura-*.jar,asm-*.jar,dom4j-*.jar,icu4j-*.jar,jaxen-*.jar,jdom-*.jar,jetty-*.jar,oro-*.jar,servlet-api-*.jar,tagsoup-*.jar,xmlParserAPIs-*.jar,xom-*.jar, awt.toolkit=sun.awt.X11.XToolkit, hibernate.connection.username=bridgelabz_mysql, package.definition=sun.,java.,org.apache.catalina.,org.apache.coyote.,org.apache.jasper.,org.apache.naming.,org.apache.tomcat., java.naming.factory.url.pkgs=org.apache.naming, user.home=/home/bridgeit, org.apache.catalina.startup.ContextConfig.jarsToSkip=, java.specification.vendor=Oracle Corporation, hibernate.hbm2ddl.auto=create, hibernate.classLoader.application=WebappClassLoader
-  context: /GameCard
-  delegate: false
-  repositories:
-    /WEB-INF/classes/
-----------> Parent Classloader:
-java.net.URLClassLoader@27716f4
-, java.library.path=/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib, java.vendor.url=http://java.oracle.com/, hibernate.connection.driver_class=com.mysql.jdbc.Driver, org.apache.catalina.startup.TldConfig.jarsToSkip=tomcat7-websocket.jar, java.vm.vendor=Oracle Corporation, hibernate.dialect=org.hibernate.dialect.MySQLDialect, common.loader=${catalina.base}/lib,${catalina.base}/lib/*.jar,${catalina.home}/lib,${catalina.home}/lib/*.jar, java.runtime.name=OpenJDK Runtime Environment, sun.java.command=org.apache.catalina.startup.Bootstrap start, java.class.path=/home/bridgeit/spring/apache-tomcat-7.0.69/bin/bootstrap.jar:/home/bridgeit/spring/apache-tomcat-7.0.69/bin/tomcat-juli.jar:/usr/lib/jvm/java-8-openjdk-amd64/lib/tools.jar, hibernate.bytecode.use_reflection_optimizer=false, java.vm.specification.name=Java Virtual Machine Specification, java.vm.specification.version=1.8, catalina.home=/home/bridgeit/spring/apache-tomcat-7.0.69, sun.cpu.endian=little, sun.os.patch.level=unknown, java.io.tmpdir=/tmp, java.vendor.url.bug=http://bugreport.sun.com/bugreport/, server.loader=, os.arch=amd64, java.awt.graphicsenv=sun.awt.X11GraphicsEnvironment, java.ext.dirs=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext:/usr/java/packages/lib/ext, user.dir=/home/bridgeit/jee-latest-released2/eclipse, line.separator=
-, wtp.deploy=/home/bridgeit/springPractice/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps, java.vm.name=OpenJDK 64-Bit Server VM, file.encoding=UTF-8, java.specification.version=1.8, hibernate.show_sql=true}
-Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
-Adding Integrator [org.hibernate.search.hcore.impl.HibernateSearchIntegrator].
-Adding Integrator [org.hibernate.search.hcore.impl.MassIndexerFactoryIntegrator].
-Preparing to build session factory with filters : {}
-Processing hbm.xml files
-Process annotated classes
-Binding entity from annotated class: com.gamecard.dto.PlaystoreDto
-Binding column: Ejb3DiscriminatorColumn{logicalColumnName'DTYPE', discriminatorTypeName='string'}
-No value specified for 'javax.persistence.sharedCache.mode'; using UNSPECIFIED
-Import with entity name PlaystoreDto
-Bind entity com.gamecard.dto.PlaystoreDto on table gameplaystore
-Binding column: Ejb3Column{table=org.hibernate.mapping.Table(gameplaystore), mappingColumn=id, insertable=true, updatable=true, unique=false}
-MetadataSourceProcessor property id with lazy=false
-building SimpleValue for id
-Building property id
-Binding column: Ejb3Column{table=org.hibernate.mapping.Table(gameplaystore), mappingColumn=Size, insertable=true, updatable=true, unique=false}
-MetadataSourceProcessor property Size with lazy=false
-building SimpleValue for Size
-Building property Size
-Binding column: Ejb3Column{table=org.hibernate.mapping.Table(gameplaystore), mappingColumn=category, insertable=true, updatable=true, unique=false}
-MetadataSourceProcessor property category with lazy=false
-building SimpleValue for category
-Building property category
-Binding column: Ejb3Column{table=org.hibernate.mapping.Table(gameplaystore), mappingColumn=description, insertable=true, updatable=true, unique=false}
-MetadataSourceProcessor property description with lazy=false
-building SimpleValue for description
-Building property description
-Binding column: Ejb3Column{table=org.hibernate.mapping.Table(gameplaystore), mappingColumn=gamedate, insertable=true, updatable=true, unique=false}
-MetadataSourceProcessor property gamedate with lazy=false
-building SimpleValue for gamedate
-Building property gamedate
-Binding column: Ejb3Column{table=org.hibernate.mapping.Table(gameplaystore), mappingColumn=gametittle, insertable=true, updatable=true, unique=false}
-MetadataSourceProcessor property gametittle with lazy=false
-building SimpleValue for gametittle
-Building property gametittle
-Binding column: Ejb3Column{table=org.hibernate.mapping.Table(gameplaystore), mappingColumn=iconLink, insertable=true, updatable=true, unique=false}
-MetadataSourceProcessor property iconLink with lazy=false
-building SimpleValue for iconLink
-Building property iconLink
-Binding column: Ejb3Column{table=org.hibernate.mapping.Table(gameplaystore), mappingColumn=isgame, insertable=true, updatable=true, unique=false}
-MetadataSourceProcessor property isgame with lazy=false
-building SimpleValue for isgame
-Building property isgame
-Binding column: Ejb3Column{table=org.hibernate.mapping.Table(gameplaystore), mappingColumn=jsonImageVedioLink, insertable=true, updatable=true, unique=false}
-MetadataSourceProcessor property jsonImageVedioLink with lazy=false
-building SimpleValue for jsonImageVedioLink
-Building property jsonImageVedioLink
-Binding column: Ejb3Column{table=org.hibernate.mapping.Table(gameplaystore), mappingColumn=packagename, insertable=true, updatable=true, unique=false}
-MetadataSourceProcessor property packagename with lazy=false
-building SimpleValue for packagename
-Building property packagename
-Binding column: Ejb3Column{table=org.hibernate.mapping.Table(gameplaystore), mappingColumn=version, insertable=true, updatable=true, unique=false}
-MetadataSourceProcessor property version with lazy=false
-building SimpleValue for version
-Building property version
-Binding entity from annotated class: com.gamecard.dto.UserInfo
-Binding column: Ejb3DiscriminatorColumn{logicalColumnName'DTYPE', discriminatorTypeName='string'}
-No value specified for 'javax.persistence.sharedCache.mode'; using UNSPECIFIED
-Import with entity name UserInfo
-Bind entity com.gamecard.dto.UserInfo on table user_info
-Binding column: Ejb3Column{table=org.hibernate.mapping.Table(user_info), mappingColumn=userId, insertable=true, updatable=true, unique=false}
-MetadataSourceProcessor property userId with lazy=false
-building SimpleValue for userId
-Building property userId
-Binding column: Ejb3Column{table=org.hibernate.mapping.Table(user_info), mappingColumn=android_version, insertable=true, updatable=true, unique=false}
-MetadataSourceProcessor property androidVersion with lazy=false
-building SimpleValue for androidVersion
-Building property androidVersion
-Binding column: Ejb3Column{table=org.hibernate.mapping.Table(user_info), mappingColumn=manufacturer, insertable=true, updatable=true, unique=false}
-MetadataSourceProcessor property manufacturer with lazy=false
-building SimpleValue for manufacturer
-Building property manufacturer
-Binding column: Ejb3Column{table=org.hibernate.mapping.Table(user_info), mappingColumn=null, insertable=true, updatable=true, unique=false}
-Binding column: Ejb3Column{table=org.hibernate.mapping.Table(user_info), mappingColumn=element, insertable=true, updatable=true, unique=false}
-Binding column: Ejb3Column{table=org.hibernate.mapping.Table(user_info), mappingColumn=playstoreDtos_KEY, insertable=true, updatable=true, unique=false}
-Binding column: Ejb3JoinColumn{logicalColumnName='playstoreDtos_KEY', referencedColumn='null', mappedBy='null'}
-Binding column: Ejb3JoinColumn{logicalColumnName='null', referencedColumn='null', mappedBy=''}
-Binding column: Ejb3JoinColumn{logicalColumnName='null', referencedColumn='null', mappedBy=''}
-Collection role: com.gamecard.dto.UserInfo.playstoreDtos
-Building property playstoreDtos
-Setting SimpleValue typeName for id
-Setting SimpleValue typeName for Size
-Setting SimpleValue typeName for category
-Setting SimpleValue typeName for description
-Setting SimpleValue typeName for gamedate
-Setting SimpleValue typeName for gametittle
-Setting SimpleValue typeName for iconLink
-Setting SimpleValue typeName for isgame
-Setting SimpleValue typeName for jsonImageVedioLink
-Setting SimpleValue typeName for packagename
-Setting SimpleValue typeName for version
-Setting SimpleValue typeName for userId
-Setting SimpleValue typeName for androidVersion
-Setting SimpleValue typeName for manufacturer
-Processing fk mappings (*ToOne and JoinedSubclass)
-Processing extends queue
-Processing extends queue
-Processing collection mappings
-Second pass for collection: com.gamecard.dto.UserInfo.playstoreDtos
-Binding as ManyToMany: com.gamecard.dto.UserInfo.playstoreDtos
-Mapped collection key: user_info_userId, element: playstoreDtos_id
-Processing native query and ResultSetMapping mappings
-Processing association property references
-Processing foreign key constraints
-Resolving reference to class: com.gamecard.dto.PlaystoreDto
-Resolving reference to class: com.gamecard.dto.UserInfo
-HHH000402: Using Hibernate built-in connection pool (not for production use!)
-HHH000115: Hibernate connection pool size: 20
-HHH000006: Autocommit mode: false
-HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://52.66.119.239:3306/Game_Center]
-HHH000046: Connection properties: {user=bridgelabz_mysql, password=bridgelabz2016}
-Opening new JDBC connection
-Created connection to: jdbc:mysql://52.66.119.239:3306/Game_Center, Isolation Level: 4
-Database ->
-       name : MySQL
-    version : 5.6.27-log
-      major : 5
-      minor : 6
-Driver ->
-       name : MySQL Connector Java
-    version : mysql-connector-java-5.1.30 ( Revision: alexander.soklakov@oracle.com-20140310090514-8xt1yoht5ksg2e7c )
-      major : 5
-      minor : 1
-JDBC version : 4.0
-HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
-Automatic flush during beforeCompletion(): disabled
-Automatic session close at end of transaction: disabled
-JDBC batch size: 15
-JDBC batch updates for versioned data: disabled
-Scrollable result sets: enabled
-Wrap result sets: disabled
-JDBC3 getGeneratedKeys(): enabled
-Connection release mode: auto
-HHH000399: Using default transaction strategy (direct JDBC transactions)
-Maximum outer join fetch depth: 2
-Default batch fetch size: 1
-Generate SQL with comments: disabled
-Order SQL updates by primary key: disabled
-Order SQL inserts for batching: disabled
-Query translator: org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory
-HHH000397: Using ASTQueryTranslatorFactory
-Query language substitutions: {}
-JPA-QL strict compliance: disabled
-Second-level cache: enabled
-Query cache: disabled
-Cache region factory : org.hibernate.cache.internal.NoCachingRegionFactory
-org.hibernate.cache.internal.NoCachingRegionFactory did not provide constructor accepting java.util.Properties; attempting no-arg constructor.
-Optimize cache for minimal puts: disabled
-Structured second-level cache entries: disabled
-Statistics: disabled
-Deleted entity synthetic identifier rollback: disabled
-Default entity-mode: pojo
-Named query checking : enabled
-Check Nullability in Core (should be disabled when Bean Validation is on): enabled
-multi-tenancy strategy : NONE
-Building session factory
-Session factory constructed with filter configurations : {}
-Instantiating session factory with properties: {java.vendor=Oracle Corporation, sun.java.launcher=SUN_STANDARD, catalina.base=/home/bridgeit/springPractice/.metadata/.plugins/org.eclipse.wst.server.core/tmp0, hibernate.connection.url=jdbc:mysql://52.66.119.239:3306/Game_Center, sun.management.compiler=HotSpot 64-Bit Tiered Compilers, catalina.useNaming=true, os.name=Linux, sun.boot.class.path=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes, hibernate.current_session_context_class=org.springframework.orm.hibernate4.SpringSessionContext, sun.desktop=gnome, java.vm.specification.vendor=Oracle Corporation, java.runtime.version=1.8.0_91-8u91-b14-3ubuntu1~16.04.1-b14, user.name=bridgeit, shared.loader=, tomcat.util.buf.StringCache.byte.enabled=true, user.language=en, java.naming.factory.initial=org.apache.naming.java.javaURLContextFactory, sun.boot.library.path=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64, java.version=1.8.0_91, user.timezone=Asia/Kolkata, sun.arch.data.model=64, java.endorsed.dirs=/home/bridgeit/spring/apache-tomcat-7.0.69/endorsed, sun.cpu.isalist=, sun.jnu.encoding=UTF-8, file.encoding.pkg=sun.io, package.access=sun.,org.apache.catalina.,org.apache.coyote.,org.apache.jasper.,org.apache.naming.resources.,org.apache.tomcat., file.separator=/, java.specification.name=Java Platform API Specification, java.class.version=52.0, user.country=IN, java.home=/usr/lib/jvm/java-8-openjdk-amd64/jre, java.vm.info=mixed mode, os.version=4.4.0-34-generic, path.separator=:, java.vm.version=25.91-b14, hibernate.connection.password=bridgelabz2016, jboss.i18n.generate-proxies=true, java.awt.printerjob=sun.print.PSPrinterJob, sun.io.unicode.encoding=UnicodeLittle, tomcat.util.scan.DefaultJarScanner.jarsToSkip=bootstrap.jar,commons-daemon.jar,tomcat-juli.jar,annotations-api.jar,el-api.jar,jsp-api.jar,servlet-api.jar,websocket-api.jar,catalina.jar,catalina-ant.jar,catalina-ha.jar,catalina-tribes.jar,jasper.jar,jasper-el.jar,ecj-*.jar,tomcat-api.jar,tomcat-util.jar,tomcat-coyote.jar,tomcat-dbcp.jar,tomcat-jni.jar,tomcat-spdy.jar,tomcat-i18n-en.jar,tomcat-i18n-es.jar,tomcat-i18n-fr.jar,tomcat-i18n-ja.jar,tomcat-juli-adapters.jar,catalina-jmx-remote.jar,catalina-ws.jar,tomcat-jdbc.jar,tools.jar,commons-beanutils*.jar,commons-codec*.jar,commons-collections*.jar,commons-dbcp*.jar,commons-digester*.jar,commons-fileupload*.jar,commons-httpclient*.jar,commons-io*.jar,commons-lang*.jar,commons-logging*.jar,commons-math*.jar,commons-pool*.jar,jstl.jar,taglibs-standard-spec-*.jar,geronimo-spec-jaxrpc*.jar,wsdl4j*.jar,ant.jar,ant-junit*.jar,aspectj*.jar,jmx.jar,h2*.jar,hibernate*.jar,httpclient*.jar,jmx-tools.jar,jta*.jar,log4j.jar,log4j-1*.jar,mail*.jar,slf4j*.jar,xercesImpl.jar,xmlParserAPIs.jar,xml-apis.jar,junit.jar,junit-*.jar,hamcrest*.jar,org.hamcrest*.jar,ant-launcher.jar,cobertura-*.jar,asm-*.jar,dom4j-*.jar,icu4j-*.jar,jaxen-*.jar,jdom-*.jar,jetty-*.jar,oro-*.jar,servlet-api-*.jar,tagsoup-*.jar,xmlParserAPIs-*.jar,xom-*.jar, awt.toolkit=sun.awt.X11.XToolkit, hibernate.connection.username=bridgelabz_mysql, package.definition=sun.,java.,org.apache.catalina.,org.apache.coyote.,org.apache.jasper.,org.apache.naming.,org.apache.tomcat., java.naming.factory.url.pkgs=org.apache.naming, user.home=/home/bridgeit, org.apache.catalina.startup.ContextConfig.jarsToSkip=, java.specification.vendor=Oracle Corporation, hibernate.hbm2ddl.auto=create, hibernate.classLoader.application=WebappClassLoader
-  context: /GameCard
-  delegate: false
-  repositories:
-    /WEB-INF/classes/
-----------> Parent Classloader:
-java.net.URLClassLoader@27716f4
-, java.library.path=/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib, java.vendor.url=http://java.oracle.com/, hibernate.connection.driver_class=com.mysql.jdbc.Driver, org.apache.catalina.startup.TldConfig.jarsToSkip=tomcat7-websocket.jar, java.vm.vendor=Oracle Corporation, hibernate.dialect=org.hibernate.dialect.MySQLDialect, common.loader=/home/bridgeit/springPractice/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/lib,/home/bridgeit/springPractice/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/lib/*.jar,/home/bridgeit/spring/apache-tomcat-7.0.69/lib,/home/bridgeit/spring/apache-tomcat-7.0.69/lib/*.jar, java.runtime.name=OpenJDK Runtime Environment, sun.java.command=org.apache.catalina.startup.Bootstrap start, java.class.path=/home/bridgeit/spring/apache-tomcat-7.0.69/bin/bootstrap.jar:/home/bridgeit/spring/apache-tomcat-7.0.69/bin/tomcat-juli.jar:/usr/lib/jvm/java-8-openjdk-amd64/lib/tools.jar, hibernate.bytecode.use_reflection_optimizer=false, java.vm.specification.name=Java Virtual Machine Specification, java.vm.specification.version=1.8, catalina.home=/home/bridgeit/spring/apache-tomcat-7.0.69, sun.cpu.endian=little, sun.os.patch.level=unknown, java.io.tmpdir=/tmp, java.vendor.url.bug=http://bugreport.sun.com/bugreport/, server.loader=, os.arch=amd64, java.awt.graphicsenv=sun.awt.X11GraphicsEnvironment, java.ext.dirs=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext:/usr/java/packages/lib/ext, user.dir=/home/bridgeit/jee-latest-released2/eclipse, line.separator=
-, java.vm.name=OpenJDK 64-Bit Server VM, wtp.deploy=/home/bridgeit/springPractice/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps, file.encoding=UTF-8, java.specification.version=1.8, hibernate.show_sql=true}
-HSEARCH000075: Configuration setting hibernate.search.lucene_version was not specified, using LUCENE_CURRENT.
-Using default similarity implementation: org.apache.lucene.search.DefaultSimilarity
-Hibernate Search event listeners deactivated
-Hibernate Search dirty checks enabled
-Setting dialect [org.hibernate.dialect.MySQLDialect]
-Setting dialect [org.hibernate.dialect.MySQLDialect]
-Static SQL for entity: com.gamecard.dto.UserInfo
- Version select: select userId from user_info where userId =?
- Snapshot select: select userinfo_.userId, userinfo_.android_version as android2_6_, userinfo_.manufacturer as manufact3_6_ from user_info userinfo_ where userinfo_.userId=?
- Insert 0: insert into user_info (android_version, manufacturer, userId) values (?, ?, ?)
- Update 0: update user_info set android_version=?, manufacturer=? where userId=?
- Delete 0: delete from user_info where userId=?
-Static SQL for entity: com.gamecard.dto.PlaystoreDto
- Version select: select id from gameplaystore where id =?
- Snapshot select: select playstored_.id, playstored_.Size as Size5_, playstored_.category as category5_, playstored_.description as descript4_5_, playstored_.gamedate as gamedate5_, playstored_.gametittle as gametittle5_, playstored_.iconLink as iconLink5_, playstored_.isgame as isgame5_, playstored_.jsonImageVedioLink as jsonImag9_5_, playstored_.packagename as package10_5_, playstored_.version as version5_ from gameplaystore playstored_ where playstored_.id=?
- Insert 0: insert into gameplaystore (Size, category, description, gamedate, gametittle, iconLink, isgame, jsonImageVedioLink, packagename, version, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
- Update 0: update gameplaystore set Size=?, category=?, description=?, gamedate=?, gametittle=?, iconLink=?, isgame=?, jsonImageVedioLink=?, packagename=?, version=? where id=?
- Delete 0: delete from gameplaystore where id=?
- Identity insert: insert into gameplaystore (Size, category, description, gamedate, gametittle, iconLink, isgame, jsonImageVedioLink, packagename, version) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-Static SQL for collection: com.gamecard.dto.UserInfo.playstoreDtos
- Row insert: insert into user_info_gameplaystore (user_info_userId, playstoreDtos_id) values (?, ?)
- Row update: update user_info_gameplaystore set playstoreDtos_id=? where user_info_userId=? and playstoreDtos_id=?
- Row delete: delete from user_info_gameplaystore where user_info_userId=? and playstoreDtos_id=?
- One-shot delete: delete from user_info_gameplaystore where user_info_userId=?
-Static select for entity com.gamecard.dto.UserInfo [NONE]: select userinfo0_.userId as userId6_0_, userinfo0_.android_version as android2_6_0_, userinfo0_.manufacturer as manufact3_6_0_ from user_info userinfo0_ where userinfo0_.userId=?
-Static select for entity com.gamecard.dto.UserInfo [READ]: select userinfo0_.userId as userId6_0_, userinfo0_.android_version as android2_6_0_, userinfo0_.manufacturer as manufact3_6_0_ from user_info userinfo0_ where userinfo0_.userId=?
-Static select for entity com.gamecard.dto.UserInfo [UPGRADE]: select userinfo0_.userId as userId6_0_, userinfo0_.android_version as android2_6_0_, userinfo0_.manufacturer as manufact3_6_0_ from user_info userinfo0_ where userinfo0_.userId=? for update
-Static select for entity com.gamecard.dto.UserInfo [UPGRADE_NOWAIT]: select userinfo0_.userId as userId6_0_, userinfo0_.android_version as android2_6_0_, userinfo0_.manufacturer as manufact3_6_0_ from user_info userinfo0_ where userinfo0_.userId=? for update
-Static select for entity com.gamecard.dto.UserInfo [FORCE]: select userinfo0_.userId as userId6_0_, userinfo0_.android_version as android2_6_0_, userinfo0_.manufacturer as manufact3_6_0_ from user_info userinfo0_ where userinfo0_.userId=? for update
-Static select for entity com.gamecard.dto.UserInfo [PESSIMISTIC_READ]: select userinfo0_.userId as userId6_0_, userinfo0_.android_version as android2_6_0_, userinfo0_.manufacturer as manufact3_6_0_ from user_info userinfo0_ where userinfo0_.userId=? lock in share mode
-Static select for entity com.gamecard.dto.UserInfo [PESSIMISTIC_WRITE]: select userinfo0_.userId as userId6_0_, userinfo0_.android_version as android2_6_0_, userinfo0_.manufacturer as manufact3_6_0_ from user_info userinfo0_ where userinfo0_.userId=? for update
-Static select for entity com.gamecard.dto.UserInfo [PESSIMISTIC_FORCE_INCREMENT]: select userinfo0_.userId as userId6_0_, userinfo0_.android_version as android2_6_0_, userinfo0_.manufacturer as manufact3_6_0_ from user_info userinfo0_ where userinfo0_.userId=? for update
-Static select for entity com.gamecard.dto.UserInfo [OPTIMISTIC]: select userinfo0_.userId as userId6_0_, userinfo0_.android_version as android2_6_0_, userinfo0_.manufacturer as manufact3_6_0_ from user_info userinfo0_ where userinfo0_.userId=?
-Static select for entity com.gamecard.dto.UserInfo [OPTIMISTIC_FORCE_INCREMENT]: select userinfo0_.userId as userId6_0_, userinfo0_.android_version as android2_6_0_, userinfo0_.manufacturer as manufact3_6_0_ from user_info userinfo0_ where userinfo0_.userId=?
-Static select for action ACTION_MERGE on entity com.gamecard.dto.UserInfo: select userinfo0_.userId as userId6_1_, userinfo0_.android_version as android2_6_1_, userinfo0_.manufacturer as manufact3_6_1_, playstored1_.user_info_userId as user1_6_3_, playstored2_.id as playstor2_3_, playstored2_.id as id5_0_, playstored2_.Size as Size5_0_, playstored2_.category as category5_0_, playstored2_.description as descript4_5_0_, playstored2_.gamedate as gamedate5_0_, playstored2_.gametittle as gametittle5_0_, playstored2_.iconLink as iconLink5_0_, playstored2_.isgame as isgame5_0_, playstored2_.jsonImageVedioLink as jsonImag9_5_0_, playstored2_.packagename as package10_5_0_, playstored2_.version as version5_0_ from user_info userinfo0_ left outer join user_info_gameplaystore playstored1_ on userinfo0_.userId=playstored1_.user_info_userId left outer join gameplaystore playstored2_ on playstored1_.playstoreDtos_id=playstored2_.id where userinfo0_.userId=?
-Static select for action ACTION_REFRESH on entity com.gamecard.dto.UserInfo: select userinfo0_.userId as userId6_1_, userinfo0_.android_version as android2_6_1_, userinfo0_.manufacturer as manufact3_6_1_, playstored1_.user_info_userId as user1_6_3_, playstored2_.id as playstor2_3_, playstored2_.id as id5_0_, playstored2_.Size as Size5_0_, playstored2_.category as category5_0_, playstored2_.description as descript4_5_0_, playstored2_.gamedate as gamedate5_0_, playstored2_.gametittle as gametittle5_0_, playstored2_.iconLink as iconLink5_0_, playstored2_.isgame as isgame5_0_, playstored2_.jsonImageVedioLink as jsonImag9_5_0_, playstored2_.packagename as package10_5_0_, playstored2_.version as version5_0_ from user_info userinfo0_ left outer join user_info_gameplaystore playstored1_ on userinfo0_.userId=playstored1_.user_info_userId left outer join gameplaystore playstored2_ on playstored1_.playstoreDtos_id=playstored2_.id where userinfo0_.userId=?
-Static select for entity com.gamecard.dto.PlaystoreDto [NONE]: select playstored0_.id as id5_0_, playstored0_.Size as Size5_0_, playstored0_.category as category5_0_, playstored0_.description as descript4_5_0_, playstored0_.gamedate as gamedate5_0_, playstored0_.gametittle as gametittle5_0_, playstored0_.iconLink as iconLink5_0_, playstored0_.isgame as isgame5_0_, playstored0_.jsonImageVedioLink as jsonImag9_5_0_, playstored0_.packagename as package10_5_0_, playstored0_.version as version5_0_ from gameplaystore playstored0_ where playstored0_.id=?
-Static select for entity com.gamecard.dto.PlaystoreDto [READ]: select playstored0_.id as id5_0_, playstored0_.Size as Size5_0_, playstored0_.category as category5_0_, playstored0_.description as descript4_5_0_, playstored0_.gamedate as gamedate5_0_, playstored0_.gametittle as gametittle5_0_, playstored0_.iconLink as iconLink5_0_, playstored0_.isgame as isgame5_0_, playstored0_.jsonImageVedioLink as jsonImag9_5_0_, playstored0_.packagename as package10_5_0_, playstored0_.version as version5_0_ from gameplaystore playstored0_ where playstored0_.id=?
-Static select for entity com.gamecard.dto.PlaystoreDto [UPGRADE]: select playstored0_.id as id5_0_, playstored0_.Size as Size5_0_, playstored0_.category as category5_0_, playstored0_.description as descript4_5_0_, playstored0_.gamedate as gamedate5_0_, playstored0_.gametittle as gametittle5_0_, playstored0_.iconLink as iconLink5_0_, playstored0_.isgame as isgame5_0_, playstored0_.jsonImageVedioLink as jsonImag9_5_0_, playstored0_.packagename as package10_5_0_, playstored0_.version as version5_0_ from gameplaystore playstored0_ where playstored0_.id=? for update
-Static select for entity com.gamecard.dto.PlaystoreDto [UPGRADE_NOWAIT]: select playstored0_.id as id5_0_, playstored0_.Size as Size5_0_, playstored0_.category as category5_0_, playstored0_.description as descript4_5_0_, playstored0_.gamedate as gamedate5_0_, playstored0_.gametittle as gametittle5_0_, playstored0_.iconLink as iconLink5_0_, playstored0_.isgame as isgame5_0_, playstored0_.jsonImageVedioLink as jsonImag9_5_0_, playstored0_.packagename as package10_5_0_, playstored0_.version as version5_0_ from gameplaystore playstored0_ where playstored0_.id=? for update
-Static select for entity com.gamecard.dto.PlaystoreDto [FORCE]: select playstored0_.id as id5_0_, playstored0_.Size as Size5_0_, playstored0_.category as category5_0_, playstored0_.description as descript4_5_0_, playstored0_.gamedate as gamedate5_0_, playstored0_.gametittle as gametittle5_0_, playstored0_.iconLink as iconLink5_0_, playstored0_.isgame as isgame5_0_, playstored0_.jsonImageVedioLink as jsonImag9_5_0_, playstored0_.packagename as package10_5_0_, playstored0_.version as version5_0_ from gameplaystore playstored0_ where playstored0_.id=? for update
-Static select for entity com.gamecard.dto.PlaystoreDto [PESSIMISTIC_READ]: select playstored0_.id as id5_0_, playstored0_.Size as Size5_0_, playstored0_.category as category5_0_, playstored0_.description as descript4_5_0_, playstored0_.gamedate as gamedate5_0_, playstored0_.gametittle as gametittle5_0_, playstored0_.iconLink as iconLink5_0_, playstored0_.isgame as isgame5_0_, playstored0_.jsonImageVedioLink as jsonImag9_5_0_, playstored0_.packagename as package10_5_0_, playstored0_.version as version5_0_ from gameplaystore playstored0_ where playstored0_.id=? lock in share mode
-Static select for entity com.gamecard.dto.PlaystoreDto [PESSIMISTIC_WRITE]: select playstored0_.id as id5_0_, playstored0_.Size as Size5_0_, playstored0_.category as category5_0_, playstored0_.description as descript4_5_0_, playstored0_.gamedate as gamedate5_0_, playstored0_.gametittle as gametittle5_0_, playstored0_.iconLink as iconLink5_0_, playstored0_.isgame as isgame5_0_, playstored0_.jsonImageVedioLink as jsonImag9_5_0_, playstored0_.packagename as package10_5_0_, playstored0_.version as version5_0_ from gameplaystore playstored0_ where playstored0_.id=? for update
-Static select for entity com.gamecard.dto.PlaystoreDto [PESSIMISTIC_FORCE_INCREMENT]: select playstored0_.id as id5_0_, playstored0_.Size as Size5_0_, playstored0_.category as category5_0_, playstored0_.description as descript4_5_0_, playstored0_.gamedate as gamedate5_0_, playstored0_.gametittle as gametittle5_0_, playstored0_.iconLink as iconLink5_0_, playstored0_.isgame as isgame5_0_, playstored0_.jsonImageVedioLink as jsonImag9_5_0_, playstored0_.packagename as package10_5_0_, playstored0_.version as version5_0_ from gameplaystore playstored0_ where playstored0_.id=? for update
-Static select for entity com.gamecard.dto.PlaystoreDto [OPTIMISTIC]: select playstored0_.id as id5_0_, playstored0_.Size as Size5_0_, playstored0_.category as category5_0_, playstored0_.description as descript4_5_0_, playstored0_.gamedate as gamedate5_0_, playstored0_.gametittle as gametittle5_0_, playstored0_.iconLink as iconLink5_0_, playstored0_.isgame as isgame5_0_, playstored0_.jsonImageVedioLink as jsonImag9_5_0_, playstored0_.packagename as package10_5_0_, playstored0_.version as version5_0_ from gameplaystore playstored0_ where playstored0_.id=?
-Static select for entity com.gamecard.dto.PlaystoreDto [OPTIMISTIC_FORCE_INCREMENT]: select playstored0_.id as id5_0_, playstored0_.Size as Size5_0_, playstored0_.category as category5_0_, playstored0_.description as descript4_5_0_, playstored0_.gamedate as gamedate5_0_, playstored0_.gametittle as gametittle5_0_, playstored0_.iconLink as iconLink5_0_, playstored0_.isgame as isgame5_0_, playstored0_.jsonImageVedioLink as jsonImag9_5_0_, playstored0_.packagename as package10_5_0_, playstored0_.version as version5_0_ from gameplaystore playstored0_ where playstored0_.id=?
-Static select for action ACTION_MERGE on entity com.gamecard.dto.PlaystoreDto: select playstored0_.id as id5_0_, playstored0_.Size as Size5_0_, playstored0_.category as category5_0_, playstored0_.description as descript4_5_0_, playstored0_.gamedate as gamedate5_0_, playstored0_.gametittle as gametittle5_0_, playstored0_.iconLink as iconLink5_0_, playstored0_.isgame as isgame5_0_, playstored0_.jsonImageVedioLink as jsonImag9_5_0_, playstored0_.packagename as package10_5_0_, playstored0_.version as version5_0_ from gameplaystore playstored0_ where playstored0_.id=?
-Static select for action ACTION_REFRESH on entity com.gamecard.dto.PlaystoreDto: select playstored0_.id as id5_0_, playstored0_.Size as Size5_0_, playstored0_.category as category5_0_, playstored0_.description as descript4_5_0_, playstored0_.gamedate as gamedate5_0_, playstored0_.gametittle as gametittle5_0_, playstored0_.iconLink as iconLink5_0_, playstored0_.isgame as isgame5_0_, playstored0_.jsonImageVedioLink as jsonImag9_5_0_, playstored0_.packagename as package10_5_0_, playstored0_.version as version5_0_ from gameplaystore playstored0_ where playstored0_.id=?
-Static select for collection com.gamecard.dto.UserInfo.playstoreDtos: select playstored0_.user_info_userId as user1_6_1_, playstored0_.playstoreDtos_id as playstor2_1_, playstored1_.id as id5_0_, playstored1_.Size as Size5_0_, playstored1_.category as category5_0_, playstored1_.description as descript4_5_0_, playstored1_.gamedate as gamedate5_0_, playstored1_.gametittle as gametittle5_0_, playstored1_.iconLink as iconLink5_0_, playstored1_.isgame as isgame5_0_, playstored1_.jsonImageVedioLink as jsonImag9_5_0_, playstored1_.packagename as package10_5_0_, playstored1_.version as version5_0_ from user_info_gameplaystore playstored0_ inner join gameplaystore playstored1_ on playstored0_.playstoreDtos_id=playstored1_.id where playstored0_.user_info_userId=?
-Registering SessionFactory: a179c5a5-b95f-4bca-8df0-98d5d9254ab1 (<unnamed>)
-Not binding SessionFactory to JNDI, no JNDI name configured
-Instantiated session factory
-Processing hbm.xml files
-Process annotated classes
-Processing fk mappings (*ToOne and JoinedSubclass)
-Processing extends queue
-Processing extends queue
-Processing collection mappings
-Processing native query and ResultSetMapping mappings
-Processing association property references
-Processing foreign key constraints
-Resolving reference to class: com.gamecard.dto.PlaystoreDto
-Resolving reference to class: com.gamecard.dto.UserInfo
-Setting dialect [org.hibernate.dialect.MySQLDialect]
-Setting dialect [org.hibernate.dialect.MySQLDialect]
-Processing hbm.xml files
-Process annotated classes
-Processing fk mappings (*ToOne and JoinedSubclass)
-Processing extends queue
-Processing extends queue
-Processing collection mappings
-Processing native query and ResultSetMapping mappings
-Processing association property references
-Processing foreign key constraints
-Resolving reference to class: com.gamecard.dto.PlaystoreDto
-Resolving reference to class: com.gamecard.dto.UserInfo
-Setting dialect [org.hibernate.dialect.MySQLDialect]
-Setting dialect [org.hibernate.dialect.MySQLDialect]
-Setting dialect [org.hibernate.dialect.MySQLDialect]
-Setting dialect [org.hibernate.dialect.MySQLDialect]
-HHH000227: Running hbm2ddl schema export
-Import file not found: /import.sql
-alter table user_info_gameplaystore drop foreign key FKF057399E139EC879
-HHH000389: Unsuccessful: alter table user_info_gameplaystore drop foreign key FKF057399E139EC879
-Can't DROP 'FKF057399E139EC879'; check that column/key exists
-alter table user_info_gameplaystore drop foreign key FKF057399E164C228A
-HHH000389: Unsuccessful: alter table user_info_gameplaystore drop foreign key FKF057399E164C228A
-Can't DROP 'FKF057399E164C228A'; check that column/key exists
-drop table if exists gameplaystore
-drop table if exists user_info
-drop table if exists user_info_gameplaystore
-create table gameplaystore (id integer not null auto_increment, Size varchar(255), category varchar(255), description longtext, gamedate varchar(255), gametittle varchar(255), iconLink varchar(255), isgame boolean, jsonImageVedioLink longtext, packagename varchar(255), version varchar(255), primary key (id))
-create table user_info (userId varchar(255) not null, android_version integer, manufacturer varchar(255), primary key (userId))
-create table user_info_gameplaystore (user_info_userId varchar(255) not null, playstoreDtos_id integer not null)
-alter table user_info_gameplaystore add index FKF057399E139EC879 (playstoreDtos_id), add constraint FKF057399E139EC879 foreign key (playstoreDtos_id) references gameplaystore (id)
-HHH000389: Unsuccessful: alter table user_info_gameplaystore add index FKF057399E139EC879 (playstoreDtos_id), add constraint FKF057399E139EC879 foreign key (playstoreDtos_id) references gameplaystore (id)
-Can't write; duplicate key in table '#sql-bea_2577'
-alter table user_info_gameplaystore add index FKF057399E164C228A (user_info_userId), add constraint FKF057399E164C228A foreign key (user_info_userId) references user_info (userId)
-HHH000389: Unsuccessful: alter table user_info_gameplaystore add index FKF057399E164C228A (user_info_userId), add constraint FKF057399E164C228A foreign key (user_info_userId) references user_info (userId)
-Can't write; duplicate key in table '#sql-bea_2577'
-HHH000230: Schema export complete
-Checking 0 named HQL queries
-Checking 0 named SQL queries
-Statistics initialized [enabled=false]

@@ -3,6 +3,8 @@ package com.gamecard.daoimpl;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
 
@@ -83,7 +85,7 @@ public class GameCardDaoImpl implements GameCardDao {
 			String vedioLink = doc.getElementsByClass("play-action-container").attr("data-video-url");
 			if (vedioLink.equals(""))
 				vedioLink = null;
-			link.setVedioLink(vedioLink);
+			link.setVedioLink(getYoutubeVideoId(vedioLink));
 			// -------image download-------
 
 			List<String> imageList = new ArrayList<String>();
@@ -127,40 +129,7 @@ public class GameCardDaoImpl implements GameCardDao {
 				result = true;
 			System.out.println("cateogry link:" + cat + " ,found :" + result);
 
-			/*
-			 * // System.out.println("describe"+desc); String categoury =
-			 * g.select("[itemprop=genre]").text();
-			 * System.out.println("categoury is :" + categoury);
-			 * 
-			 * 
-			 * 
-			 * 
-			 * -----checking weather catefgoury contant & or some spacing---- if
-			 * (categoury.contains("&") || categoury.contains(" ")) { String[]
-			 * fcat = categoury.split("&");
-			 * System.out.println("& operater  is there" + fcat[0]);
-			 * 
-			 * String[] fcat1 = categoury.split(" ");
-			 * System.out.println("space is there" + fcat1[0]); categoury =
-			 * fcat1[0]; } ----checking if categoury is game or not---- if
-			 * (categoury.equalsIgnoreCase("Action") ||
-			 * categoury.equalsIgnoreCase("Adventure") ||
-			 * categoury.equalsIgnoreCase("Racing") ||
-			 * categoury.equalsIgnoreCase("Arcade") ||
-			 * categoury.equalsIgnoreCase("Board") ||
-			 * categoury.equalsIgnoreCase("Card") ||
-			 * categoury.equalsIgnoreCase("Casino") ||
-			 * categoury.equalsIgnoreCase("Casual") ||
-			 * categoury.equalsIgnoreCase("Educational") ||
-			 * categoury.equalsIgnoreCase("Music") ||
-			 * categoury.equalsIgnoreCase("Puzzle") ||
-			 * categoury.equalsIgnoreCase("Role Playing") ||
-			 * categoury.equalsIgnoreCase("Simulation") ||
-			 * categoury.equalsIgnoreCase("Sports") ||
-			 * categoury.equalsIgnoreCase("Strategy") ||
-			 * categoury.equalsIgnoreCase("Trivia") ||
-			 * categoury.equalsIgnoreCase("Word")) {
-			 */
+		
 			if (result) {
 
 				// result = true;
@@ -365,11 +334,33 @@ public class GameCardDaoImpl implements GameCardDao {
 	public List<VedioModel> genrateVedioList(String packageName) {
 		GameSuggestion gameSuggestion = new GameSuggestion();
 		System.out.println(packageName);
-		return getVedioLink(gameSuggestion.getCombinationForGame(packageName));
+		List<VedioModel> list=getVedioLink(gameSuggestion.getCombinationForGame(packageName));
+		gameSuggestion.destructorGameSuggestion();
+		return list;
 	}
 
 	public UserInfo checkUserInfo(String userId) {
 		return (UserInfo) session.get(UserInfo.class, userId);
 	}
+	
+	public  String getYoutubeVideoId(String youtubeUrl)
+    {
+        String video_id="";
+        if (youtubeUrl != null && youtubeUrl.trim().length() > 0 && youtubeUrl.startsWith("http"))
+        {
+
+            String expression = "^.*((youtu.be"+ "\\/)" + "|(v\\/)|(\\/u\\/w\\/)|(embed\\/)|(watch\\?))\\??v?=?([^#\\&\\?]*).*"; // var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+            CharSequence input = youtubeUrl;
+            Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+            Matcher matcher = pattern.matcher(input);
+            if (matcher.matches())
+            {
+                String groupIndex1 = matcher.group(7);
+                if(groupIndex1!=null && groupIndex1.length()==11)
+                    video_id = groupIndex1;
+            }
+        }
+        return video_id;
+    }
 
 }

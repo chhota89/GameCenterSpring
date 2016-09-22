@@ -159,6 +159,7 @@ public class Subscriber extends JedisPubSub {
 	public void saveUserListInRedis(List<String> previousGames,List<String> newGames){
 		GameSuggestion gameSuggestion=new GameSuggestion();
 		gameSuggestion.createCombinationWithOlderUesrGame(previousGames,newGames);
+		gameSuggestion.destructorGameSuggestion();
 		//gameSuggestion.createZSet(newGames);
 	}
 	
@@ -168,6 +169,7 @@ public class Subscriber extends JedisPubSub {
 		List<PlaystoreDto> playstoreDtoslist=cardDaoImpl.getPlayStoreDto(suggestionGame);
 		if(playstoreDtoslist!=null)
 			sendDataToMqtt(playstoreDtoslist);
+		gameSuggestion.destructorGameSuggestion();
 	}
 	
 	public void sendDataToMqtt(List<PlaystoreDto> playstoreDtoslist){

@@ -19,9 +19,9 @@ import redis.clients.jedis.JedisShardInfo;
 @Repository
 public class RadisDaoImpl implements RadisDao {
 	
-	public static final String REDIS_HOST="23.23.233.73";
-	public static final int REDIS_PORT=15589;
-	public static final String REDIS_PASSWORD="pc0924q4lm4fvabg06f638rivs9";
+	public static final String REDIS_HOST="23.23.156.130";
+	public static final int REDIS_PORT=16379;
+	public static final String REDIS_PASSWORD="p7mpbpvga2h96v60jdom3g07164";
 	
 	/*---Subccribe the topic at time of page load----*/
 	public void isredis(final String redistopic) {

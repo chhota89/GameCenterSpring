@@ -40,13 +40,13 @@ public class Subscriber extends JedisPubSub {
 	ObjectMapper mapper = new ObjectMapper();
 	MqttDaoImpl mqttDaoImpl;
 	Gson gson;
-	GameCardDaoImpl cardDaoImpl;
 	//ApplicationContext context ;
 
 	/*------publish the redis topic and packagelist-----*/
 	@Override
 	public void onMessage(String channel, String packagenamelist) {
 		System.out.println("Message received from channel:  ................. " + channel + " Msg: " + packagenamelist);
+		GameCardDaoImpl cardDaoImpl;
 		cardDaoImpl = new GameCardDaoImpl();
 		
 		/*context = new ClassPathXmlApplicationContext("ThreadPoolExecutor.xml");
@@ -147,7 +147,9 @@ public class Subscriber extends JedisPubSub {
 			cardDaoImpl.saveUserInfo(userInfo,update);
 			
 			//Generate suggestion for the user
-			genrateSuggestion(userGamesClone);
+			genrateSuggestion(userGamesClone,cardDaoImpl);
+			
+			cardDaoImpl.destructor();
 			
 			
 		} catch (Exception e) {
@@ -163,7 +165,7 @@ public class Subscriber extends JedisPubSub {
 		//gameSuggestion.createZSet(newGames);
 	}
 	
-	public void genrateSuggestion(List<String> userGame){
+	public void genrateSuggestion(List<String> userGame,GameCardDaoImpl cardDaoImpl){
 		GameSuggestion gameSuggestion=new GameSuggestion();
 		List<String> suggestionGame=gameSuggestion.suggestionList(userGame);
 		List<PlaystoreDto> playstoreDtoslist=cardDaoImpl.getPlayStoreDto(suggestionGame);

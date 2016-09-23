@@ -42,6 +42,7 @@ import com.gamecard.daoimpl.Subscriber;
 import com.gamecard.dto.GamePackageListReq;
 import com.gamecard.dto.MqttDto;
 import com.gamecard.dto.PlaystoreDto;
+import com.gamecard.dto.VedioModel;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -51,8 +52,7 @@ import redis.clients.jedis.Tuple;
 
 @RestController("abc")
 public class GameCardController<E> { 
-	@Autowired
-	protected GameCardDaoImpl cardDaoImpl;
+
 	@Autowired
 	protected GameCardApkDaoImpl apkDaoImpl;
 	@Autowired
@@ -114,7 +114,10 @@ public class GameCardController<E> {
 	@RequestMapping(value = "/getVedioList",params="packageName", method = RequestMethod.GET, produces = "application/json")
 	public E getVedioLink(@RequestParam("packageName") String packageName){
 		  //System.out.println("Vedio Link is "+cardDaoImpl.genrateVedioList("com.pinkpointer.math"));
-		return (E) cardDaoImpl.genrateVedioList(packageName);
+		GameCardDaoImpl cardDaoImpl=new GameCardDaoImpl();
+		List<VedioModel> list=cardDaoImpl.genrateVedioList(packageName);
+		cardDaoImpl.destructor();
+		return (E) list;
 	}
 	
 	/*@RequestMapping(value="/upload", method=RequestMethod.POST)

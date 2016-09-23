@@ -39,6 +39,12 @@ import com.sun.accessibility.internal.resources.accessibility;
 public class GameCardDaoImpl implements GameCardDao {
 	Session session = new AnnotationConfiguration().configure("app.cfg.xml").buildSessionFactory().openSession();
 	private static final Logger log = Logger.getLogger(GameCardDaoImpl.class);
+	
+	public void destructor(){
+		if(session!=null)
+			session.close();
+		session=null;
+	}
 
 	/*------cheking package name into database-----*/
 	public PlaystoreDto findPackage(String packagename) {
